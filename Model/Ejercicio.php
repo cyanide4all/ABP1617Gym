@@ -33,10 +33,10 @@ class Ejercicio{
 
   function modificarEjercicio($id,$name,$desc,$cat){
     $db = DB::getDB();
-    $consulta = "UPDATE Ejercicio SET nomEjercicio=".$name.",
-                                      descripcion=".$desc.",
-                                      categoria=".$cat.
-                " WHERE idEjercicio=".$id; //ESTA CONSULTA ESTÁ CHOSCA, ARREGLALO MARTIN
+    $consulta = "UPDATE Ejercicio SET nomEjercicio='".$name."',
+                                      descripcion='".$desc."',
+                                      categoria='".$cat.
+                "' WHERE idEjercicio= '".$id."'";
     $result = $db->query($consulta);
   }
 
