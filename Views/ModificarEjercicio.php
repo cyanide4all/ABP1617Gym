@@ -8,7 +8,8 @@ $ejercicio = $ejerciciosController->getEjercicio($_GET['id']);
 $id = $_GET['id'];
 ?>
 
-<form method="post" action="../Controllers/c_Ejercicio.php?op=1">
+<form method="post" action="../Controllers/c_Ejercicio.php?op=1" id="modificar">
   <input type="text" name="nomEjercicio" value="<?php echo($ejercicio['nomEjercicio']);?>" />
-  <input type="submit" name="idEjercicio" value=<?php echo("".$id."");?>>
 </form>
+
+<button type="submit" form="modificar" name="idEjercicio" value = <?php echo("".$id."");?>>Modificar</button>
