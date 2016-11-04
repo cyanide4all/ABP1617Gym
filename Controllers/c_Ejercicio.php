@@ -7,12 +7,12 @@ if(isset($_POST['idEjercicio'])){
 
   if($_GET['op']==0){ //Eliminar
     EjercicioController::delEjercicio($_POST['idEjercicio']);
-  }else{              //Modificar
+  }if($_GET['op']==1){              //Modificar
     EjercicioController::modEjercicio();
+  }if($_GET['op']==2){		//Crear
+	EjercicioController::creEjercicio();
   }
 }
-
-
 
 class EjercicioController{
   function __construct(){
@@ -27,6 +27,12 @@ class EjercicioController{
     $e = new Ejercicio();
     $e->deleteEjercicio($id);
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+  }
+  
+  public static function creEjercicio(){
+	  $e = new Ejercicio();
+	  $e->createEjercicio($_POST['idEjercicio'],$_POST['nomEjercicio'],$_POST['desEjercicio'],$_POST["catEjercicio"]);
+	  header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 
   public static function getEjercicio($id){
