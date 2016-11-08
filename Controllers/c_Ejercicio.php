@@ -28,10 +28,10 @@ class EjercicioController{
     $e->deleteEjercicio($id);
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
-  
+
   public static function creEjercicio(){
 	  $e = new Ejercicio();
-	  $e->createEjercicio($_POST['idEjercicio'],$_POST['nomEjercicio'],$_POST['desEjercicio'],$_POST["catEjercicio"]);
+	  $e->createEjercicio($_POST['nomEjercicio'],$_POST['desEjercicio'],$_POST["catEjercicio"]);
 	  header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 
