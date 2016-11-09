@@ -39,12 +39,12 @@ class Ejercicio{
                 "' WHERE idEjercicio= '".$id."'";
     $result = $db->query($consulta);
   }
-  
+
   function createEjercicio($nombre, $desc, $categoria){
 	  $db = DB::getDB();
-	  $consulta = "INSERT INTO ejercicio (idEjercicio, nomEjercicio, descripcion, categoria)
-					VALUES (NULL, '".$nombre."', '".$desc."', '".$categoria."')";
-	  
+	  $consulta = "INSERT INTO ejercicio (nomEjercicio, descripcion, categoria)
+					VALUES ('".$nombre."', '".$desc."', '".$categoria."')";
+
 	  $result = $db->query($consulta);
   }
 
