@@ -10,7 +10,7 @@ if(isset($_POST['idEjercicio'])){
   }if($_GET['op']==1){              //Modificar
     EjercicioController::modEjercicio();
   }if($_GET['op']==2){		//Crear
-	EjercicioController::creEjercicio();
+	EjercicioController::addEjercicio();
   }
 }
 
@@ -29,10 +29,10 @@ class EjercicioController{
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 
-  public static function creEjercicio(){
+  public static function addEjercicio(){
 	  $e = new Ejercicio();
 	  $e->createEjercicio($_POST['nomEjercicio'],$_POST['desEjercicio'],$_POST["catEjercicio"]);
-	  header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+  	header('Location: ../Views/GestionEjercicios.php'); //redirect pagina anterior
   }
 
   public static function getEjercicio($id){
@@ -54,8 +54,9 @@ class EjercicioController{
     }else{
       $cat = $_POST['categoria'];
     }
+    //HASYA AQUI
     $e->modificarEjercicio($_POST['idEjercicio'],$_POST['nomEjercicio'],$desc,$cat);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: ../Views/GestionEjercicios.php');
     }
 
 }
