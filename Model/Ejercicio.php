@@ -24,7 +24,7 @@ class Ejercicio{
   function deleteEjercicio($id){
     $db = DB::getDB();
     $consulta = "DELETE FROM Ejercicio WHERE idEjercicio =".$id;
-    $result = $db->query($consulta);
+    $db->query($consulta);
   }
 
   function getById($id){
@@ -40,7 +40,7 @@ class Ejercicio{
                                       descripcion='".$desc."',
                                       categoria='".$cat.
                 "' WHERE idEjercicio= '".$id."'";
-    $result = $db->query($consulta);
+    $db->query($consulta);
   }
 
   function createEjercicio($nombre, $desc, $categoria){
@@ -48,7 +48,7 @@ class Ejercicio{
 	  $consulta = "INSERT INTO Ejercicio (nomEjercicio, descripcion, categoria)
 					VALUES ('".$nombre."', '".$desc."', '".$categoria."')";
 
-	  $result = $db->query($consulta);
+	  $db->query($consulta);
   }
 
 
