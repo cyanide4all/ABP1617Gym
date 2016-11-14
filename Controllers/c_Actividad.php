@@ -32,14 +32,13 @@ class ActividadController{
 
   public static function addActividad(){
 	  $e = new Actividad();
-	  
 	  if($_POST['tipoActividad'] == 'Individual'){
 		  $num = 0;
 	  }
 		else{
-		  $num = $_POST['plazasActividad'];
+		  $num = $_POST['numPlazas'];
 		}
-	  
+
 	  $e->createActividad($_POST['nomActividad'],$_POST['tipoActividad'],$num);
   	header('Location: ../Views/GestionActividades.php'); //redirect pagina anterior
   }
@@ -52,7 +51,7 @@ class ActividadController{
 //Enchufa todas las variables POST en base de datos
   public static function modActividad(){
     $e = new Actividad();
-	
+
     if(!isset($_POST['tipoActividad'])){
       $tipo = "";
     }else{
@@ -63,12 +62,12 @@ class ActividadController{
 	  }
 		else{
 		  $num = $_POST['plazasActividad'];
-		
+
 	  }
     }
-    
-	
-	
+
+
+
     //HASYA AQUI
     $e->modificarActividad($_POST['idActividad'],$_POST['nomActividad'],$tipo,$num);
     header('Location: ../Views/GestionActividades.php');
