@@ -25,6 +25,7 @@
         </form>
     	<button type="submit" form="borrar" name="idTabla" value = <?php echo("".$it['idTabla']."");?>>Borrar</button>
     	<button onclick="location.href='ModificarTabla.php?id=<?php echo($it['idTabla']);?>'">Modificar</button>
+      <button onclick="location.href='ModEjerciciosTabla.php?id=<?php echo($it['idTabla']);?>'">Cambiar Ejercicios</button>
       </div>
 
       <?php } ?>

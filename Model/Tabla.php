@@ -57,6 +57,12 @@ class Tabla{
 	  $db->query($consulta);
   }
 
+  function modEjerciciosTabla($idEjercicio,$idTabla,$numRepeticiones,$carga){
+    $db = DB::getDB();
+    $consulta = "INSERT INTO TablaEjercicio (Ejercicio_idEjercicio, Tabla_idTabla,nRepeticiones,carga)
+                  VALUES ('".$idEjercicio."','".$idTabla."','".$numRepeticiones."','".$carga."')";
+    $db->query($consulta);
+  }
 
 }
 ?>

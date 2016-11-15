@@ -5,13 +5,16 @@ require_once("../DB/connectDB.php");
 //Metodos por defecto para los formularios
 if(isset($_POST['idTabla'])){
 
-  if($_GET['op']==0){ //Eliminar
+  if($_GET['op']==0){   //Eliminar
     TablaController::delTabla($_POST['idTabla']);
-  }if($_GET['op']==1){              //Modificar
+  }if($_GET['op']==1){  //Modificar
     TablaController::modTabla();
-  }if($_GET['op']==2){		//Crear
+  }if($_GET['op']==2){	//Crear
 	TablaController::addTabla();
+  }if($_GET['op']==3){	//Crear
+	TablaController::modEjerciciosTabla();
   }
+
 }
 //TODO TODA LA CLASE
 class TablaController{
@@ -57,6 +60,13 @@ class TablaController{
     header('Location: ../Views/GestionTablas.php');
     }
 
+    //Hermosa funcion extra que ahorra construir un controller entero
+    public static function modEjerciciosTabla(){
+      $t = new Tabla();
+      //Seguramente haga falta alguna comprobacion o puesta a null aqui
+      $t->modEjerciciosTabla($_POST['idEjercicio'],$_POST['idTabla'],$_POST['numRepeticiones'],$_POST['carga']);
+      header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    }
 }
 
  ?>

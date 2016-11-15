@@ -15,7 +15,7 @@
 
     <body>
     <!-- TODO pillar dinamicamente los ejercicios con foreach-->
-    <form>
+    <form method="post" action="../Controllers/c_Tabla.php?op=3" id="addEjercicioTabla">
       <select name='idEjercicio'>
           <option value="">--Selecionar--</option>
         <?php foreach($ejercicios as $it){ ?>
@@ -25,10 +25,6 @@
       <input type="text" name="numRepeticiones" placeholder="Numero de repeticiones"/>
       <input type="text" name="carga" placeholder="carga"/>
     </form>
-
-
-
-
-
+    <button form="addEjercicioTabla" name="idTabla" value = <?php echo("".$_GET['id']."");?>>Añadir</button>
     </body>
 </html>
