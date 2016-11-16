@@ -49,6 +49,14 @@ class Usuario{
 	  $result = $db->query($consulta);
   }
 
-
+  function tryLogin($username,$pass){
+    $db = DB::getDB();
+	  $consulta ="SELECT * FROM Usuario WHERE nomUsuario='".$username."' AND pass = '".$pass."'";
+    $result = $db->query($consulta);
+    if($result->num_rows==0){
+      return false;
+    }
+      return true;
+    }
 }
 ?>

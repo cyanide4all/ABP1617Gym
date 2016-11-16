@@ -4,13 +4,14 @@ require_once("../DB/connectDB.php");
 
 //Metodos por defecto para los formularios
 if(isset($_POST['idUsuario'])){
-
   if($_GET['op']==0){       //Eliminar
     UsuarioController::delUsuario($_POST['idUsuario']);
   }if($_GET['op']==1){      //Modificar
     UsuarioController::modUsuario();
   }if($_GET['op']==2){	   	//Crear
 	   UsuarioController::creUsuario();
+  }if($_GET['op']==3){	   	//Crear
+	   UsuarioController::login();
   }
 }
 
@@ -74,6 +75,17 @@ class UsuarioController{
     $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT);
     header('Location: ../Views/GestionUsuarios.php');
     }
+
+    public static function login(){
+      $u= new Usuario();
+      $loginCorrecto = $u->tryLogin($_POST['email'],$_POST['pass']);
+      if($loginCorrecto){
+        session_start();
+        $_SESSION['userID'] = $_POST['email'];
+      }
+      header('Location: ../Views/paginaPrincipal.php');
+    }
+
 
 }
 
