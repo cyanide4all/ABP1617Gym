@@ -12,6 +12,10 @@ if(isset($_POST['idActividad'])){
     ActividadController::modActividad();
   }if($_GET['op']==2){		//Crear
 	ActividadController::addActividad();
+  }if($_GET['op']==3){		//Crear
+  ActividadController::addSesion();
+  }if($_GET['op']==4){		//Crear
+  ActividadController::delSesion();
   }
 }
 
@@ -66,13 +70,27 @@ class ActividadController{
 	  }
     }
 
-
-
     //HASYA AQUI
     $e->modificarActividad($_POST['idActividad'],$_POST['nomActividad'],$tipo,$num);
     header('Location: ../Views/GestionActividades.php');
     }
 
-}
+      public static function addSesion(){
+          $a = new Actividad();
+          $a->addSesion($_POST['idActividad'],$_POST['fecha']);
+            header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    }
+    public function getSesiones($id){
+      $a = new Actividad();
+      $a->getSesiones($id);
+      $result = $a->getSesiones($id);
+      return $result;
+    }
 
- ?>
+    public function delSesion(){
+      $a = new Actividad();
+      $a->delSesion($_POST['idSesion']);
+      header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    }
+}
+?>
