@@ -2,9 +2,12 @@
 require_once("../DB/connectDB.php");
 
 class Ejercicio{
-  private $db = null;
-  function __construct(){
 
+  private $db;
+
+  public function __construct(){
+    //Esto por alguna razon no funciona
+    //$this->$db = DB::getDB();
   }
 
   function getNameAndID(){
@@ -21,7 +24,7 @@ class Ejercicio{
   function deleteEjercicio($id){
     $db = DB::getDB();
     $consulta = "DELETE FROM Ejercicio WHERE idEjercicio =".$id;
-    $result = $db->query($consulta);
+    $db->query($consulta);
   }
 
   function getById($id){
@@ -37,15 +40,15 @@ class Ejercicio{
                                       descripcion='".$desc."',
                                       categoria='".$cat.
                 "' WHERE idEjercicio= '".$id."'";
-    $result = $db->query($consulta);
+    $db->query($consulta);
   }
 
   function createEjercicio($nombre, $desc, $categoria){
 	  $db = DB::getDB();
-	  $consulta = "INSERT INTO ejercicio (nomEjercicio, descripcion, categoria)
+	  $consulta = "INSERT INTO Ejercicio (nomEjercicio, descripcion, categoria)
 					VALUES ('".$nombre."', '".$desc."', '".$categoria."')";
 
-	  $result = $db->query($consulta);
+	  $db->query($consulta);
   }
 
 

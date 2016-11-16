@@ -31,10 +31,11 @@ class Usuario{
     return $result->fetch_assoc();
   }
 
-  function modificarUsuario($id,$nameU,$direc,$telf){
+  function modificarUsuario($id,$nameU,$direc,$telf,$tipoT){
     $db = DB::getDB();
     $consulta = "UPDATE Usuario SET nomUsuario='".$nameU."',
                                       direccion='".$direc."',
+                                      tipoTarjeta='".$tipoT."',
                                       telefono='".$telf.
                 "' WHERE idUsuario= '".$id."'";
     $result = $db->query($consulta);

@@ -10,7 +10,7 @@ if(isset($_POST['idEjercicio'])){
   }if($_GET['op']==1){              //Modificar
     EjercicioController::modEjercicio();
   }if($_GET['op']==2){		//Crear
-	EjercicioController::creEjercicio();
+	EjercicioController::addEjercicio();
   }
 }
 
@@ -29,10 +29,10 @@ class EjercicioController{
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 
-  public static function creEjercicio(){
+  public static function addEjercicio(){
 	  $e = new Ejercicio();
 	  $e->createEjercicio($_POST['nomEjercicio'],$_POST['desEjercicio'],$_POST["catEjercicio"]);
-	  header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+  	header('Location: ../Views/GestionEjercicios.php'); //redirect pagina anterior
   }
 
   public static function getEjercicio($id){
@@ -43,25 +43,17 @@ class EjercicioController{
 //Enchufa todas las variables POST en base de datos
   public static function modEjercicio(){
     $e = new Ejercicio();
-    if(!isset($_POST['descripcion'])){
+    if(!isset($_POST['desEjercicio'])){
       $desc = "";
     }else{
-      $desc = $_POST['descripcion'];
+      $desc = $_POST['desEjercicio'];
     }
-    //Este bloque puede borrarse cuando el combobox de categorías se implemente
-    if(!isset($_POST['categoria'])){
-      $cat = "";
-    }else{
-      $cat = $_POST['categoria'];
-    }
+    $cat = $_POST['catEjercicio'];
+    //HASYA AQUI
     $e->modificarEjercicio($_POST['idEjercicio'],$_POST['nomEjercicio'],$desc,$cat);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: ../Views/GestionEjercicios.php');
     }
 
 }
-
-
-
-
 
  ?>
