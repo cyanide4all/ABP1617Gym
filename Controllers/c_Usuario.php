@@ -4,13 +4,14 @@ require_once("../DB/connectDB.php");
 
 //Metodos por defecto para los formularios
 if(isset($_POST['idUsuario'])){
-
   if($_GET['op']==0){       //Eliminar
     UsuarioController::delUsuario($_POST['idUsuario']);
   }if($_GET['op']==1){      //Modificar
     UsuarioController::modUsuario();
   }if($_GET['op']==2){	   	//Crear
 	   UsuarioController::creUsuario();
+  }if($_GET['op']==3){	   	//Crear
+	   UsuarioController::login();
   }
 }
 
@@ -30,9 +31,18 @@ class UsuarioController{
   }
 
   public static function creUsuario(){
-	  $u = new Usuario();
-	  $u->createUsuario($_POST['nomUsuario'],$_POST['dircUsuario'],$_POST["telfUsuario"],$_POST["tipoTarjetaUsuario"],$_POST["dniUsuario"],$_POST["fechNacUsuario"],$_POST["emailUsuario"],$_POST["passUsuario"]);
-	  header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    if($_POST["passUsuario"]==$_POST["passUsuario2"]){
+      $u = new Usuario();
+      $u->createUsuario($_POST['nomUsuario'],$_POST['dircUsuario'],
+                        $_POST["telfUsuario"],$_POST["tipoTarjetaUsuario"],
+                        $_POST["dniUsuario"],$_POST["fechNacUsuario"],
+                        $_POST["emailUsuario"],$_POST["passUsuario"]);
+                        header('Location: ../Views/GestionUsuarios.php'); //redirect pagina anterior
+              }else{
+                  //TODO Esto manda un mensaje de error
+                  header('Location: ' . $_SERVER['HTTP_REFERER']);
+              }
+
   }
 
   public static function getUsuario($id){
@@ -49,6 +59,12 @@ class UsuarioController{
       $direc = $_POST['direccion'];
     }
 
+    if(!isset($_POST['tipoTarjetaUsuario'])){
+      $tipoT = "";
+    }else{
+      $tipoT = $_POST['tipoTarjetaUsuario'];
+    }
+
     if(!isset($_POST['telefono'])){
       $telf = "";
     }else{
@@ -57,8 +73,19 @@ class UsuarioController{
 
 
     $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: ../Views/GestionUsuarios.php');
     }
+
+    public static function login(){
+      $u= new Usuario();
+      $loginCorrecto = $u->tryLogin($_POST['email'],$_POST['pass']);
+      if($loginCorrecto){
+        session_start();
+        $_SESSION['userID'] = $_POST['email'];
+      }
+      header('Location: ../Views/paginaPrincipal.php');
+    }
+
 
 }
 

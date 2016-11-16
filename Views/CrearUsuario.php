@@ -1,20 +1,32 @@
-<?php
-//Elías 06/11/2016
-require_once('../Controllers/c_Usuario.php');
-require_once("../DB/connectDB.php");
+<!--Elías 06/11/2016-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crear Usuario</title>
+    <?php
+        require_once('NavBar.php');
+        require_once('../Controllers/c_Usuario.php');
+        require_once("../DB/connectDB.php");
 
-$usuariosController = new UsuarioController();
+        $usuariosController = new UsuarioController();
 
-?>
-
-<form method="post" action="../Controllers/c_Usuario.php?op=2">
-  <input type="text" name="nomUsuario" value="Nombre" />
-  <input type="text" name="dircUsuario" value="Direccion" />
-  <input type="text" name="telfUsuario" value="Telefono" />
-  <input type="text" name="tipoTarjetaUsuario" value="TipoTarjeta" />
-  <input type="text" name="dniUsuario" value="Dni" />
-  <input type="text" name="fechNacUsuario" value="FechaNac" />
-  <input type="text" name="emailUsuario" value="Email" />
-  <input type="text" name="passUsuario" value="Pass" />
-  <input type="submit" name="idUsuario">
-</form>
+    ?>
+<body>
+      <form method="post" action="../Controllers/c_Usuario.php?op=2">
+          Nombre: <input type="text" name="nomUsuario" placeholder="Nombre"  /></br>
+          Direccion: <input type="text" name="dircUsuario" placeholder="Direccion" /></br>
+          Telefono: <input type="text" name="telfUsuario" placeholder="Telefono" /></br>
+          TipoTarjeta: <select name="tipoTarjetaUsuario">
+                          <option value="">--Selecionar--</option>
+                          <option value="TDU">TDU</option>
+                          <option value="PEF">PEF</option>
+                        </select></br>
+          Dni: <input type="text" name="dniUsuario" placeholder="Dni" /></br>
+          Fecha de Nacimiento: <input type="text" name="fechNacUsuario" placeholder="FechaNac" /></br>
+          Email: <input type="text" name="emailUsuario" placeholder="ggfg" /></br>
+          Contraseña: <input type="password" name="passUsuario" placeholder="Pass" /></br>
+          Repetir Contraseña: <input type="password" name="passUsuario2" placeholder="Pass" /></br>
+            <input type="submit" name="idUsuario">
+      </form>
+  </body>
+</html>

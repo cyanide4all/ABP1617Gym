@@ -31,10 +31,11 @@ class Usuario{
     return $result->fetch_assoc();
   }
 
-  function modificarUsuario($id,$nameU,$direc,$telf){
+  function modificarUsuario($id,$nameU,$direc,$telf,$tipoT){
     $db = DB::getDB();
     $consulta = "UPDATE Usuario SET nomUsuario='".$nameU."',
                                       direccion='".$direc."',
+                                      tipoTarjeta='".$tipoT."',
                                       telefono='".$telf.
                 "' WHERE idUsuario= '".$id."'";
     $result = $db->query($consulta);
@@ -48,6 +49,14 @@ class Usuario{
 	  $result = $db->query($consulta);
   }
 
-
+  function tryLogin($username,$pass){
+    $db = DB::getDB();
+	  $consulta ="SELECT * FROM Usuario WHERE nomUsuario='".$username."' AND pass = '".$pass."'";
+    $result = $db->query($consulta);
+    if($result->num_rows==0){
+      return false;
+    }
+      return true;
+    }
 }
 ?>
