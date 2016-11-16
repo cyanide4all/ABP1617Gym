@@ -64,5 +64,21 @@ class Tabla{
     $db->query($consulta);
   }
 
+  function getEjercicios($id){
+    $db = DB::getDB();
+    $consulta = "SELECT Ejercicio_idEjercicio,nRepeticiones,carga FROM TablaEjercicio WHERE Tabla_idTabla='".$id."'";
+    $result = $db->query($consulta);
+    $res = array();
+    while($row = $result->fetch_assoc()){
+      array_push($res, $row);
+    }
+    return $res;
+  }
+  function deleteEjercicio($id){
+    $db = DB::getDB();
+    $consulta = "DELETE FROM TablaEjercicio WHERE Ejercicio_idEjercicio =".$id;
+    $db->query($consulta);
+  }
+
 }
 ?>

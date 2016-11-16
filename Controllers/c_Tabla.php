@@ -10,11 +10,12 @@ if(isset($_POST['idTabla'])){
   }if($_GET['op']==1){  //Modificar
     TablaController::modTabla();
   }if($_GET['op']==2){	//Crear
-	TablaController::addTabla();
+	  TablaController::addTabla();
   }if($_GET['op']==3){	//Crear
-	TablaController::modEjerciciosTabla();
+	  TablaController::modEjerciciosTabla();
+  }if($_GET['op']==4){	//Crear
+    TablaController::delEjerciciosTabla();
   }
-
 }
 //TODO TODA LA CLASE
 class TablaController{
@@ -65,6 +66,18 @@ class TablaController{
       $t = new Tabla();
       //Seguramente haga falta alguna comprobacion o puesta a null aqui
       $t->modEjerciciosTabla($_POST['idEjercicio'],$_POST['idTabla'],$_POST['numRepeticiones'],$_POST['carga']);
+      header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    }
+    public function getEjerciciosTabla($id){
+        $t = new Tabla();
+        $toRet = $t->getEjercicios($id);
+        return $toRet;
+    }
+    public static function delEjerciciosTabla(){
+      $t = new Tabla();
+
+      echo("huehuehu");
+      $t->deleteEjercicio($_POST['idEjercicio']);
       header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
     }
 }
