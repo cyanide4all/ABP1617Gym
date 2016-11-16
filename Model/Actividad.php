@@ -25,7 +25,7 @@ class Actividad{
   function deleteActividad($id){
     $db = DB::getDB();
     $consulta = "DELETE FROM Actividad WHERE idActividad =".$id;
-    $result = $db->query($consulta);
+    $db->query($consulta);
   }
 
   function getById($id){
@@ -41,7 +41,7 @@ class Actividad{
                                       tipoAct='".$tip."',
                                       numPlazas='".$num.
                 "' WHERE idActividad= '".$id."'";
-    $result = $db->query($consulta);
+    $db->query($consulta);
   }
 
   function createActividad($nombre, $tip, $num){
@@ -49,9 +49,32 @@ class Actividad{
 	  $consulta = "INSERT INTO Actividad (nomActividad, tipoAct, numPlazas)
 					VALUES ('".$nombre."', '".$tip."', '".$num."')";
 
-	  $result = $db->query($consulta);
+	  $db->query($consulta);
   }
 
+    function AddSesion($idActividad,$fecha){
+        $db = DB::getDB();
+        $consulta = "INSERT INTO Sesion (Actividad_idActividad, fecha)
+    					VALUES ('".$idActividad."', '".$fecha."')";
+        $db->query($consulta);
+    }
+    function getSesiones($idActividad){
+      $db = DB::getDB();
+      $consulta = "SELECT fecha, idSesion
+                    FROM Sesion
+                    WHERE Actividad_idActividad =".$idActividad;
+      $result = $db->query($consulta);
+      $res = array();
+      while($row = $result->fetch_assoc()){
+        array_push($res, $row);
+      }
+      return $res;
+    }
+    function delSesion($idSesion){
+      $db = DB::getDB();
+      $consulta = "DELETE FROM Sesion WHERE idSesion =".$idSesion;
+      $db->query($consulta);
 
+    }
 }
 ?>
