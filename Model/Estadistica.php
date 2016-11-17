@@ -16,6 +16,9 @@ class Estadistica{
 
     $db->query($consulta);
 
+  ///  echo('------------------');
+  //  echo $consulta;
+
 
   }
 }
