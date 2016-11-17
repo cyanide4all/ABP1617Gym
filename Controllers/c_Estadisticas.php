@@ -1,24 +1,29 @@
+<!-- Raul 17/11/2016 -->
 <?php
-echo "Disfruta el cancer";
+require_once("../Model/Estadistica.php");
+require_once("../DB/connectDB.php");
 
-$i = 0;
-
-foreach ($_POST['arrayID'] as $it) {
-
-  echo '<br>';
-  echo $it;
-  echo ' --- ';
-
-if(!isset($_POST['arrayStats'][$i]))
-  echo '0';
-else
-  echo $_POST['arrayStats'][$i];
-
-echo '<br>';
-  echo '---------------------------------------';
-  $i++;
+//TODO TODA LA CLASE
+class EstatController{
+  function __construct(){
+  }
 
 }
 
+$i = 0;
+$e = new Estadistica();
+
+foreach ($_POST['arrayID'] as $it) {
+  $done = 0;
+  if(isset($_POST['arrayStats'][$i])){
+    $done=1;
+  }
+
+  if($done == 1){
+    $e->createEstat($_POST['arrayID'][$i],$_POST['idTabla'],$_POST['idUser']); //chekar ultimos 2
+  }
+  $i++;
+}
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>
