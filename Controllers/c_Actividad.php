@@ -23,19 +23,19 @@ class ActividadController{
   function __construct(){
   }
   public function gestionActividades(){
-    $e = new Actividad();
-    $actividades = $e->getNameAndID();
+    $a = new Actividad();
+    $actividades = $a->getNameAndID();
     return $actividades;
   }
 
   public static function delActividad($id){
-    $e = new Actividad();
-    $e->deleteActividad($id);
+    $a = new Actividad();
+    $a->deleteActividad($id);
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 
   public static function addActividad(){
-	  $e = new Actividad();
+	  $a = new Actividad();
 	  if($_POST['tipoActividad'] == 'Individual'){
 		  $num = 0;
 	  }
@@ -43,43 +43,44 @@ class ActividadController{
 		  $num = $_POST['numPlazas'];
 		}
 
-	  $e->createActividad($_POST['nomActividad'],$_POST['tipoActividad'],$num);
+	  $a->createActividad($_POST['nomActividad'],$_POST['tipoActividad'],$num);
   	header('Location: ../Views/GestionActividades.php'); //redirect pagina anterior
   }
 
   public static function getActividad($id){
-    $e = new Actividad();
-    return $e->getById($id);
+    $a = new Actividad();
+    return $a->getById($id);
   }
 
 //Enchufa todas las variables POST en base de datos
   public static function modActividad(){
-    $e = new Actividad();
+    $a = new Actividad();
 
     if(!isset($_POST['tipoActividad'])){
       $tipo = "";
     }else{
       $tipo = $_POST['tipoActividad'];
-	  if($_POST['tipoActividad'] == 'Individual')
-	  {
-		  $num = 0;
-	  }
-		else{
-		  $num = $_POST['plazasActividad'];
+  	  if($_POST['tipoActividad'] == 'Individual')
+  	  {
+  		  $num = 0;
+  	  }
+  		else{
+  		  $num = $_POST['plazasActividad'];
 
-	  }
+  	  }
     }
 
     //HASYA AQUI
-    $e->modificarActividad($_POST['idActividad'],$_POST['nomActividad'],$tipo,$num);
+    $a->modificarActividad($_POST['idActividad'],$_POST['nomActividad'],$tipo,$num);
     header('Location: ../Views/GestionActividades.php');
     }
 
-      public static function addSesion(){
-          $a = new Actividad();
-          $a->addSesion($_POST['idActividad'],$_POST['fecha']);
-            header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    public static function addSesion(){
+        $a = new Actividad();
+        $a->addSesion($_POST['idActividad'],$_POST['fecha']);
+          header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
     }
+
     public function getSesiones($id){
       $a = new Actividad();
       $a->getSesiones($id);
