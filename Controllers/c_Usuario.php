@@ -76,6 +76,12 @@ class UsuarioController{
     header('Location: ../Views/GestionUsuarios.php');
     }
 
+    public function getUserByEmail($mail){
+      $u = new Usuario();
+      $result = $u->getByEmail($mail);
+      return $result;
+    }
+
     public static function login(){
       $u= new Usuario();
       $loginCorrecto = $u->tryLogin($_POST['email'],$_POST['pass']);

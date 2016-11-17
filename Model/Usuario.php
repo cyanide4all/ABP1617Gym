@@ -58,5 +58,12 @@ class Usuario{
     }
       return true;
     }
+
+    function getByEmail($email){
+      $db = DB::getDB();
+      $consulta ="SELECT idUsuario FROM Usuario WHERE email='".$email;
+      $result = $db->query($consulta);
+      return $result;
+    }
 }
 ?>
