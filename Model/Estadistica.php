@@ -11,7 +11,7 @@ class Estadistica{
   function createEstat($tabIdEj,$tabId,$uID){
 
     $db = DB::getDB();
-    $consulta = "INSERT INTO Estadísticas (TablaEjercicio_Ejercicio_idEjercicio,TablaEjercicio_Tabla_idTabla,Usuario_idUsuario)
+    $consulta = "INSERT INTO Estadisticas (TablaEjercicio_Ejercicio_idEjercicio,TablaEjercicio_Tabla_idTabla,Usuario_idUsuario)
           VALUES ('".$tabIdEj."', '".$tabId."', '".$uID."')";
 
     $db->query($consulta);
