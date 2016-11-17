@@ -9,20 +9,13 @@ session_start();
 
 //Metodos por defecto para los formularios
 if(isset($_SESSION['userID'])&&isset($_POST['idActividad'])){
-//Hacer reserva
-//Listar reservas
-//Borrar reservas
-echo "hue";
   $userController = new UsuarioController();
   $user = $userController->getUserByEmail($_SESSION['userID']);
-  echo $user;
   if($_GET['op']==0){ //Eliminar
-    ReservaController::delReserva($_SESSION['userID'], $_POST['idActividad']);
+    ReservaController::delReserva($user['idUsuario'], $_POST['idActividad']);
   }
   if($_GET['op']==1){ //Eliminar
-    echo($_SESSION['userID']);
-
-    ReservaController::reservar($_SESSION['userID'], $_POST['idActividad']);
+    ReservaController::reservar($user['idUsuario'], $_POST['idActividad']);
   }
 }
 

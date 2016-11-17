@@ -1,7 +1,9 @@
-TODO LIST
-
-
+TODO LIST;
 -Mostrar tambien email de usuario en gestion
 -CSS por dios, las tablas se ven horrible
 -Boton de salir de la sesion
--reservas------------------------
+
+
+TODO SUPER IMPORTANTE
+-Reservar y borrar reservas en ListaActividades.php (Y listaReservas, aun por crear)
+-Crear Sesiones desde SesionActividad.php
