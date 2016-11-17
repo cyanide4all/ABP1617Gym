@@ -35,13 +35,19 @@
         <a clas = 'izquierda'><?php echo ($actual['descripcion']); ?> </a>
         <a clas = 'izquierda'><?php echo ($it['nRepeticiones']); ?> </a>
         <a clas = 'izquierda'><?php echo ($it['carga']); ?> </a>
-        <input type="hidden" name="arrayID[<?php echo($i); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
+
         <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="1"> Realizado
         <input type="radio" name="arrayStats[<?php echo($i++); ?>]" value="0"> Pendiente
+
+        <input type="hidden" name="arrayID[<?php echo($i); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
+        <input type="hidden" name ="idTabla" value="<?php echo($_GET['id']); ?>"/>
+        <input type="hidden" name ="idUser" value="<?php echo($_GET['id']); ?>"/>
+
+
       </div>
 
         <?php } ?>
-      <input type="submit"  value ="Enviar")/>
+      <input type="submit"  value ="Enviar"/>
     </form>
     </div>
 
