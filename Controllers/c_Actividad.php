@@ -100,14 +100,24 @@ class ActividadController{
       $sesion = $a->getSesion($id);
       $actividad = $a->getById($sesion['Actividad_idActividad']);
       $plazasTotales = $actividad['numPlazas'];
-      echo("plazasTotales: ".$plazasTotales);
       $plazasOcupadas = $sesion['numPlazasOcupadas'];
-      echo("  |  plazasOcupadas: ".$plazasOcupadas);
       return ($plazasOcupadas < $plazasTotales);
     }
+
     public function plazaOcupada($id){
       $a = new Actividad();
       $a->ocuparPlazaEnSesion($id);
+    }
+
+    public function esGrupal($id){
+      $a = new Actividad();
+      $actividad = $a->getById($id);
+      if($actividad['tipoAct']=="Grupal"){
+        return true;
+      }
+      else{
+        return false;
+      }
     }
 }
 ?>
