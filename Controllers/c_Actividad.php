@@ -1,4 +1,5 @@
 <!--Raul 14/11/2016-->
+<!--Controlador para actividad y sesion-->
 <?php
 require_once("../Model/Actividad.php");
 require_once("../DB/connectDB.php");
@@ -92,6 +93,41 @@ class ActividadController{
       $a = new Actividad();
       $a->delSesion($_POST['idSesion']);
       header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+    }
+
+    public function quedanPlazas($id){
+      $a = new Actividad();
+      $sesion = $a->getSesion($id);
+      $actividad = $a->getById($sesion['Actividad_idActividad']);
+      $plazasTotales = $actividad['numPlazas'];
+      $plazasOcupadas = $sesion['numPlazasOcupadas'];
+      return ($plazasOcupadas < $plazasTotales);
+    }
+
+    public function plazaOcupada($id){
+      $a = new Actividad();
+      $a->ocuparPlazaEnSesion($id);
+    }
+    
+    public function plazaLiberada($id){
+      $a = new Actividad();
+      $a->liberarPlazaEnSesion($id);
+    }
+
+
+    public function esGrupal($id){
+      $a = new Actividad();
+      $actividad = $a->getById($id);
+      if($actividad['tipoAct']=="Grupal"){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    public function getSesion($id){
+      $a = new Actividad();
+      return $a->getSesion($id);
     }
 }
 ?>

@@ -30,7 +30,7 @@
       </div>
 
       <?php } ?>
-      <button onclick="location.href='CrearTabla.php'">Crear Nuevo Tabla</button>
+      <button onclick="location.href='CrearTabla.php'">Crear Nueva Tabla</button>
     </div>
   </body>
 </html>
