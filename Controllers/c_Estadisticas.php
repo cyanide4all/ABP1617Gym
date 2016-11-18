@@ -1,38 +1,48 @@
 <!-- Raul 17/11/2016 -->
 <?php
 require_once("../Model/Estadistica.php");
+
 require_once("../DB/connectDB.php");
+
 require_once("../Controllers/c_Usuario.php");
 
 session_start();
+//arreglar esto. // sesion esta guardando el nombre no el mail :^)
 
-$userController = new UsuarioController();
-$user = $userController->getUserByEmail($_SESSION['userID']);
-//TODO TODA LA CLASE
-class EstatController{
+if(isset($_POST['idTabla'])){
+  EstadisticasController::generarEstadisticas();
+}
+
+
+//TODO lectura de estadisticas
+class EstadisticasController{
   function __construct(){
   }
+  public static function generarEstadisticas(){
+    $userController = new UsuarioController();
+    $user = $userController->getUserByEmail($_SESSION['userID']);
 
-}
+    $i = 0;
+    $e = new Estadistica();
 
-$i = 0;
-$e = new Estadistica();
-
-foreach ($_POST['arrayID'] as $it) {
-  $done = 0;
-
-  if(isset($_POST['arrayStats'][$i])&&isset($_POST['arrayID'][$i])){
-    $done=1;
+    foreach ($_POST['arrayID'] as $it) {
+      $done = 0;
+      if(isset($_POST['arrayID'][$i]) && isset($_POST['arrayStats'][$i])){ //creo que idtabla sobra comprobarlo.
+          echo "hue";
+        if($_POST['arrayStats'][$i]==1){
+          $done=1;
+        }
+      }
+      if($done == 1){
+        date_default_timezone_set('Europe/Madrid');
+        $date = date('Y-m-d H:i:s');
+        $e->createEstat($_POST['arrayID'][$i], $_POST['idTabla'], $user['idUsuario'], $date); //chekar ultimos 2
+      }
+      $i++;
+    }
+    header('Location: ../Views/GestionTablas.php');
   }
 
-  if($done == 1){ //$_POST['arrayID'][$i] da problemas Why?????
-  $e->createEstat($_POST['arrayID'][$i],$_POST['idTabla'],$user['idUsuario']); //chekar ultimos 2
-  echo('<br> - Paso'.$i." Da : <br> ".$_POST['arrayID'][$i]." -- ".$_POST['idTabla']." -- ".$user['idUsuario']);
-  }
-  $i++;
-
 }
-
-//header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>

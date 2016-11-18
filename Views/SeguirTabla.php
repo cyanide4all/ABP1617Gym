@@ -41,7 +41,6 @@
 
         <input type="hidden" name="arrayID[<?php echo($i); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
         <input type="hidden" name ="idTabla" value="<?php echo($_GET['id']); ?>"/>
-        <input type="hidden" name ="idUser" value="<?php echo($_GET['id']); ?>"/>
 
 
       </div>
@@ -50,6 +49,5 @@
       <input type="submit"  value ="Enviar"/>
     </form>
     </div>
-
   </body>
 </html>
