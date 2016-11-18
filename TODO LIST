@@ -1,9 +1,22 @@
-TODO LIST;
--Mostrar tambien email de usuario en gestion
+TODO LIST a largo plazo;
 -CSS por dios, las tablas se ven horrible
 -Boton de salir de la sesion
 
 
 TODO SUPER IMPORTANTE
--borrar reservas en misactividadesreservadas.php-----------------
--Crear Sesiones desde SesionActividad.php
+-Mostrar tambien email de usuario en gestion
+-Hacer una pagina de login decente, que redireccione por ejemplo a ListarActividades en vez de a si misma (OJO: No borrar paginaPrincipal.php)
+-Que se inserten las putas estadísticas Raúl meca que estás tardando trillones de años
+-Pagina que recopile las estadísticas, que diga cosas al menos para que tengamos algo que enseñar. Añadirla al NavBar
+-OPCIONAL PERO BASTANTE IMPORTANTE: Que los botones de opciones como eliminar y tal (todo menos crear, vamos) salgan a la derecha y no debajo de cada tupla SIN USAR LA ETIQUEDA STYLE RAUL QUE TE CONOZCO
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+-NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
+
+ah, y sobre todo NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reservar Sesion</title>
+    <title>Gestionar Sesiones</title>
     <?php
         require_once('NavBar.php');
         require_once('../Controllers/c_Actividad.php');
@@ -27,7 +27,11 @@
         </div>
 
         <?php } ?>
-
+        <form method="post" action="../Controllers/c_Actividad.php?op=3">
+          <input type="hidden" name="idActividad" value="<?php echo($_GET['id']);?>"/>
+          Fecha y hora de la nueva sesion: <input type="datetime" placeholder="AAAA-MM-DD HH:MM" name="fecha"/>
+          <input type="submit"/ value="Enviar"/>
+        </form>
       </div>
     </body>
 </html>
