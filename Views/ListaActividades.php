@@ -32,12 +32,12 @@
             <input type="hidden" name="idSesion" value="<?php echo($it2['idSesion']);?>"/>
           </form>
           <?php
-          if(!$reservasController->yaReservado($it2['idSesion'])&&$actividadesController->quedanPlazas($it2['idSesion'])){ //si ya se reservo plaza no se muestra la opcion de reservar
+          if(!$reservasController->yaReservado($it2['idSesion'])&&$actividadesController->quedanPlazas($it2['idSesion'])){ //si ya se reservo plaza o no quedan no se muestra la opcion de reservar
           ?>
             <button type="submit" form="reservar<?php echo($it2['idSesion']);?>" name="idActividad" value="<?php echo($it['idActividad']);?>">Reservar</button>
           <?php
           }
-          if(!$actividadesController->quedanPlazas($it2['idSesion'])&&$actividadesController->esGrupal($it['idActividad'])){ //&&$actividadesController->esGrupal($it['idActividad'])
+          if(!$actividadesController->quedanPlazas($it2['idSesion'])&&$actividadesController->esGrupal($it['idActividad'])){
           ?>
             <a>NO QUEDAN PLAZAS</a>
           <?php

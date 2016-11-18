@@ -87,5 +87,10 @@ class Actividad{
       $consulta = "UPDATE Sesion SET numPlazasOcupadas=numPlazasOcupadas+1 WHERE idSesion= '".$id."'";
       $db->query($consulta);
     }
+    function liberarPlazaEnSesion($id){
+      $db = DB::getDB();
+      $consulta = "UPDATE Sesion SET numPlazasOcupadas=numPlazasOcupadas-1 WHERE idSesion= '".$id."'";
+      $db->query($consulta);
+    }
 }
 ?>

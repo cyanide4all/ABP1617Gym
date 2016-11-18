@@ -44,7 +44,7 @@ class Reserva{
                       VALUES (".$idU.", ".$idS.")";
     $db->query($consulta);
   }
-  
+
   function existe($idU,$idS){
     $db = DB::getDB();
     $consulta ="SELECT * FROM Reserva WHERE Usuario_idUsuario='".$idU."' AND Sesion_idSesion = '".$idS."'";
@@ -53,6 +53,16 @@ class Reserva{
       return false;
     }
       return true;
+  }
+  function getByUser($idU){
+    $db = DB::getDB();
+    $consulta ="SELECT * FROM Reserva WHERE Usuario_idUsuario=".$idU;
+    $result = $db->query($consulta);
+    $res = array();
+    while($row = $result->fetch_assoc()){
+      array_push($res, $row);
+    }
+    return $res;
   }
 
 }

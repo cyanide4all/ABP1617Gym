@@ -34,6 +34,8 @@ class ReservaController{
   public static function delReserva($idU,$idS){
     $r = new Reserva();
     $r->delReserva($idU,$idS);
+    $actividadesController = new ActividadController();
+    $actividadesController->plazaLiberada($idS);
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 
@@ -52,6 +54,12 @@ class ReservaController{
     $user = $userController->getUserByEmail($_SESSION['userID']);
     $r = new Reserva();
     return $r->existe($user['idUsuario'],$idSesion);
+  }
+  public function getMisReservas(){
+    $userController = new UsuarioController();
+    $user = $userController->getUserByEmail($_SESSION['userID']);
+    $r = new Reserva();
+    return $r->getByUser($user['idUsuario']);
   }
 
 }

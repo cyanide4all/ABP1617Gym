@@ -108,6 +108,12 @@ class ActividadController{
       $a = new Actividad();
       $a->ocuparPlazaEnSesion($id);
     }
+    
+    public function plazaLiberada($id){
+      $a = new Actividad();
+      $a->liberarPlazaEnSesion($id);
+    }
+
 
     public function esGrupal($id){
       $a = new Actividad();
@@ -118,6 +124,10 @@ class ActividadController{
       else{
         return false;
       }
+    }
+    public function getSesion($id){
+      $a = new Actividad();
+      return $a->getSesion($id);
     }
 }
 ?>

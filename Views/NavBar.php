@@ -11,6 +11,7 @@ TODO: Hacerlo bien y bonito
     <a href="GestionActividades.php">Gestión de Actividades</a> |
     <a href="GestionTablas.php">Gestión de Tablas</a> |
     <a href="ListaActividades.php">Lista de Actividades</a> |
+    <a href="MisActividadesReservadas.php">Mis reservas</a> |
     <a href="GestionUsuarios.php">Gestión de Usuarios</a> | Usuario actual: <?php if(isset($_SESSION['userID'])){ echo ($_SESSION['userID']);}else{echo("anonimo");}?>
 
   </nav>
