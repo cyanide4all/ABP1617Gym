@@ -37,9 +37,9 @@
         <a clas = 'izquierda'><?php echo ($it['carga']); ?> </a>
 
         <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="1"> Realizado
-        <input type="radio" name="arrayStats[<?php echo($i++); ?>]" value="0"> Pendiente
+        <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="0"> Pendiente
 
-        <input type="hidden" name="arrayID[<?php echo($i); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
+        <input type="hidden" name="arrayID[<?php echo($i++); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
         <input type="hidden" name ="idTabla" value="<?php echo($_GET['id']); ?>"/>
 
 

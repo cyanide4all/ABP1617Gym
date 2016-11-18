@@ -27,8 +27,8 @@ class EstadisticasController{
 
     foreach ($_POST['arrayID'] as $it) {
       $done = 0;
-      if(isset($_POST['arrayID'][$i]) && isset($_POST['arrayStats'][$i])){ //creo que idtabla sobra comprobarlo.
-          echo "hue";
+
+      if(isset($_POST['arrayID'][$i]) && isset($_POST['arrayStats'][$i])){
         if($_POST['arrayStats'][$i]==1){
           $done=1;
         }
@@ -40,7 +40,7 @@ class EstadisticasController{
       }
       $i++;
     }
-    header('Location: ../Views/GestionTablas.php');
+  //  header('Location: ../Views/GestionTablas.php');
   }
 
 }
