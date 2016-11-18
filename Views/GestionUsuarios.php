@@ -15,13 +15,14 @@
   </head>
 
     <body>
-        <div id = 'tabla2elementos' >
+        <div id = 'tabla3elementos' >
             <div class = 'tupla'>
                 <a clas = 'izquierda'>Nombre de Usuario</a> <a clas = 'derecha'>Opciones</a>
             </div>
             <?php foreach($usuarios as $it){ ?>
             <div class = 'tupla'>
-                <a clas = 'izquierda'><?php echo ($it['nomUsuario']); ?> </a>
+              <a clas = 'izquierda'><?php echo ($it['email']); ?></a> -
+              <a clas = 'medio'><?php echo ($it['nomUsuario']); ?></a> -
                 <form method= "post" action = "../Controllers/c_Usuario.php?op=0" class ='derecha' id="borrar">
                 </form>
           	<button type="submit" form="borrar" name="idUsuario" value = <?php echo("".$it['idUsuario']."");?>>Borrar</button>

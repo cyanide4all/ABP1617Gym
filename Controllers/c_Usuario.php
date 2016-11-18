@@ -10,10 +10,16 @@ if(isset($_POST['idUsuario'])){
     UsuarioController::modUsuario();
   }if($_GET['op']==2){	   	//Crear
 	   UsuarioController::creUsuario();
-  }if($_GET['op']==3){	   	//Crear
+  }if($_GET['op']==3){	   	//Login
 	   UsuarioController::login();
   }
 }
+if(isset($_GET['op']) && $_GET['op'] == 4){
+  session_start();
+  unset($_SESSION["userID"]);
+  header('Location: ../Views/paginaPrincipal.php'); //redirect pagina anterior
+}
+
 
 class UsuarioController{
   function __construct(){
