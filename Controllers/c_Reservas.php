@@ -4,8 +4,9 @@ require_once("../Model/Actividad.php");
 require_once("../Controllers/c_Usuario.php");
 require_once("../Model/Reserva.php");
 require_once("../DB/connectDB.php");
-session_start();
-
+if(!isset($_SESSION['userID'])){
+  session_start();
+}
 
 //Metodos por defecto para los formularios
 if(isset($_SESSION['userID'])&&isset($_POST['idActividad'])){
@@ -25,7 +26,7 @@ class ReservaController{
 
   public function gestionReservas(){
     $r = new Reserva();
-    $reservas = $r->getIds();
+    $reservas = $r->getReservas();
     return $reservas;
 }
 
@@ -37,13 +38,18 @@ class ReservaController{
 
   public static function reservar($idU,$idS){
     //TODO las comprobaciones necesarias
+    //Que queden plazas
     $r = new Reserva();
     $r->addReserva($idU,$idS);
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
-
-
   }
 
+  public function yaReservado($idSesion){
+    $userController = new UsuarioController();
+    $user = $userController->getUserByEmail($_SESSION['userID']);
+    $r = new Reserva();
+    return $r->existe($user['idUsuario'],$idSesion);
+  }
 
 }
 ?>

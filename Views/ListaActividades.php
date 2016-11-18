@@ -6,9 +6,11 @@
     <?php
     require_once('NavBar.php');
     require_once('../Controllers/c_Actividad.php');
+    require_once('../Controllers/c_Reservas.php');
     require_once("../DB/connectDB.php");
 
     $actividadesController = new ActividadController();
+    $reservasController = new ReservaController();
     $actividades = $actividadesController->gestionActividades(); //TODO gestionSesiones
     ?>
   </head>
@@ -29,7 +31,9 @@
             <a>Sesion: <?php echo($it2['fecha']) ?></a>
             <input type="hidden" name="idSesion" value="<?php echo($it2['idSesion']);?>"/>
           </form>
-        	<button type="submit" form="reservar<?php echo($it2['idSesion']);?>" name="idActividad" value="<?php echo($it['idActividad']);?>">Reservar</button>
+          <?php if(!$reservasController->yaReservado($it2['idSesion'])){ //si ya se reservo plaza no se muestra la opcion de reservar ?>
+            <button type="submit" form="reservar<?php echo($it2['idSesion']);?>" name="idActividad" value="<?php echo($it['idActividad']);?>">Reservar</button>
+          <?php } ?>
           <?php }?>
       </div>
       <?php } ?>

@@ -58,12 +58,7 @@ class Usuario{
     }
       return true;
     }
-    //TODO
-    //TODO
-    //TODO
-    //TODO
-    //TODO
-    //TODO
+    
     function getByEmail($email){
       $db = DB::getDB();
       $consulta = "SELECT * FROM Usuario WHERE email ='".$email."'";
