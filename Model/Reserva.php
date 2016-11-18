@@ -41,9 +41,10 @@ class Reserva{
   function addReserva($idU,$idS){
     $db = DB::getDB();
     $consulta = "INSERT INTO Reserva (Usuario_idUsuario,Sesion_idSesion)
-                      VALUES ('".$idU."', '".$idS."')";
+                      VALUES (".$idU.", ".$idS.")";
     $db->query($consulta);
   }
+  
   function existe($idU,$idS){
     $db = DB::getDB();
     $consulta ="SELECT * FROM Reserva WHERE Usuario_idUsuario='".$idU."' AND Sesion_idSesion = '".$idS."'";

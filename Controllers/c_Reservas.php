@@ -2,6 +2,7 @@
 <?php
 require_once("../Model/Actividad.php");
 require_once("../Controllers/c_Usuario.php");
+require_once("../Controllers/c_Actividad.php");
 require_once("../Model/Reserva.php");
 require_once("../DB/connectDB.php");
 if(!isset($_SESSION['userID'])){
@@ -38,9 +39,11 @@ class ReservaController{
 
   public static function reservar($idU,$idS){
     //TODO las comprobaciones necesarias
-    //Que queden plazas
+    //Solo saldra el boton de reservar si quedan plazas
     $r = new Reserva();
     $r->addReserva($idU,$idS);
+    $actividadesController = new ActividadController();
+    $actividadesController->plazaOcupada($idS);
     header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
   }
 

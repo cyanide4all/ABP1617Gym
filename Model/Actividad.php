@@ -74,7 +74,18 @@ class Actividad{
       $db = DB::getDB();
       $consulta = "DELETE FROM Sesion WHERE idSesion =".$idSesion;
       $db->query($consulta);
-
+    }
+    function getSesion($id){
+      $db = DB::getDB();
+      $consulta = "SELECT * FROM Sesion
+                    WHERE idSesion =".$id;
+      $result = $db->query($consulta);
+      return $result->fetch_assoc();
+    }
+    function ocuparPlazaEnSesion($id){
+      $db = DB::getDB();
+      $consulta = "UPDATE Sesion SET numPlazasOcupadas=numPlazasOcupadas+1 WHERE idSesion= '".$id."'";
+      $db->query($consulta);
     }
 }
 ?>

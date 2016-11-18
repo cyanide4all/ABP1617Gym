@@ -5,5 +5,5 @@ TODO LIST;
 
 
 TODO SUPER IMPORTANTE
--Reservar y borrar reservas en ListaActividades.php (Y listaReservas, aun por crear)
+-borrar reservas en misactividadesreservadas.php
 -Crear Sesiones desde SesionActividad.php
