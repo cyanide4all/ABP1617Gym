@@ -51,14 +51,14 @@ class Usuario{
 
   function tryLogin($username,$pass){
     $db = DB::getDB();
-	  $consulta ="SELECT * FROM Usuario WHERE nomUsuario='".$username."' AND pass = '".$pass."'";
+	  $consulta ="SELECT * FROM Usuario WHERE email='".$username."' AND pass = '".$pass."'";
     $result = $db->query($consulta);
     if($result->num_rows==0){
       return false;
     }
       return true;
     }
-    
+
     function getByEmail($email){
       $db = DB::getDB();
       $consulta = "SELECT * FROM Usuario WHERE email ='".$email."'";
