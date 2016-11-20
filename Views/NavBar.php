@@ -12,12 +12,13 @@ TODO: Hacerlo bien y bonito
     <a href="GestionTablas.php">Gestión de Tablas</a> |
     <a href="ListaActividades.php">Lista de Actividades</a> |
     <a href="MisActividadesReservadas.php">Mis reservas</a> |
+    <a href="MisEstadisticas.php">Mis estadisticas</a> |
     <a href="GestionUsuarios.php">Gestión de Usuarios</a> |
     <a>Usuario actual: <?php if(isset($_SESSION['userID'])){ echo ($_SESSION['userID']);}else{echo("anonimo");}?></a>
     <?php if(isset($_SESSION['userID'])){ ?>
     <a href="../Controllers/c_Usuario.php?op=4"> salir</a>
     <?php }else{ ?>
-    <a href="LogIn.php">login</a>    
+    <a href="LogIn.php">login</a>
     <?php } ?>
   </nav>
 </div>
