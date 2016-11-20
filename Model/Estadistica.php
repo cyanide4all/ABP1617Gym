@@ -1,3 +1,4 @@
+<!-- Raul 18/11/2016 -->
 <?php
 require_once("../DB/connectDB.php");
 
@@ -17,6 +18,20 @@ class Estadistica{
 
     $db->query($consulta);
 
+  }
+
+  function getEstadisticas($id){
+    $db = DB::getDB();
+    $consulta = "SELECT * FROM Estadisticas WHERE Usuario_idUsuario =".$id;
+    $result = $db->query($consulta);
+
+    $res = array();
+
+    while($row = $result->fetch_assoc()){
+      array_push($res, $row);
+    }
+
+    return $res;
   }
 }
 

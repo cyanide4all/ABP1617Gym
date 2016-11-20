@@ -6,8 +6,9 @@ require_once("../DB/connectDB.php");
 
 require_once("../Controllers/c_Usuario.php");
 
-session_start();
-//arreglar esto. // sesion esta guardando el nombre no el mail :^)
+if(!isset($_SESSION['userID'])){
+  session_start();
+}
 
 if(isset($_POST['idTabla'])){
   EstadisticasController::generarEstadisticas();
@@ -40,7 +41,15 @@ class EstadisticasController{
       }
       $i++;
     }
-  //  header('Location: ../Views/GestionTablas.php');
+    header('Location: ../Views/GestionTablas.php');
+  }
+
+  public function getEstadisticas(){
+    $e = new Estadistica();
+    $userController = new UsuarioController();
+    $user = $userController->getUserByEmail($_SESSION['userID']);
+
+    return $e->getEstadisticas($user['idUsuario']);  //TODO IMPLEMENT ME PLS I HABE CANCER
   }
 
 }

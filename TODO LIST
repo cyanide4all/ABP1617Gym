@@ -3,11 +3,10 @@ TODO LIST a largo plazo;
 -Boton de salir de la sesion
 
 
-TODO SUPER IMPORTANTE
--Pagina que recopile las estadísticas, que diga cosas al menos para que tengamos algo que enseñar. Añadirla al NavBar
+TODO SUPER IMPORTANTE "Base de datos estadisticas tiene que ser primaria fecha sino no deja repetir ejercicios de una tabla.. o es asi?"
 
--OPCIONAL PERO BASTANTE IMPORTANTE: Que los botones de opciones como eliminar y tal (todo menos crear, vamos) salgan a la derecha y no debajo de cada tupla SIN USAR LA ETIQUEDA STYLE RAUL QUE TE CONOZCO
-
+-OPCIONAL PERO BASTANTE IMPORTANTE: Que los botones de opciones como eliminar y tal (todo menos crear, vamos) salgan a la derecha y no debajo de cada tupla 
+SIN USAR LA ETIQUEDA STYLE :^) QUE TE CONOZCO
 -MENOS ECHOOS Y MAS LEER; ECHO LEER ESTO.
 -NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
 -NO ROMPER NADA Y LUEGO SUBIRLO A GITHUB PORQUE NO HACEMOS PRUEBAS
