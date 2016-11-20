@@ -23,7 +23,7 @@
                         </select></br>
           Dni: <input type="text" name="dniUsuario" placeholder="Dni" /></br>
           Fecha de Nacimiento: <input type="text" name="fechNacUsuario" placeholder="AAAA:MM:DD" /></br>
-          Email: <input type="text" name="emailUsuario" placeholder="ggfg" /></br>
+          Email: <input type="text" name="emailUsuario" placeholder="ejemplo@dominio.com" /></br>
           Contraseña: <input type="password" name="passUsuario" placeholder="Pass" /></br>
           Repetir Contraseña: <input type="password" name="passUsuario2" placeholder="Pass" /></br>
             <input type="submit" name="idUsuario">

@@ -9,7 +9,7 @@
     require_once("../DB/connectDB.php");
 
     $ActividadesController = new ActividadController();
-    $Actividades = $ActividadesController->gestionActividades();
+    $Actividades = $ActividadesController->gestionActividadesConTipo();
     ?>
   </head>
 
@@ -25,10 +25,11 @@
         </form>
     	<button type="submit" form="borrar" name="idActividad" value = <?php echo("".$it['idActividad']."");?>>Borrar</button>
     	<button onclick="location.href='ModificarActividad.php?id=<?php echo($it['idActividad']);?>'">Modificar</button>
+      <?php if($it['tipoAct']=="Grupal"){?>
       <button onclick="location.href='SesionActividad.php?id=<?php echo($it['idActividad']);?>'">Gestionar Sesiones</button>
-      </div>
-
       <?php } ?>
+    </div>
+    <?php } ?>
       <button onclick="location.href='CrearActividad.php'">Crear Nueva Actividad</button>
     </div>
   </body>

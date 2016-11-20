@@ -28,6 +28,12 @@ class ActividadController{
     $actividades = $a->getNameAndID();
     return $actividades;
   }
+  public function gestionActividadesConTipo(){
+    $a = new Actividad();
+    $actividades = $a->getNameIDType();
+    return $actividades;
+
+  }
 
   public static function delActividad($id){
     $a = new Actividad();
@@ -108,7 +114,7 @@ class ActividadController{
       $a = new Actividad();
       $a->ocuparPlazaEnSesion($id);
     }
-    
+
     public function plazaLiberada($id){
       $a = new Actividad();
       $a->liberarPlazaEnSesion($id);
