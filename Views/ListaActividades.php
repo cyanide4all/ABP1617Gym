@@ -18,7 +18,7 @@
   <body>
     <div id = 'tabla2elementos' >
       <div class = 'tupla'>
-        <a clas = 'izquierda'>Nombre de Actividad</a> <a clas = 'derecha'>Opciones</a>
+        <a clas = 'izquierda'>Actividades Disponibles</a> <a clas = 'derecha'>Opciones</a>
       </div>
       <?php foreach($actividades as $it){ ?>
       <div class = 'tupla'>
@@ -37,7 +37,7 @@
             <button type="submit" form="reservar<?php echo($it2['idSesion']);?>" name="idActividad" value="<?php echo($it['idActividad']);?>">Reservar</button>
           <?php
           }
-          if(!$actividadesController->quedanPlazas($it2['idSesion'])&&$actividadesController->esGrupal($it['idActividad'])){
+          if((!$actividadesController->quedanPlazas($it2['idSesion']))&&$actividadesController->esGrupal($it['idActividad'])){
           ?>
             <a>NO QUEDAN PLAZAS</a>
           <?php

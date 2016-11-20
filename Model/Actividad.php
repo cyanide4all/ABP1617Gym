@@ -64,10 +64,10 @@ class Actividad{
 	  $db->query($consulta);
   }
 
-    function AddSesion($idActividad,$fecha){
+    function addSesion($idActividad,$fecha){
         $db = DB::getDB();
-        $consulta = "INSERT INTO Sesion (Actividad_idActividad, fecha)
-    					VALUES ('".$idActividad."', '".$fecha."')";
+        $consulta = "INSERT INTO Sesion (Actividad_idActividad, numPlazasOcupadas,fecha)
+    					VALUES ('".$idActividad."',0, '".$fecha."')";
         $db->query($consulta);
     }
     function getSesiones($idActividad){

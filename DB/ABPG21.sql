@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 17, 2016 at 09:23 PM
+-- Generation Time: Nov 20, 2016 at 06:48 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ABPG21`
 --
+CREATE DATABASE IF NOT EXISTS `ABPG21` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `ABPG21`;
 
 -- --------------------------------------------------------
 
@@ -38,9 +40,9 @@ CREATE TABLE `Actividad` (
 --
 
 INSERT INTO `Actividad` (`idActividad`, `nomActividad`, `tipoAct`, `numPlazas`) VALUES
-(1, '11111', 'Grupal', 5),
-(2, 'sss', 'Grupal', 2),
-(3, 'Actividad', '', 19);
+(5, 'Actividad Individual', 'Individual', 0),
+(6, 'Actividad Grupal', 'Grupal', 12),
+(7, 'Actividad Grupal 2', 'Grupal', 1);
 
 -- --------------------------------------------------------
 
@@ -60,10 +62,9 @@ CREATE TABLE `Ejercicio` (
 --
 
 INSERT INTO `Ejercicio` (`idEjercicio`, `nomEjercicio`, `descripcion`, `categoria`) VALUES
-(8, 'Nombre', 'Descripcion', 'Brazo'),
-(9, 'Nombres', 'Descripcion', 'Brazo'),
-(11, 'Nossss', 'HUEHEUHEUHEUHEUEHUE', ''),
-(13, 'Nombssssss', 'aaa', '');
+(14, 'Ejercicio1', '', 'Brazo'),
+(15, 'Ejercicio2', '', 'Pierna'),
+(16, 'Ejercicio3', 'hue', 'Espalda');
 
 -- --------------------------------------------------------
 
@@ -75,8 +76,18 @@ CREATE TABLE `Estadisticas` (
   `TablaEjercicio_Ejercicio_idEjercicio` int(11) NOT NULL,
   `TablaEjercicio_Tabla_idTabla` int(11) NOT NULL,
   `Usuario_idUsuario` int(11) NOT NULL,
-  `fecha` datetime DEFAULT NULL
+  `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Estadisticas`
+--
+
+INSERT INTO `Estadisticas` (`TablaEjercicio_Ejercicio_idEjercicio`, `TablaEjercicio_Tabla_idTabla`, `Usuario_idUsuario`, `fecha`) VALUES
+(14, 11, 8, '2016-11-20 18:02:18'),
+(14, 11, 8, '2016-11-20 18:02:57'),
+(15, 11, 8, '2016-11-20 18:02:18'),
+(16, 11, 8, '2016-11-20 18:02:57');
 
 -- --------------------------------------------------------
 
@@ -88,13 +99,6 @@ CREATE TABLE `Reserva` (
   `Usuario_idUsuario` int(11) NOT NULL,
   `Sesion_idSesion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Reserva`
---
-
-INSERT INTO `Reserva` (`Usuario_idUsuario`, `Sesion_idSesion`) VALUES
-(3, 1);
 
 -- --------------------------------------------------------
 
@@ -114,8 +118,8 @@ CREATE TABLE `Sesion` (
 --
 
 INSERT INTO `Sesion` (`idSesion`, `numPlazasOcupadas`, `fecha`, `Actividad_idActividad`) VALUES
-(1, 0, '2016-11-20 00:00:00', 1),
-(2, 0, '2016-11-22 00:00:00', 2);
+(10, NULL, '2222-12-22 22:00:00', 6),
+(14, 0, '1010-10-10 00:00:00', 7);
 
 -- --------------------------------------------------------
 
@@ -145,11 +149,7 @@ CREATE TABLE `Tabla` (
 --
 
 INSERT INTO `Tabla` (`idTabla`, `nomTabla`, `descripcion`) VALUES
-(3, 'TablaT', 'Descripcion'),
-(4, 'Tabla', 'Descripcion2'),
-(5, 'Tabla221', 'NO'),
-(9, 'ddd', ''),
-(10, 'tablassn', 'no');
+(11, 'Tabla test', '');
 
 -- --------------------------------------------------------
 
@@ -169,9 +169,9 @@ CREATE TABLE `TablaEjercicio` (
 --
 
 INSERT INTO `TablaEjercicio` (`Ejercicio_idEjercicio`, `Tabla_idTabla`, `nRepeticiones`, `carga`) VALUES
-(8, 10, 111, 23),
-(9, 10, 12, 2),
-(11, 10, 1, 56);
+(14, 11, 2, 12),
+(15, 11, 111, 2),
+(16, 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -196,9 +196,10 @@ CREATE TABLE `Usuario` (
 --
 
 INSERT INTO `Usuario` (`idUsuario`, `nomUsuario`, `direccion`, `telefono`, `tipoTarjeta`, `dni`, `fechaNac`, `email`, `pass`) VALUES
-(3, 'elias1', 'huehuehue', '222222222', 'TDU', '444520456K', '1991-10-24', 'eliasmb7@gmail.com', '1234'),
-(5, 'asdsdas', 'asdsadd', '1254454545', 'TDU', '444715222k', '1991-10-25', 'eliassdsd', '1234'),
-(6, 'hue', 'hue', '1', 'hue', 'hue', NULL, 'hue', 'hue');
+(7, 'Usuario1', 'Direccion del usuario 1', '678856421', 'PEF', '44662517J', '2016-11-01', 'usuario1@test.com', '1234'),
+(8, 'admin', 'admin direccion', '678856422', 'PEF', '44662517F', '2016-11-07', 'admin@admin.admin', '1234'),
+(9, 'Usuario2', 'Direccion del user 2', '678856423', 'TDU', '44662517G', '1576-11-11', 'usuario2@test.com', '1234'),
+(11, 'hue', 'hue', '123', 'PEF', 'hur', '2016-11-01', 'hue', 'hue');
 
 --
 -- Indexes for dumped tables
@@ -220,7 +221,7 @@ ALTER TABLE `Ejercicio`
 -- Indexes for table `Estadisticas`
 --
 ALTER TABLE `Estadisticas`
-  ADD PRIMARY KEY (`TablaEjercicio_Ejercicio_idEjercicio`,`TablaEjercicio_Tabla_idTabla`,`Usuario_idUsuario`),
+  ADD PRIMARY KEY (`TablaEjercicio_Ejercicio_idEjercicio`,`TablaEjercicio_Tabla_idTabla`,`Usuario_idUsuario`,`fecha`),
   ADD KEY `fk_TablaEjercicio_has_Usuario_Usuario1_idx` (`Usuario_idUsuario`),
   ADD KEY `fk_TablaEjercicio_has_Usuario_TablaEjercicio1_idx` (`TablaEjercicio_Ejercicio_idEjercicio`,`TablaEjercicio_Tabla_idTabla`);
 
@@ -276,27 +277,27 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT for table `Actividad`
 --
 ALTER TABLE `Actividad`
-  MODIFY `idActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `Ejercicio`
 --
 ALTER TABLE `Ejercicio`
-  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `Sesion`
 --
 ALTER TABLE `Sesion`
-  MODIFY `idSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `Tabla`
 --
 ALTER TABLE `Tabla`
-  MODIFY `idTabla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idTabla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
