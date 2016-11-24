@@ -21,12 +21,17 @@
       <a>Nombre del ejercicio</a>  <a>Repeticiones</a>  <a>Carga</a>
       <?php foreach($ejerciciosTabla as $it){ ?>
       <form method="post" action="../Controllers/c_Tabla.php?op=4" id="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>">
-        <?php  $toShow = $ejerciciosController->getEjercicio($it['Ejercicio_idEjercicio']);      ?>
-        <a><?php echo($toShow['nomEjercicio']);?></a> ---
-        <a><?php echo($it['nRepeticiones']);?></a> ---
-        <a><?php echo($it['carga']);?></a>
         <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
       </form>
+        <?php  $toShow = $ejerciciosController->getEjercicio($it['Ejercicio_idEjercicio']);      ?>
+        <form method="post" action="../Controllers/c_Tabla.php?op=5">
+          <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
+          <input type="hidden" name="idEjercicio" value="<?php echo($it['Ejercicio_idEjercicio']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
+          <a><?php echo($toShow['nomEjercicio']);?></a> ---
+          <input type="text" name="nRepeticiones" value="<?php echo($it['nRepeticiones']);?>"/> ---
+          <input type="text" name="carga" value="<?php echo($it['carga']);?>"/>
+          <input type="submit" value="Modificar"/>
+        </form>
       <button form="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>" name="idEjercicio" value = <?php echo("".$it['Ejercicio_idEjercicio']."");?>>Borrar</button>
       <?php }?>
     </div>

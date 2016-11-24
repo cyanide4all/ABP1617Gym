@@ -12,9 +12,11 @@ if(isset($_POST['idTabla'])){
   }if($_GET['op']==2){	//Crear
 	  TablaController::addTabla();
   }if($_GET['op']==3){	//Crear
-	  TablaController::modEjerciciosTabla();
+	  TablaController::addEjerciciosTabla();
   }if($_GET['op']==4){	//Crear
     TablaController::delEjerciciosTabla();
+  }if($_GET['op']==5){	//Crear
+    TablaController::modEjerciciosTabla();
   }
 }
 //TODO TODA LA CLASE
@@ -62,7 +64,7 @@ class TablaController{
     }
 
     //Hermosa funcion extra que ahorra construir un controller entero
-    public static function modEjerciciosTabla(){
+    public static function addEjerciciosTabla(){
       $t = new Tabla();
       //Seguramente haga falta alguna comprobacion o puesta a null aqui
       $t->modEjerciciosTabla($_POST['idEjercicio'],$_POST['idTabla'],$_POST['numRepeticiones'],$_POST['carga']);
@@ -77,9 +79,26 @@ class TablaController{
       $t = new Tabla();
 
       echo("huehuehu");
-      $t->deleteEjercicio($_POST['idEjercicio']);
-      header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+      $t->deleteEjercicio($_POST['idEjercicio'], $_POST['idTabla']);
+
+    }
+
+    public static function modEjerciciosTabla(){
+        $t = new Tabla();
+        if(!isset($_POST['nRepeticiones'])){
+          $nRep = 0;
+        }else{
+          $nRep = $_POST['nRepeticiones'];
+        }
+        if(!isset($_POST['carga'])){
+          $carga = 0;
+        }else{
+          $carga = $_POST['carga'];
+        }
+        //HASYA AQUI
+        $t->modEjerciciosTabla($_POST['idTabla'],$_POST['idEjercicio'],$nRep,$carga);
+        header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
     }
 }
 
- ?>
+?>
