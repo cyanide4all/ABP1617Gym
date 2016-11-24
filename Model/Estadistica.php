@@ -33,6 +33,17 @@ class Estadistica{
 
     return $res;
   }
+
+  function getSemana($id){
+    $db = DB::getDB();
+
+    $consulta = "SELECT COUNT(fecha) AS cont FROM Estadisticas
+    WHERE Usuario_idUsuario =".$id." AND fecha between adddate(now(),-7) and now() ";
+
+    $result = $db->query($consulta);
+
+    return $result->fetch_assoc();
+  }
 }
 
 ?>

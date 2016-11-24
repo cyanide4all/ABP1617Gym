@@ -55,6 +55,18 @@
             }
           }
         ?>
+        <hr>
+        <a clas = 'izquierda'>Ejercicios realizados ultimos 7 dias</a>
+        <br>
+        <div class = 'tupla'>
+          <a clas = 'izquierda'>
+            <?php
+            $total = $estadisticasController->getSemana();
+              echo ("Esta semana has realizado un total de: ".$total['cont']." ejercicios.");
+            ?>
+          </a>
+        </div>
+
       </br></br>
       </div>
     </div>

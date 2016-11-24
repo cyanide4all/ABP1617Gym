@@ -52,6 +52,14 @@ class EstadisticasController{
     return $e->getEstadisticas($user['idUsuario']);  //TODO IMPLEMENT ME PLS I HABE CANCER
   }
 
+  public function getSemana(){
+    $e = new Estadistica();
+    $userController = new UsuarioController();
+    $user = $userController->getUserByEmail($_SESSION['userID']);
+
+    return $e->getSemana($user['idUsuario']);
+  }
+
 }
 
 ?>
