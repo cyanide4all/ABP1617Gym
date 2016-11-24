@@ -9,6 +9,8 @@ class Actividad{
   public function __construct(){
     //Esto por alguna razon no funciona
     //$this->$db = DB::getDB();
+    //Obviamente no funca porque es
+    //$this->db = DB::getDB();
   }
 
   function getNameAndID(){
@@ -21,6 +23,18 @@ class Actividad{
     }
     return $res;
   }
+
+  function getNameIDType(){
+    $db = DB::getDB();
+    $consulta = "SELECT idActividad, nomActividad, tipoAct FROM Actividad";
+    $result = $db->query($consulta);
+    $res = array();
+    while($row = $result->fetch_assoc()){
+      array_push($res, $row);
+    }
+    return $res;
+  }
+
 
   function deleteActividad($id){
     $db = DB::getDB();
@@ -52,10 +66,10 @@ class Actividad{
 	  $db->query($consulta);
   }
 
-    function AddSesion($idActividad,$fecha){
+    function addSesion($idActividad,$fecha){
         $db = DB::getDB();
-        $consulta = "INSERT INTO Sesion (Actividad_idActividad, fecha)
-    					VALUES ('".$idActividad."', '".$fecha."')";
+        $consulta = "INSERT INTO Sesion (Actividad_idActividad, numPlazasOcupadas,fecha)
+    					VALUES ('".$idActividad."',0, '".$fecha."')";
         $db->query($consulta);
     }
     function getSesiones($idActividad){

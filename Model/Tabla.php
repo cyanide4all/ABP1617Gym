@@ -57,7 +57,7 @@ class Tabla{
 	  $db->query($consulta);
   }
 
-  function modEjerciciosTabla($idEjercicio,$idTabla,$numRepeticiones,$carga){
+  function addEjerciciosTabla($idEjercicio,$idTabla,$numRepeticiones,$carga){
     $db = DB::getDB();
     $consulta = "INSERT INTO TablaEjercicio (Ejercicio_idEjercicio, Tabla_idTabla,nRepeticiones,carga)
                   VALUES ('".$idEjercicio."','".$idTabla."','".$numRepeticiones."','".$carga."')";
@@ -74,9 +74,16 @@ class Tabla{
     }
     return $res;
   }
-  function deleteEjercicio($id){
+  function deleteEjercicio($idE, $idT){
     $db = DB::getDB();
-    $consulta = "DELETE FROM TablaEjercicio WHERE Ejercicio_idEjercicio =".$id;
+    $consulta = "DELETE FROM TablaEjercicio WHERE Ejercicio_idEjercicio =".$idE." AND Tabla_idTabla=".$idT;
+    $db->query($consulta);
+  }
+  function modEjerciciosTabla($idTabla,$idEjercicio,$nRep,$carga){
+    $db = DB::getDB();
+    $consulta = "UPDATE TablaEjercicio SET nRepeticiones='".$nRep."',
+                                      carga='".$carga.
+                "' WHERE Tabla_idTabla= '".$idTabla."' AND Ejercicio_idEjercicio= '".$idEjercicio."'";
     $db->query($consulta);
   }
 

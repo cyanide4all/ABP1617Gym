@@ -25,9 +25,10 @@
         $actividad = $actividadesController->getActividad($sesion['Actividad_idActividad']);
       ?>
         <a><?php echo($actividad['nomActividad']); ?></a>   <a><?php echo($sesion['fecha']);?> </a>
-        <form method="post" action="../Controllers/c_Reservas.php?op=0" id = "borrar<?php echo($actividad['idActividad']); ?>">
+        <form method="post" action="../Controllers/c_Reservas.php?op=0" id = "borrar<?php echo($sesion['idSesion']); ?>">
         </form>
-        <button type="submit" form="borrar<?php echo($actividad['idActividad']);?>" name="idActividad" value="<?php echo($actividad['idActividad']);?>">Borrar Reserva</button>
-      <?php } ?>
+        <button type="submit" form="borrar<?php echo($sesion['idSesion']);?>" name="idSesion" value="<?php echo($sesion['idSesion']);?>">Borrar Reserva</button>
+      </br>
+    <?php } ?>
   </body>
 </html>

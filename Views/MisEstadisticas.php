@@ -32,9 +32,8 @@
             //echo ( "---> ".$ejercicio['nomEjercicio']);
             echo ("Ejercicio: ".$ejercicio['nomEjercicio']."   - - - -  "."Fecha: ".$it['fecha']);?></a>
           <?php
-        }
-        echo(" <br> --------------------------------------- <br><br>"); ?>
-
+        }?>
+        <hr>
         <a clas = 'izquierda'>Ejercicios realizados ultimas 10 horas</a>
         <br>
         <?php foreach($estadisticas as $it){ ?>

@@ -10,14 +10,14 @@ if(!isset($_SESSION['userID'])){
 }
 
 //Metodos por defecto para los formularios
-if(isset($_SESSION['userID'])&&isset($_POST['idActividad'])){
+if(isset($_SESSION['userID'])&&isset($_POST['idSesion'])){
   $userController = new UsuarioController();
   $user = $userController->getUserByEmail($_SESSION['userID']);
   if($_GET['op']==0){ //Eliminar
-    ReservaController::delReserva($user['idUsuario'], $_POST['idActividad']);
+    ReservaController::delReserva($user['idUsuario'], $_POST['idSesion']);
   }
   if($_GET['op']==1){ //Eliminar
-    ReservaController::reservar($user['idUsuario'], $_POST['idActividad']);
+    ReservaController::reservar($user['idUsuario'], $_POST['idSesion']);
   }
 }
 
