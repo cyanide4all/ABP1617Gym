@@ -9,6 +9,8 @@ class Actividad{
   public function __construct(){
     //Esto por alguna razon no funciona
     //$this->$db = DB::getDB();
+    //Obviamente no funca porque es
+    //$this->db = DB::getDB();
   }
 
   function getNameAndID(){
