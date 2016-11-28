@@ -55,7 +55,7 @@ class EstadisticasController{
       if($done == 1){
         date_default_timezone_set('Europe/Madrid');
         $date = date('Y-m-d H:i:s');
-        $e->createEstat($_POST['arrayID'][$i], $_POST['idTabla'], $user['idUsuario'], $date); //chekar ultimos 2
+        $e->createEstat($_POST['arrayID'][$i], $_POST['idTabla'], $user['idUsuario'], $date, $_POST['comentario'][$i]); //chekar ultimos 2
       }
       $i++;
     }

@@ -9,12 +9,12 @@ class Estadistica{
   public function __construct(){
   }
 
-  function createEstat($tabIdEj,$tabId,$uID, $fecha){
+  function createEstat($tabIdEj,$tabId,$uID, $fecha, $comentario){
 
     $db = DB::getDB();
 
-    $consulta = "INSERT INTO Estadisticas (TablaEjercicio_Ejercicio_idEjercicio,TablaEjercicio_Tabla_idTabla,Usuario_idUsuario,fecha)
-          VALUES ('".$tabIdEj."', '".$tabId."', '".$uID."', '".$fecha."')";
+    $consulta = "INSERT INTO Estadisticas (TablaEjercicio_Ejercicio_idEjercicio,TablaEjercicio_Tabla_idTabla,Usuario_idUsuario,fecha,comentario)
+          VALUES ('".$tabIdEj."', '".$tabId."', '".$uID."', '".$fecha."', '".$comentario."')";
 
     $db->query($consulta);
 
