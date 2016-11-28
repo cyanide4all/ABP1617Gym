@@ -8,12 +8,17 @@
     require_once('../Controllers/c_Estadisticas.php');
     require_once('../Controllers/c_Ejercicio.php');
     require_once("../DB/connectDB.php");
+    require_once('../Controllers/c_Reservas.php');
 
     $estadisticasController = new EstadisticasController();
     $estadisticas = $estadisticasController->getEstadisticas();
 
     $ejerciciosController = new EjercicioController();
     //$ejercicio = $ejerciciosController->getEjercicio();
+
+    $reservasController = new ReservaController();
+    $misReservas = $reservasController->getMisReservas();
+
     ?>
 
   </head>
@@ -33,6 +38,8 @@
             echo ("Ejercicio: ".$ejercicio['nomEjercicio']."   - - - -  "."Fecha: ".$it['fecha']);?></a>
           <?php
         }?>
+      </div>
+
         <hr>
         <a clas = 'izquierda'>Ejercicios realizados ultimas 10 horas</a>
         <br>
@@ -51,6 +58,8 @@
               $ejercicio = $ejerciciosController->getEjercicio($it['TablaEjercicio_Ejercicio_idEjercicio']);
               //echo ( "---> ".$ejercicio['nomEjercicio']);
               echo ("Ejercicio: ".$ejercicio['nomEjercicio']."   - - - -  "."Fecha: ".$it['fecha']);?></a>
+          </div>
+
         <?php
             }
           }
@@ -63,12 +72,44 @@
             <?php
             $total = $estadisticasController->getSemana();
               echo ("Esta semana has realizado un total de: ".$total['cont']." ejercicios.");
+
+              ?>
+            </a>
+        </div>
+              <hr>
+              <a clas = 'izquierda'>Participacion en sesiones</a>
+              <br>
+              <div class = 'tupla'>
+                <a clas = 'izquierda'>
+                  <?php
+                  $cont = 0;
+                  foreach($misReservas as $it){
+                    $cont++;
+                  }
+                  echo ("Te has anotado a un total de: ".$cont." sesiones de grupo");
             ?>
           </a>
         </div>
 
-      </br></br>
-      </div>
+            <?php
+            $contador = 0;
+            foreach($estadisticas as $it){
+               $contador++;
+             }
+             ?>
+             <hr>
+             <a clas = 'izquierda'>Participacion en sesiones</a>
+             <br>
+             <div class = 'tupla'>
+              <a clas = 'izquierda'>
+                <?php
+                  echo ("Desde que empezaste con nosotros llevas realizados un total de: ".$contador. " Ejercicios realizados");
+                  ?>
+              </a>
+            </div>
+
+      </br>
+      </br>
     </div>
   </body>
 </html>
