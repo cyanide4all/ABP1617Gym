@@ -19,6 +19,24 @@ if(isset($_POST['idTabla'])){
 class EstadisticasController{
   function __construct(){
   }
+
+  public function contarEjercicios(){
+    $ejerciciosHechos = $this->getEstadisticas();
+    return count($ejerciciosHechos);
+  }
+
+  public function checkFecha10horas($date){
+    date_default_timezone_set('Europe/Madrid');
+    strtotime($date);
+    time() - strtotime($date);
+    //3 digito  son las horas que pasaron.
+    if((time()-(60*60*10)) < strtotime($date)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   public static function generarEstadisticas(){
     $userController = new UsuarioController();
     $user = $userController->getUserByEmail($_SESSION['userID']);

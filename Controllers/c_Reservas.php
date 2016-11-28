@@ -61,6 +61,9 @@ class ReservaController{
     $r = new Reserva();
     return $r->getByUser($user['idUsuario']);
   }
-
+  public function contarReservas(){
+    $misReservas = $this->getMisReservas();
+    return count($misReservas);
+  }
 }
 ?>
