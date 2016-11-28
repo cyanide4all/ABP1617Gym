@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Modificar la Tabla</title>
+    <title>Mis Reservas</title>
     <?php
         require_once('NavBar.php');
         require_once('../Controllers/c_Reservas.php');

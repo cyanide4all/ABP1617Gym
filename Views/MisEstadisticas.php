@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lista de Actividad</title>
+    <title>Mis Estadísticas</title>
     <?php
     require_once('NavBar.php');
     require_once('../Controllers/c_Estadisticas.php');
