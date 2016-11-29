@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2016 at 06:48 PM
+-- Generation Time: Nov 29, 2016 at 10:51 AM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -35,15 +35,6 @@ CREATE TABLE `Actividad` (
   `numPlazas` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `Actividad`
---
-
-INSERT INTO `Actividad` (`idActividad`, `nomActividad`, `tipoAct`, `numPlazas`) VALUES
-(5, 'Actividad Individual', 'Individual', 0),
-(6, 'Actividad Grupal', 'Grupal', 12),
-(7, 'Actividad Grupal 2', 'Grupal', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -57,37 +48,32 @@ CREATE TABLE `Ejercicio` (
   `categoria` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `Ejercicio`
+-- Table structure for table `Estadísticas`
 --
 
-INSERT INTO `Ejercicio` (`idEjercicio`, `nomEjercicio`, `descripcion`, `categoria`) VALUES
-(14, 'Ejercicio1', '', 'Brazo'),
-(15, 'Ejercicio2', '', 'Pierna'),
-(16, 'Ejercicio3', 'hue', 'Espalda');
+CREATE TABLE `Estadísticas` (
+  `TablaEjercicio_Ejercicio_idEjercicio` int(11) NOT NULL,
+  `TablaEjercicio_Tabla_idTabla` int(11) NOT NULL,
+  `Usuario_idUsuario` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `comentario` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Estadisticas`
+-- Table structure for table `Notificacion`
 --
 
-CREATE TABLE `Estadisticas` (
-  `TablaEjercicio_Ejercicio_idEjercicio` int(11) NOT NULL,
-  `TablaEjercicio_Tabla_idTabla` int(11) NOT NULL,
-  `Usuario_idUsuario` int(11) NOT NULL,
-  `fecha` datetime NOT NULL
+CREATE TABLE `Notificacion` (
+  `idNotificacion` int(11) NOT NULL,
+  `contenido` varchar(45) NOT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `Usuario_idUsuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Estadisticas`
---
-
-INSERT INTO `Estadisticas` (`TablaEjercicio_Ejercicio_idEjercicio`, `TablaEjercicio_Tabla_idTabla`, `Usuario_idUsuario`, `fecha`) VALUES
-(14, 11, 8, '2016-11-20 18:02:18'),
-(14, 11, 8, '2016-11-20 18:02:57'),
-(15, 11, 8, '2016-11-20 18:02:18'),
-(16, 11, 8, '2016-11-20 18:02:57');
 
 -- --------------------------------------------------------
 
@@ -113,14 +99,6 @@ CREATE TABLE `Sesion` (
   `Actividad_idActividad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `Sesion`
---
-
-INSERT INTO `Sesion` (`idSesion`, `numPlazasOcupadas`, `fecha`, `Actividad_idActividad`) VALUES
-(10, NULL, '2222-12-22 22:00:00', 6),
-(14, 0, '1010-10-10 00:00:00', 7);
-
 -- --------------------------------------------------------
 
 --
@@ -140,16 +118,9 @@ CREATE TABLE `Sigue` (
 
 CREATE TABLE `Tabla` (
   `idTabla` int(11) NOT NULL,
-  `nomTabla` varchar(25) NOT NULL,
+  `nomTabla` varchar(10) NOT NULL,
   `descripcion` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Tabla`
---
-
-INSERT INTO `Tabla` (`idTabla`, `nomTabla`, `descripcion`) VALUES
-(11, 'Tabla test', '');
 
 -- --------------------------------------------------------
 
@@ -163,15 +134,6 @@ CREATE TABLE `TablaEjercicio` (
   `nRepeticiones` int(11) DEFAULT NULL,
   `carga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `TablaEjercicio`
---
-
-INSERT INTO `TablaEjercicio` (`Ejercicio_idEjercicio`, `Tabla_idTabla`, `nRepeticiones`, `carga`) VALUES
-(14, 11, 2, 12),
-(15, 11, 111, 2),
-(16, 11, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -188,18 +150,9 @@ CREATE TABLE `Usuario` (
   `dni` varchar(10) NOT NULL,
   `fechaNac` date DEFAULT NULL,
   `email` varchar(30) NOT NULL,
-  `pass` varchar(16) NOT NULL
+  `pass` varchar(16) NOT NULL,
+  `tipoUsuario` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Usuario`
---
-
-INSERT INTO `Usuario` (`idUsuario`, `nomUsuario`, `direccion`, `telefono`, `tipoTarjeta`, `dni`, `fechaNac`, `email`, `pass`) VALUES
-(7, 'Usuario1', 'Direccion del usuario 1', '678856421', 'PEF', '44662517J', '2016-11-01', 'usuario1@test.com', '1234'),
-(8, 'admin', 'admin direccion', '678856422', 'PEF', '44662517F', '2016-11-07', 'admin@admin.admin', '1234'),
-(9, 'Usuario2', 'Direccion del user 2', '678856423', 'TDU', '44662517G', '1576-11-11', 'usuario2@test.com', '1234'),
-(11, 'hue', 'hue', '123', 'PEF', 'hur', '2016-11-01', 'hue', 'hue');
 
 --
 -- Indexes for dumped tables
@@ -218,12 +171,19 @@ ALTER TABLE `Ejercicio`
   ADD PRIMARY KEY (`idEjercicio`);
 
 --
--- Indexes for table `Estadisticas`
+-- Indexes for table `Estadísticas`
 --
-ALTER TABLE `Estadisticas`
+ALTER TABLE `Estadísticas`
   ADD PRIMARY KEY (`TablaEjercicio_Ejercicio_idEjercicio`,`TablaEjercicio_Tabla_idTabla`,`Usuario_idUsuario`,`fecha`),
   ADD KEY `fk_TablaEjercicio_has_Usuario_Usuario1_idx` (`Usuario_idUsuario`),
   ADD KEY `fk_TablaEjercicio_has_Usuario_TablaEjercicio1_idx` (`TablaEjercicio_Ejercicio_idEjercicio`,`TablaEjercicio_Tabla_idTabla`);
+
+--
+-- Indexes for table `Notificacion`
+--
+ALTER TABLE `Notificacion`
+  ADD PRIMARY KEY (`idNotificacion`,`Usuario_idUsuario`),
+  ADD KEY `fk_Notificacion_Usuario1_idx` (`Usuario_idUsuario`);
 
 --
 -- Indexes for table `Reserva`
@@ -267,7 +227,7 @@ ALTER TABLE `TablaEjercicio`
 --
 ALTER TABLE `Usuario`
   ADD PRIMARY KEY (`idUsuario`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `pass_UNIQUE` (`pass`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -277,37 +237,48 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT for table `Actividad`
 --
 ALTER TABLE `Actividad`
-  MODIFY `idActividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idActividad` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `Ejercicio`
 --
 ALTER TABLE `Ejercicio`
-  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idEjercicio` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Notificacion`
+--
+ALTER TABLE `Notificacion`
+  MODIFY `idNotificacion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `Sesion`
 --
 ALTER TABLE `Sesion`
-  MODIFY `idSesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idSesion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `Tabla`
 --
 ALTER TABLE `Tabla`
-  MODIFY `idTabla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idTabla` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `Estadisticas`
+-- Constraints for table `Estadísticas`
 --
-ALTER TABLE `Estadisticas`
+ALTER TABLE `Estadísticas`
   ADD CONSTRAINT `fk_TablaEjercicio_has_Usuario_TablaEjercicio1` FOREIGN KEY (`TablaEjercicio_Ejercicio_idEjercicio`,`TablaEjercicio_Tabla_idTabla`) REFERENCES `TablaEjercicio` (`Ejercicio_idEjercicio`, `Tabla_idTabla`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_TablaEjercicio_has_Usuario_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `Notificacion`
+--
+ALTER TABLE `Notificacion`
+  ADD CONSTRAINT `fk_Notificacion_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `Reserva`

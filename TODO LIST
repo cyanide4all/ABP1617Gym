@@ -5,8 +5,10 @@ TODO LIST a largo plazo;
 ///
 /// Kosas khe asher
 ///
--Estadisticas bien raul
--Comentarios en seguir tabla (no boton extra, modificar el cntrolador para que lo pille y si no hay lo ponga a "" (vacio))
+-Usuario necesita mostrar tipo de usuario porque es not null. No puede no elegirse
+-Hay que hacer chekeamientos de tipo de usuario en cada pagina que lo necesite
+-Hay que hacer notificiones de nuevas actividades, nuevas sesiones y nuevas tablas
+-Hay que hacer un perfil de usuario y como hagas solo mostrar los datos de la tabla te pego raul
 ///
 ///
 ///
