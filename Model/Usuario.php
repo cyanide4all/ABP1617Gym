@@ -66,5 +66,12 @@ class Usuario{
       $result = $db->query($consulta);
       return $result->fetch_assoc();
     }
+
+    function findByType($tipo){
+      $db = DB::getDB();
+      $consulta = "SELECT idUsuario FROM Usuario WHERE tipoUsuario ='".$tipo."'";
+      return $db->query($consulta)->fetch_array();
+    }
+
 }
 ?>

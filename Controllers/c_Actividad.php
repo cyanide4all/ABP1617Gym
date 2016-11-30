@@ -3,6 +3,7 @@
 <?php
 require_once("../Model/Actividad.php");
 require_once("../DB/connectDB.php");
+require_once("c_Notificaciones.php");
 
 //Metodos por defecto para los formularios
 if(isset($_POST['idActividad'])){
@@ -51,6 +52,10 @@ class ActividadController{
 		}
 
 	  $a->createActividad($_POST['nomActividad'],$_POST['tipoActividad'],$num);
+
+    $notificacionController = new NotificacionesController();
+    $notificacionController->crearNotificacionActividadNueva();
+
   	header('Location: ../Views/GestionActividades.php'); //redirect pagina anterior
   }
 
@@ -131,6 +136,7 @@ class ActividadController{
         return false;
       }
     }
+
     public function getSesion($id){
       $a = new Actividad();
       return $a->getSesion($id);

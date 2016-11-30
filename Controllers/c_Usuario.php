@@ -98,6 +98,10 @@ class UsuarioController{
       }
       header('Location: ../Views/paginaPrincipal.php');
     }
+    public function getDeportistas(){
+      $u= new Usuario();
+      return $u->findByType('deportista');
+    }
 
 
 }

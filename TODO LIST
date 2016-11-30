@@ -1,6 +1,6 @@
 TODO LIST a largo plazo;
 -CSS por dios, las tablas se ven horrible
--Boton de salir de la sesion
+-En gestion de Usuarios enseñar tambien el tipo
 
 ///
 /// Kosas khe asher
@@ -8,6 +8,7 @@ TODO LIST a largo plazo;
 -Hay que hacer chekeamientos de tipo de usuario en cada pagina que lo necesite
 -Hay que hacer notificiones de nuevas actividades, nuevas sesiones y nuevas tablas
 -Hay que hacer un perfil de usuario y como hagas solo mostrar los datos de la tabla te pego raul
+-Agregar ejercicios a una tabla no funca a veces. Echar un ojo. Puede tener que ver con los dos campos extra
 ///
 ///
 ///

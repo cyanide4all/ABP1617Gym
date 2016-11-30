@@ -1,6 +1,7 @@
 <?php
 require_once("../Model/Tabla.php");
 require_once("../DB/connectDB.php");
+require_once("c_Notificaciones.php");
 
 //Metodos por defecto para los formularios
 if(isset($_POST['idTabla'])){
@@ -38,6 +39,8 @@ class TablaController{
   public static function addTabla(){
 	  $t = new Tabla();
 	  $t->createTabla($_POST['nomTabla'],$_POST['desTabla']);
+    $notificacionController = new NotificacionesController();
+    $notificacionController->crearNotificacionTablaNueva();
     header('Location: ../Views/ModEjerciciosTabla.php?id='.$_POST['idTabla']);
   }
 
@@ -67,7 +70,7 @@ class TablaController{
     public static function addEjerciciosTabla(){
       $t = new Tabla();
       //Seguramente haga falta alguna comprobacion o puesta a null aqui
-      $t->modEjerciciosTabla($_POST['idEjercicio'],$_POST['idTabla'],$_POST['numRepeticiones'],$_POST['carga']);
+      $t->addEjerciciosTabla($_POST['idEjercicio'],$_POST['idTabla'],$_POST['numRepeticiones'],$_POST['carga']);
       header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
     }
     public function getEjerciciosTabla($id){
