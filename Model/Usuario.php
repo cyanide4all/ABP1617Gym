@@ -31,20 +31,21 @@ class Usuario{
     return $result->fetch_assoc();
   }
 
-  function modificarUsuario($id,$nameU,$direc,$telf,$tipoT){
+  function modificarUsuario($id,$nameU,$direc,$telf,$tipoT,$tipoU){
     $db = DB::getDB();
     $consulta = "UPDATE Usuario SET nomUsuario='".$nameU."',
                                       direccion='".$direc."',
                                       tipoTarjeta='".$tipoT."',
-                                      telefono='".$telf.
+                                      telefono='".$telf."',
+                                      tipoUsuario='".$tipoU.
                 "' WHERE idUsuario= '".$id."'";
     $result = $db->query($consulta);
   }
 
-  function createUsuario($nombre, $direc, $telf, $tipoT, $dni, $fechaNac, $email, $pass){
+  function createUsuario($nombre, $direc, $telf, $tipoT, $dni, $fechaNac, $email, $pass, $tipoU){
 	  $db = DB::getDB();
-	  $consulta = "INSERT INTO Usuario (nomUsuario, direccion, telefono, tipoTarjeta, dni, fechaNac, email, pass)
-					VALUES ('".$nombre."', '".$direc."', '".$telf."', '".$tipoT."', '".$dni."', '".$fechaNac."', '".$email."', '".$pass."')";
+	  $consulta = "INSERT INTO Usuario (nomUsuario, direccion, telefono, tipoTarjeta, dni, fechaNac, email, pass, tipoUsuario)
+					VALUES ('".$nombre."', '".$direc."', '".$telf."', '".$tipoT."', '".$dni."', '".$fechaNac."', '".$email."', '".$pass."','".$tipoU."')";
 
 	  $result = $db->query($consulta);
   }

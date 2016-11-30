@@ -42,12 +42,13 @@ class UsuarioController{
       $u->createUsuario($_POST['nomUsuario'],$_POST['dircUsuario'],
                         $_POST["telfUsuario"],$_POST["tipoTarjetaUsuario"],
                         $_POST["dniUsuario"],$_POST["fechNacUsuario"],
-                        $_POST["emailUsuario"],$_POST["passUsuario"]);
-                        header('Location: ../Views/GestionUsuarios.php'); //redirect pagina anterior
-              }else{
-                  //TODO Esto manda un mensaje de error
-                  header('Location: ' . $_SERVER['HTTP_REFERER']);
-              }
+                        $_POST["emailUsuario"],$_POST["passUsuario"],
+                        $_POST["tipoDeUsuario"]);
+      header('Location: ../Views/GestionUsuarios.php'); //redirect pagina anterior
+    }else{
+      //TODO Esto manda un mensaje de error
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 
   }
 
@@ -78,7 +79,7 @@ class UsuarioController{
     }
 
 
-    $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT);
+    $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT,$_POST['tipoUsuario']);
     header('Location: ../Views/GestionUsuarios.php');
     }
 

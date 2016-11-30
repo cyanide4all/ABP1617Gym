@@ -18,13 +18,17 @@
    <body>
          <div>
             <form method="post" action="../Controllers/c_Usuario.php?op=1" id="modificar">
+              Tipo de Usuario: <select name="tipoDeUsuario">
+                              <option value="admin" <?php if($usuario['tipoUsuario']=="admin"){ echo ("selected='selected'");} ?>>Administrador</option>
+                              <option value="entrenador" <?php if($usuario['tipoUsuario']=="entrenador"){ echo ("selected='selected'");} ?>>Entrenador</option>
+                              <option value="deportista" <?php if($usuario['tipoUsuario']=="deportista"){ echo ("selected='selected'");} ?>>Deportista</option>
+                            </select>
                 Nombre: <input type="text" name="nomUsuario" value="<?php echo($usuario['nomUsuario']);?>" />
                 Direccion:  <input type="text" name="direccion" value="<?php echo($usuario['direccion']);?>" />
                 Telefono: <input type="text" name="telefono" value="<?php echo($usuario['telefono']);?>" />
                 TipoTarjeta: <select name="tipoTarjetaUsuario">
-                                <option value="">--Selecionar--</option>
-                                <option value="TDU">TDU</option>
-                                <option value="PEF">PEF</option>
+                                <option value="TDU" <?php if($usuario['tipoTarjeta']=="TDU"){ echo ("selected='selected'");} ?>>TDU</option>
+                                <option value="PEF" <?php if($usuario['tipoTarjeta']=="PEF"){ echo ("selected='selected'");} ?>>PEF</option>
                               </select></br>
             </form>
               <button type="submit" form="modificar" name="idUsuario" value = <?php echo("".$id."");?>>Modificar</button>
