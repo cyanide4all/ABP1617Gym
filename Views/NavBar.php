@@ -3,7 +3,11 @@ NAVBAR provisional con muchisimo work que  hacer
 TODO: Hacerlo responsivo al tipo de usuario
 TODO: Hacerlo bien y bonito
 -->
-<?php session_start();?>
+<?php
+session_start();
+require_once("../Controllers/c_Notificaciones.php");
+require_once("../Controllers/c_Usuario.php");
+?>
 <div class= "NavBar">
   <nav>
     <a href="paginaPrincipal.php">Inicio</a> |
@@ -13,6 +17,46 @@ TODO: Hacerlo bien y bonito
     <a href="ListaActividades.php">Lista de Actividades</a> |
     <a href="MisActividadesReservadas.php">Mis reservas</a> |
     <a href="MisEstadisticas.php">Mis estadisticas</a> |
+    <a href="GestionUsuarios.php">Gestión de Usuarios</a> |
+    <?php
+    if(isset($_SESSION['userID'])){
+      $userController = new UsuarioController();
+      $user = $userController->getUserByEmail($_SESSION['userID']);
+      $notificacionesController = new NotificacionesController();
+      $notificaciones = $notificacionesController->getNotificaciones($user["idUsuario"]);
+      $dibujadas = array();
+    ?>
+
+    <a> Notificaiones (<?php echo(count($notificaciones)); ?>)</a>
+    <ul class="itemNotificacion dropdown-menu" aria-labelledby="dropdownMenu1">
+
+    <?php
+    //TODO
+    //TODO
+    //TODO ROTO, FIX DIS M9
+    //TODO
+    //TODO
+
+      foreach($notificaciones as $n){
+        if(!in_array($n["contenido"], $dibujadas)){
+          array_push($dibujadas, $n["contenido"]); //Consideramos añadir TRUE como tercer parametro si esto falla
+    ?>
+      <li>
+        HTML DE NOTIFICACIONES
+      </li>
+
+    <?php
+        }//Cierre de if
+      } //cierre de foreach
+      if(count($notificaciones)>0){
+    ?>
+
+      AQUI BOTON DE BORRAR NOTIFICACIONES
+    </ul>
+    <?php
+      } //Cierre de if
+    } //cierre de if
+    ?>
     <a href="GestionUsuarios.php">Gestión de Usuarios</a> |
     <a>Usuario actual: <?php if(isset($_SESSION['userID'])){ echo ($_SESSION['userID']);}else{echo("anonimo");}?></a>
     <?php if(isset($_SESSION['userID'])){ ?>

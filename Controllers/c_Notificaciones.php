@@ -4,7 +4,37 @@ require_once("c_Usuario.php");
 require_once("../Model/Notificacion.php");
 require_once("c_Actividad.php");
 
+//Por aqui entra el formulario de borrar notificaciones
+if(!isset($_SESSION['userID'])){
+  session_start();
+}
+if(isset($_SESSION['userID'])){
+  $userController = new UsuarioController();
+  $user = $userController->getUserByEmail($_SESSION['userID']);
+  NotificacionesController::borrarNotificaciones($user["idUsuario"]);
+}
+
+
+
 class NotificacionesController{
+
+  //@UNTESTED
+  public static function borrarNotificaciones($idUsuario){
+    $n = new Notificacion();
+    $n->deleteAll($idUsuario);
+  }
+
+  public function getNotificaciones($idUsuario){
+    if(!isset($_SESSION['userID'])){
+      session_start();
+    }
+    if(isset($_SESSION['userID'])){
+      $userController = new UsuarioController();
+      $user = $userController->getUserByEmail($_SESSION['userID']);
+    }
+    $n = new Notificacion();
+    $n->get($idUsuario);
+  }
 
   public function crearNotificacionSesionNueva($mensaje, $idActividad){
     $usuariosController = new UsuarioController();
@@ -13,10 +43,12 @@ class NotificacionesController{
     date_default_timezone_set('Europe/Madrid');
     $date = date('Y-m-d H:i:s');
     foreach($deportistas as $d){
+      /* //CODIGO POCHO
       $actividadController = new ActividadController();
       //TODO TODO TODO
+      //DE MOMENTO QUEDA ASI PORQUE PASANDING peeeeeeeero...
       //Esto no es con getSesiones, solo se crea noticion si antes se reservo plaza en dicha actividad.
-      //Hay que liarse con reservas y ahora paso
+      //Hay que liarse con reservas y ahora paso.
       //TODO TODO TODO
       $sesiones = $actividadController->getSesiones($d);
       $hue = false;
@@ -26,8 +58,9 @@ class NotificacionesController{
         }
       }
       if($hue){
-        $n->create("Nuevas sesiones disponibles en tus actividades", $date, $d); //Mensaje super importante
-      }
+      */
+        $n->create("Nuevas sesiones disponibles en nuestras actividades", $date, $d); //Mensaje super importante
+      //}
     }
   }
 
@@ -52,11 +85,6 @@ class NotificacionesController{
       $n->create("Nuevas actividades disponibles", $date, $d); //Mensaje super importante
     }
   }
-
-
-
-
-
 
 }
 
