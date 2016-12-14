@@ -42,6 +42,15 @@ class Usuario{
     $result = $db->query($consulta);
   }
 
+  function modificarUsuarioP($id,$direc,$telf){
+    $db = DB::getDB();
+    $consulta = "UPDATE Usuario SET   direccion='".$direc."',
+                                      telefono='".$telf.
+                "' WHERE email = '".$id."'";
+                echo $consulta;
+    $result = $db->query($consulta);
+  }
+
   function createUsuario($nombre, $direc, $telf, $tipoT, $dni, $fechaNac, $email, $pass, $tipoU){
 	  $db = DB::getDB();
 	  $consulta = "INSERT INTO Usuario (nomUsuario, direccion, telefono, tipoTarjeta, dni, fechaNac, email, pass, tipoUsuario)
