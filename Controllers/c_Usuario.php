@@ -12,7 +12,7 @@ if(isset($_POST['idUsuario'])){
 	   UsuarioController::creUsuario();
   }if($_GET['op']==3){	   	//Login
 	   UsuarioController::login();
-  }if($_GET['op']==5){	   	//Login
+  }if($_GET['op']==5){	   	//modpefil
 	   UsuarioController::modPerfilUsuario();
   }
 }
