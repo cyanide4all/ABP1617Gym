@@ -12,6 +12,8 @@ if(isset($_POST['idUsuario'])){
 	   UsuarioController::creUsuario();
   }if($_GET['op']==3){	   	//Login
 	   UsuarioController::login();
+  }if($_GET['op']==5){	   	//Login
+	   UsuarioController::modPerfilUsuario();
   }
 }
 if(isset($_GET['op']) && $_GET['op'] == 4){
@@ -82,6 +84,26 @@ class UsuarioController{
     $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT,$_POST['tipoUsuario']);
     header('Location: ../Views/GestionUsuarios.php');
     }
+
+    public static function modPerfilUsuario(){
+
+      $u = new Usuario();
+      if(!isset($_POST['direccion'])){
+        $direc = "";
+      }else{
+        $direc = $_POST['direccion'];
+      }
+
+      if(!isset($_POST['telefono'])){
+        $telf = "";
+      }else{
+        $telf = $_POST['telefono'];
+      }
+
+
+      $u->modificarUsuarioP($_POST['idUsuario'],$direc,$telf);
+      header('Location: ../Views/PerfilUsuarios.php');
+      }
 
     public function getUserByEmail($mail){
       $u = new Usuario();
