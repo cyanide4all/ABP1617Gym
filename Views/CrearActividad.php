@@ -24,7 +24,7 @@
                       <option value="Individual">Individual</option>
                       <option value="Grupal">Grupo</option>
                     </select></br>
-        <input type="submit" name="idActividad">
+        <input type="submit" value="Crear">
       </form>
     </div>
   </body>

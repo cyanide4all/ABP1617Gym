@@ -14,10 +14,11 @@ require_once("../Controllers/c_Usuario.php");
     <a href="GestionEjercicios.php">Gestión de Ejercicios</a> |
     <a href="GestionActividades.php">Gestión de Actividades</a> |
     <a href="GestionTablas.php">Gestión de Tablas</a> |
+    <a href="GestionUsuarios.php">Gestión de Usuarios</a> |
     <a href="ListaActividades.php">Lista de Actividades</a> |
     <a href="MisActividadesReservadas.php">Mis reservas</a> |
+    <a href="ListaTablas.php">Entrenamiento</a> |
     <a href="MisEstadisticas.php">Mis estadisticas</a> |
-    <a href="GestionUsuarios.php">Gestión de Usuarios</a> |
     <?php
     if(isset($_SESSION['userID'])){
       $userController = new UsuarioController();
