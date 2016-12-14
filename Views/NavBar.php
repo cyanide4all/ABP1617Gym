@@ -31,18 +31,12 @@ require_once("../Controllers/c_Usuario.php");
     <ul class="itemNotificacion dropdown-menu" aria-labelledby="dropdownMenu1">
 
     <?php
-    //TODO
-    //TODO
-    //TODO ROTO, FIX DIS M9
-    //TODO
-    //TODO
-
       foreach($notificaciones as $n){
         if(!in_array($n["contenido"], $dibujadas)){
           array_push($dibujadas, $n["contenido"]); //Consideramos añadir TRUE como tercer parametro si esto falla
     ?>
       <li>
-        HTML DE NOTIFICACIONES
+        <?php echo $n["contenido"];?>
       </li>
 
     <?php
@@ -51,14 +45,15 @@ require_once("../Controllers/c_Usuario.php");
       if(count($notificaciones)>0){
     ?>
 
-      AQUI BOTON DE BORRAR NOTIFICACIONES
+      <form method="post" action="../Controllers/c_Notificaciones.php?id=1">
+        <input type="submit" value="Borrar Notificaciones"/>
+      </form>
     </ul>
     <?php
       } //Cierre de if
     } //cierre de if
     ?>
-    <a href="GestionUsuarios.php">Gestión de Usuarios</a> |
-    <a>Usuario actual: <?php if(isset($_SESSION['userID'])){ echo ($_SESSION['userID']);}else{echo("anonimo");}?></a>
+    | <a>Usuario actual: <?php if(isset($_SESSION['userID'])){ echo ("<a href=../Views/PerfilUsuarios.php>".$_SESSION['userID']."</a>");}else{echo("anonimo");}?></a>
     <?php if(isset($_SESSION['userID'])){ ?>
     <a href="../Controllers/c_Usuario.php?op=4"> salir</a>
     <?php }else{ ?>
