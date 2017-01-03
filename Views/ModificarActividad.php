@@ -15,20 +15,20 @@
   </head>
 
   <body>
-    <div>
+    <div class="tabla">
       <form method="post" action="../Controllers/c_Actividad.php?op=1" id="modificar">
-        Nombre: <input type="text" name="nomActividad" value="<?php echo($actividad['nomActividad']);?>" /></br>
+        <div class="row"><span class="col-md-2">Nombre: </span><input class="col-md-2" type="text" name="nomActividad" value="<?php echo($actividad['nomActividad']);?>" /></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->
-        TIPO:  <select name="tipoActividad">
+        <div class="row"><span class="col-md-2">Tipo: </span><select name="tipoActividad">
                       <option value="">--Selecionar--</option>
                       <option value="Individual">Individual</option>
                       <option value="Grupal">Grupo</option>
-                    </select></br>
-		Plazas:  <input type="text" name="plazasActividad" value= "<?php echo($actividad['numPlazas']);?>"/></br>
+                    </select></div>
+		    <div class="row"><span class="col-md-2">Plazas: </span><input type="text" name="plazasActividad" value= "<?php echo($actividad['numPlazas']);?>"/></div>
       </form>
-		
 
-      <button type="submit" form="modificar" name="idActividad" value = <?php echo("".$id."");?>>Modificar</button>
+
+      <button class="btn btn-success" type="submit" form="modificar" name="idActividad" value = <?php echo("".$id."");?>>Modificar</button>
     </div>
   </body>
 </html>
