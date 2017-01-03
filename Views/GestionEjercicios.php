@@ -14,21 +14,26 @@
   </head>
 
   <body>
-    <div id = 'tabla2elementos' >
+
+    <div id = 'tabla2elementos' class="row">
+
       <div class = 'tupla'>
-        <a clas = 'izquierda'>Nombre de ejercicio</a> <a clas = 'derecha'>Opciones</a>
+        <a clas = 'izquierda class="col-md-1"'>Nombre de ejercicio</a> <a class="col-md-1" >Opciones</a>
       </div>
       <?php foreach($ejercicios as $it){ ?>
-      <div class = 'tupla'>
-        <a clas = 'izquierda'><?php echo ($it['nomEjercicio']); ?> </a>
+        <div class="row">
+        <a class="col-md-1"><?php echo ($it['nomEjercicio']); ?> </a>
+        <button type="submit" form="borrar" class="btn btn-danger col-md-1" name="idEjercicio" value = <?php echo("".$it['idEjercicio']."");?>>Borrar</button>
+        <button onclick="location.href='ModificarEjercicio.php?id=<?php echo($it['idEjercicio']);?>'" class="btn btn-warning col-md-1">Modificar</button>
+      </div>
         <form method= "post" action = "../Controllers/c_Ejercicio.php?op=0" class ='derecha' id="borrar">
         </form>
-    	<button type="submit" form="borrar" name="idEjercicio" value = <?php echo("".$it['idEjercicio']."");?>>Borrar</button>
-    	<button onclick="location.href='ModificarEjercicio.php?id=<?php echo($it['idEjercicio']);?>'">Modificar</button>
-      </div>
+      <br>
 
       <?php } ?>
+
       <button onclick="location.href='CrearEjercicio.php'">Crear Nuevo Ejercicio</button>
     </div>
+
   </body>
 </html>
