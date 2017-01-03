@@ -16,26 +16,31 @@
 
 
    <body>
-         <div>
-              <a>Hola:<?php echo($usuario['nomUsuario']);?> </a><br>
-              <a>Tus datos actuales son:</a>
+         <div class="tabla">
+              <div class="row"><span class="col-md-2">Hola:<?php echo($usuario['nomUsuario']);?> </span></div>
+              <div class="row"><span class="col-md-2">Tus datos actuales son:</span></div>
               <br><br>
-              Direccion:  <a><?php echo($usuario['direccion']);?><a/><br>
-              Telefono: <a><?php echo($usuario['telefono']);?> <a/><br>
-              TipoTarjeta:<a><?php echo ($usuario['tipoTarjeta']);?></a></br>
+              <div class="row"><span class="col-md-2">Direccion:  <span><?php echo($usuario['direccion']);?></span></div>
+              <div class="row"><span class="col-md-2">Telefono: <span><?php echo($usuario['telefono']);?> </span></div>
+              <div class="row"><span class="col-md-2">TipoTarjeta:<span><?php echo ($usuario['tipoTarjeta']);?></span></div>
 
-              <a>
+              <br>
               <hr>
+              <div class="row"><span class="col-md-2">Cambiar datos:</span></div>
+              <br>
             <form method="post" action="../Controllers/c_Usuario.php?op=5" id="modificar">
-                Direccion:  <input type="text" name="direccion" value="<?php echo($usuario['direccion']);?>" />
-                Telefono: <input type="text" name="telefono" value="<?php echo($usuario['telefono']);?>" />
+                <div class="row"><span class="col-md-2">Direccion:</span>  <input type="text" name="direccion" value="<?php echo($usuario['direccion']);?>" /></div>
+                <div class="row"><span class="col-md-2">Telefono:</span> <input type="text" name="telefono" value="<?php echo($usuario['telefono']);?>" /></div>
                 </br>
             </form>
-              <button type="submit" form="modificar" name="idUsuario" value = <?php echo("".$id."");?>>Guardar</button>
-         </div>
-         <hr>
+              <button class="btn btn-success" type="submit" form="modificar" name="idUsuario" value = <?php echo("".$id."");?>>Guardar</button>
+
          <form method="post" action="../Controllers/c_Usuario.php?op=0" id="borrar">
          </form>
-         <button type="submit" form="borrar" name="idUsuario" value = <?php echo($usuario['idUsuario']);?>>Borrar</button>
+         <hr>
+         <div class="row"><span class="col-md-2">Eliminar cuenta<span></div>
+           <br>
+         <button class="btn btn-danger" type="submit" form="borrar" name="idUsuario" value = <?php echo($usuario['idUsuario']);?>>Borrar</button>
+       </div>
     </body>
 </html>

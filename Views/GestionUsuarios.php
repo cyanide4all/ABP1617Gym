@@ -15,24 +15,24 @@
   </head>
 
     <body>
-        <div id = 'tabla4elementos' >
-            <div class = 'tupla'>
-                <a class="izquierda">Email</a> <a class = 'izquierda'>Nombre de Usuario</a> <a>Tipo</a> <a clas = 'derecha'>Opciones</a>
+        <div class="tabla">
+            <div class = 'row'>
+              <span class ="col-md-2">Nombre de usuario</span> <span class="col-md-2" >Opciones</span>
             </div>
             <?php foreach($usuarios as $it){ ?>
-            <div class = 'tupla'>
-              <a class = 'izquierda'><?php echo ($it['email']); ?></a> -
-              <a class = 'medio'><?php echo ($it['nomUsuario']); ?></a> -
-              <a class = "izquierda"><?php echo($it['tipoUsuario']);?></a>
-
+            <div class = 'row'>
+              <span class="col-md-2"><?php echo ($it['email']); ?></span>
+              <span class="col-md-2"><?php echo ($it['nomUsuario']); ?></span>
+              <span class="col-md-2"><?php echo($it['tipoUsuario']);?></span>
+              <button class="btn btn-danger" type="submit" form="borrar" name="idUsuario" value = <?php echo("".$it['idUsuario']."");?>>Borrar</button>
+              <button class="btn btn-warning" onclick="location.href='ModificarUsuario.php?id=<?php echo($it['idUsuario']);?>'">Modificar</button>
+            </div>
               <form method= "post" action = "../Controllers/c_Usuario.php?op=0" class ='derecha' id="borrar">
               </form>
-            <button type="submit" form="borrar" name="idUsuario" value = <?php echo("".$it['idUsuario']."");?>>Borrar</button>
-          	<button onclick="location.href='ModificarUsuario.php?id=<?php echo($it['idUsuario']);?>'">Modificar</button>
-            </div>
+
 
   <?php } ?>
-            <button onclick="location.href='CrearUsuario.php'">Crear Nuevo Usuario</button>
+            <button class="btn btn-success" onclick="location.href='CrearUsuario.php'">Crear Nuevo Usuario</button>
             </div>
     </body>
 </html>

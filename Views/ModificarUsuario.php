@@ -16,22 +16,22 @@
 
 
    <body>
-         <div>
+         <div class="tabla">
             <form method="post" action="../Controllers/c_Usuario.php?op=1" id="modificar">
-              Tipo de Usuario: <select name="tipoDeUsuario">
+              <div class="row"><span class="col-md-2">Tipo de Usuario:</span> <select name="tipoDeUsuario">
                               <option value="admin" <?php if($usuario['tipoUsuario']=="admin"){ echo ("selected='selected'");} ?>>Administrador</option>
                               <option value="entrenador" <?php if($usuario['tipoUsuario']=="entrenador"){ echo ("selected='selected'");} ?>>Entrenador</option>
                               <option value="deportista" <?php if($usuario['tipoUsuario']=="deportista"){ echo ("selected='selected'");} ?>>Deportista</option>
-                            </select>
-                Nombre: <input type="text" name="nomUsuario" value="<?php echo($usuario['nomUsuario']);?>" />
-                Direccion:  <input type="text" name="direccion" value="<?php echo($usuario['direccion']);?>" />
-                Telefono: <input type="text" name="telefono" value="<?php echo($usuario['telefono']);?>" />
-                TipoTarjeta: <select name="tipoTarjetaUsuario">
+                            </select></div>
+                <div class="row"><span class="col-md-2">Nombre:</span> <input type="text" name="nomUsuario" value="<?php echo($usuario['nomUsuario']);?>" /></div>
+                <div class="row"><span class="col-md-2">Direccion:</span>  <input type="text" name="direccion" value="<?php echo($usuario['direccion']);?>" /></div>
+                <div class="row"><span class="col-md-2">Telefono:</span> <input type="text" name="telefono" value="<?php echo($usuario['telefono']);?>" /></div>
+                <div class="row"><span class="col-md-2">TipoTarjeta:</span> <select name="tipoTarjetaUsuario">
                                 <option value="TDU" <?php if($usuario['tipoTarjeta']=="TDU"){ echo ("selected='selected'");} ?>>TDU</option>
                                 <option value="PEF" <?php if($usuario['tipoTarjeta']=="PEF"){ echo ("selected='selected'");} ?>>PEF</option>
-                              </select></br>
+                              </select></div>
             </form>
-              <button type="submit" form="modificar" name="idUsuario" value = <?php echo("".$id."");?>>Modificar</button>
+              <button class="btn btn-success" type="submit" form="modificar" name="idUsuario" value = <?php echo("".$id."");?>>Modificar</button>
          </div>
     </body>
 </html>
