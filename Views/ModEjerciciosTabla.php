@@ -30,9 +30,9 @@
           <a><?php echo($toShow['nomEjercicio']);?></a> ---
           <input type="text" name="nRepeticiones" value="<?php echo($it['nRepeticiones']);?>"/> ---
           <input type="text" name="carga" value="<?php echo($it['carga']);?>"/>
-          <input type="submit" value="Modificar"/>
+          <input type="submit" value="Modificar" class="btn btn-warning"/>
+          <button class="btn btn-danger" form="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>" name="idEjercicio" value = <?php echo("".$it['Ejercicio_idEjercicio']."");?>>Borrar</button>
         </form>
-      <button form="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>" name="idEjercicio" value = <?php echo("".$it['Ejercicio_idEjercicio']."");?>>Borrar</button>
       <?php }?>
     </div>
     </br>
@@ -47,7 +47,7 @@
       <input type="text" name="numRepeticiones" placeholder="Numero de repeticiones"/>
       <input type="text" name="carga" placeholder="carga"/>
     </form>
-    <button form="addEjercicioTabla" name="idTabla" value = <?php echo("".$_GET['id']."");?>>Añadir</button>
-    <button onclick="location.href='GestionTablas.php'">Hecho</button>
+    <button class="btn btn-success" form="addEjercicioTabla" name="idTabla" value = <?php echo("".$_GET['id']."");?>>Añadir</button>
+    <button onclick="location.href='GestionTablas.php'" class="btn btn-success">Hecho</button>
     </body>
 </html>
