@@ -15,14 +15,14 @@
 
   <body>
 
-    <div id = 'tabla2elementos' class="row">
+    <div class="tabla">
 
-      <div class = 'tupla'>
-        <a clas = 'izquierda class="col-md-1"'>Nombre de ejercicio</a> <a class="col-md-1" >Opciones</a>
+      <div class = 'row'>
+        <a class ="col-md-2">Nombre de ejercicio</a> <a class="col-md-2" >Opciones</a>
       </div>
       <?php foreach($ejercicios as $it){ ?>
         <div class="row">
-        <a class="col-md-1"><?php echo ($it['nomEjercicio']); ?> </a>
+        <a class="col-md-2"><?php echo ($it['nomEjercicio']); ?> </a>
         <button type="submit" form="borrar" class="btn btn-danger col-md-1" name="idEjercicio" value = <?php echo("".$it['idEjercicio']."");?>>Borrar</button>
         <button onclick="location.href='ModificarEjercicio.php?id=<?php echo($it['idEjercicio']);?>'" class="btn btn-warning col-md-1">Modificar</button>
       </div>
