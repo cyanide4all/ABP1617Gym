@@ -59,7 +59,7 @@ class EstadisticasController{
       }
       $i++;
     }
-    header('Location: ../Views/GestionTablas.php');
+    header('Location: ../Views/ListaTablas.php');
   }
 
   public function getEstadisticas(){

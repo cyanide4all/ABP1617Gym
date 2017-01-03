@@ -1,4 +1,4 @@
-<!--Martín 15/11/16-->
+<!--Martín 14/12/16-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,15 +21,9 @@
       <?php foreach($tabla as $it){ ?>
       <div class = 'tupla'>
         <a clas = 'izquierda'><?php echo ($it['nomTabla']); ?> </a>
-        <form method= "post" action = "../Controllers/c_Tabla.php?op=0" class ='derecha' id="borrar">
-        </form>
-    	<button type="submit" form="borrar" name="idTabla" value = <?php echo("".$it['idTabla']."");?>>Borrar</button>
-    	<button onclick="location.href='ModificarTabla.php?id=<?php echo($it['idTabla']);?>'">Modificar</button>
-      <button onclick="location.href='ModEjerciciosTabla.php?id=<?php echo($it['idTabla']);?>'">Cambiar Ejercicios</button>
+      <button onclick="location.href='SeguirTabla.php?id=<?php echo($it['idTabla']);?>'">Seguir Tabla</button>
       </div>
-
       <?php } ?>
-      <button onclick="location.href='CrearTabla.php'">Crear Nueva Tabla</button>
-    </div>
+      </div>
   </body>
 </html>

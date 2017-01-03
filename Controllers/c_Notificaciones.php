@@ -62,7 +62,7 @@ class NotificacionesController{
       }
       if($hue){
       */
-        $n->create("Nuevas sesiones disponibles en nuestras actividades", $date, $d); //Mensaje super importante
+        $n->create("Nuevas sesiones disponibles en nuestras actividades", $date, $d[0]); //Mensaje super importante
       //}
     }
   }
@@ -74,7 +74,7 @@ class NotificacionesController{
     date_default_timezone_set('Europe/Madrid');
     $date = date('Y-m-d H:i:s');
     foreach($deportistas as $d){
-      $n->create("Nuevas tablas de ejercicios disponibles", $date, $d); //Mensaje super importante
+      $n->create("Nuevas tablas de ejercicios disponibles", $date, $d[0]); //Mensaje super importante
     }
   }
 
@@ -85,7 +85,7 @@ class NotificacionesController{
     date_default_timezone_set('Europe/Madrid');
     $date = date('Y-m-d H:i:s');
     foreach($deportistas as $d){
-      $n->create("Nuevas actividades disponibles", $date, $d); //Mensaje super importante
+      $n->create("Nuevas actividades disponibles", $date, $d[0]); //Mensaje super importante
     }
   }
 
