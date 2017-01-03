@@ -14,19 +14,19 @@
   </head>
 
   <body>
-    <div id = 'tabla2elementos' >
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Nombre de Actividad</a> <a clas = 'derecha'>Opciones</a>
+    <div class="tabla" >
+      <div class = 'row'>
+        <span class= "col-md-2" >Nombre de Actividad</span> <span class= "col-md-2">Opciones</span>
       </div>
       <?php foreach($Actividades as $it){ ?>
-      <div class = 'tupla'>
-        <a clas = 'izquierda'><?php echo ($it['nomActividad']); ?> </a>
+      <div class = 'row'>
+        <span class= "col-md-2"><?php echo ($it['nomActividad']); ?> </span>
         <form method= "post" action = "../Controllers/c_Actividad.php?op=0" class ='derecha' id="borrar">
         </form>
-    	<button type="submit" form="borrar" name="idActividad" value = <?php echo("".$it['idActividad']."");?>>Borrar</button>
-    	<button onclick="location.href='ModificarActividad.php?id=<?php echo($it['idActividad']);?>'">Modificar</button>
+    	<button class= "col-md-1 btn btn-danger" type="submit" form="borrar" name="idActividad" value = <?php echo("".$it['idActividad']."");?>>Borrar</button>
+    	<button class= "col-md-1 btn btn-warning" onclick="location.href='ModificarActividad.php?id=<?php echo($it['idActividad']);?>'">Modificar</button>
       <?php if($it['tipoAct']=="Grupal"){?>
-      <button onclick="location.href='SesionActividad.php?id=<?php echo($it['idActividad']);?>'">Gestionar Sesiones</button>
+      <button class= "col-md-2 btn btn-info" onclick="location.href='SesionActividad.php?id=<?php echo($it['idActividad']);?>'">Gestionar Sesiones</button>
       <?php } ?>
     </div>
     <?php } ?>

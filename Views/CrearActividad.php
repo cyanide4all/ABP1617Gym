@@ -14,17 +14,17 @@
   </head>
 
   <body>
-    <div>
+    <div class="tabla">
       <form method="post" action="../Controllers/c_Actividad.php?op=2">
-        Nombre: <input type="text" name="nomActividad" placeholder="Nombre" /></br>
-        Numero de plazas:  <input type="text" name="numPlazas" placeholder="numero de plazas" /></br>
+        <div class="row"><span class="col-md-2">Nombre:</span> <input class="col-md-2" type="text" name="nomActividad" placeholder="Nombre" /></div>
+        <div class="row"><span class="col-md-2">Numero de plazas: </span><input class="col-md-2" type="text" name="numPlazas" placeholder="numero de plazas" /></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->
-        Categoria:  <select name="tipoActividad">
+        <div class="row"><span class="col-md-2">Categoria: </span><select name="tipoActividad">
                       <option value="">--Selecionar--</option>
                       <option value="Individual">Individual</option>
                       <option value="Grupal">Grupo</option>
                     </select></br>
-        <input type="submit" value="Crear">
+        <input class="col-md-1 btn btn-success" type="submit" value="Crear">
       </form>
     </div>
   </body>
