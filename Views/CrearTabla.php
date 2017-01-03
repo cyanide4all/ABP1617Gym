@@ -14,12 +14,12 @@
   </head>
 
   <body>
-    <div>
+    <div class="tabla">
       <form method="post" action="../Controllers/c_Tabla.php?op=2" id = "crear">
-        Nombre: <input type="text" name="nomTabla" placeholder="Nombre" /></br>
-        Descripción:  <input type="text" name="desTabla" placeholder="Descripcion" /></br>
+        <div class="row"><span class="col-md-2">Nombre: </span><input class="col-md-2" type="text" name="nomTabla" placeholder="Nombre" /></div>
+        <div class="row"><span class="col-md-2">Descripción: </span><input class="col-md-2" type="text" name="desTabla" placeholder="Descripcion" /></div>
       </form>
-      <button type="submit" form="crear" name="idTabla" value = <?php echo("".($maxID['idTabla']+1)."");?>>Crear y modificar ejercicios</button>
+      <button class="col-md-2 btn btn-success" type="submit" form="crear" name="idTabla" value = <?php echo("".($maxID['idTabla']+1)."");?>>Crear y modificar ejercicios</button>
     </div>
   </body>
 </html>

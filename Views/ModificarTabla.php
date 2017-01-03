@@ -15,13 +15,13 @@
   </head>
 
   <body>
-    <div>
+    <div class="tabla">
       <form method="post" action="../Controllers/c_Tabla.php?op=1" id="modificar">
-        Nombre: <input type="text" name="nomTabla" value="<?php echo($tabla['nomTabla']);?>" /></br>
-        Descripción:  <input type="text" name="desTabla" value= "<?php echo($tabla['descripcion']);?>"/></br>
+        <div class="row"><span class="col-md-2">Nombre:</span> <input type="text" name="nomTabla" value="<?php echo($tabla['nomTabla']);?>" /></div>
+        <div class="row"><span class="col-md-2">Descripción:</span><input type="text" name="desTabla" value= "<?php echo($tabla['descripcion']);?>"/></div>
       </form>
 
-      <button type="submit" form="modificar" name="idTabla" value = <?php echo("".$id."");?>>Modificar</button>
+      <button class="btn btn-success" type="submit" form="modificar" name="idTabla" value = <?php echo("".$id."");?>>Modificar</button>
     </div>
   </body>
 </html>
