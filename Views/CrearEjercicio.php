@@ -14,19 +14,24 @@
   </head>
 
   <body>
-    <div>
+    <div class="tabla">
       <form method="post" action="../Controllers/c_Ejercicio.php?op=2">
-        Nombre: <input type="text" name="nomEjercicio" placeholder="Nombre" /></br>
-        Descripción:  <input type="text" name="desEjercicio" placeholder="Descripcion" /></br>
+        <div class="row"><span class="col-md-2">Nombre:</span><input type="text" name="nomEjercicio" placeholder="Nombre" /></div>
+        <div class="row"><span class="col-md-2">Descripción:</span><input type="text" name="desEjercicio" placeholder="Descripcion" /></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->
-        Categoria:  <select name="catEjercicio">
+        <div class="row">
+          <span class="col-md-2">
+          Categoria:</span>  <select name="catEjercicio">
                       <option value="">--Selecionar--</option>
                       <option value="Brazo">Brazo</option>
                       <option value="Pierna">Pierna</option>
                       <option value="Espalda">Espalda</option>
                     </select></br>
-        <input type="submit" name="idEjercicio">
+                  </div>
+
+        <input type="submit" name="idEjercicio" class="btn btn-success">
       </form>
     </div>
+  </div>
   </body>
 </html>

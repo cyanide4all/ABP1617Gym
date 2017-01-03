@@ -18,11 +18,11 @@
     <div class="tabla">
 
       <div class = 'row'>
-        <a class ="col-md-2">Nombre de ejercicio</a> <a class="col-md-2" >Opciones</a>
+        <span class ="col-md-2">Nombre de ejercicio</span> <span class="col-md-2" >Opciones</span>
       </div>
       <?php foreach($ejercicios as $it){ ?>
         <div class="row">
-        <a class="col-md-2"><?php echo ($it['nomEjercicio']); ?> </a>
+        <span class="col-md-2"><?php echo ($it['nomEjercicio']); ?> </span>
         <button type="submit" form="borrar" class="btn btn-danger col-md-1" name="idEjercicio" value = <?php echo("".$it['idEjercicio']."");?>>Borrar</button>
         <button onclick="location.href='ModificarEjercicio.php?id=<?php echo($it['idEjercicio']);?>'" class="btn btn-warning col-md-1">Modificar</button>
       </div>
@@ -32,7 +32,7 @@
 
       <?php } ?>
 
-      <button onclick="location.href='CrearEjercicio.php'">Crear Nuevo Ejercicio</button>
+      <button onclick="location.href='CrearEjercicio.php'" class="btn btn-success">Crear Nuevo Ejercicio</button>
     </div>
 
   </body>
