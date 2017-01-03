@@ -9,9 +9,12 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
 body {
-  margin: 0;
+  margin-top:0%;
+  margin-left: 0%;
 }
+
 article,
 aside,
 details,
@@ -6753,5 +6756,9 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.tabla{
+  margin-left: 5%;
 }
 /*# sourceMappingURL=bootstrap.css.map */
