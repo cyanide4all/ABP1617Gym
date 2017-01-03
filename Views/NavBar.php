@@ -8,8 +8,9 @@ session_start();
 require_once("../Controllers/c_Notificaciones.php");
 require_once("../Controllers/c_Usuario.php");
 ?>
-<div class= "NavBar">
+<div class= "navbar navbar-default nav-custom">
   <nav>
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <a href="paginaPrincipal.php">Inicio</a> |
     <a href="GestionEjercicios.php">Gestión de Ejercicios</a> |
     <a href="GestionActividades.php">Gestión de Actividades</a> |

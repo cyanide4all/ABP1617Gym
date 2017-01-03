@@ -10,7 +10,6 @@
         $ActividadesController = new ActividadController();
         $Sesiones = $ActividadesController->getSesiones($_GET['id']);
     ?>
-
   </head>
 
     <body>
