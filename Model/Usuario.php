@@ -9,7 +9,7 @@ class Usuario{
 
   function getUsuarios(){
     $db = DB::getDB();
-    $consulta = "SELECT idUsuario, nomUsuario, direccion, telefono, tipoTarjeta, dni, fechaNac, email, pass FROM Usuario";
+    $consulta = "SELECT idUsuario, nomUsuario, direccion, telefono, tipoTarjeta, dni, fechaNac, email, pass, tipoUsuario FROM Usuario";
     $result = $db->query($consulta);
     $res = array();
     while($row = $result->fetch_assoc()){

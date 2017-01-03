@@ -23,6 +23,8 @@ class Tabla{
 
   function deleteTabla($id){
     $db = DB::getDB();
+    $consulta = "DELETE FROM TablaEjercicio WHERE Tabla_idTabla =".$id;
+    $db->query($consulta);
     $consulta = "DELETE FROM Tabla WHERE idTabla =".$id;
     $db->query($consulta);
   }

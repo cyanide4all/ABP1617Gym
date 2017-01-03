@@ -80,10 +80,8 @@ class TablaController{
     }
     public static function delEjerciciosTabla(){
       $t = new Tabla();
-
-      echo("huehuehu");
       $t->deleteEjercicio($_POST['idEjercicio'], $_POST['idTabla']);
-
+      header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
     }
 
     public static function modEjerciciosTabla(){

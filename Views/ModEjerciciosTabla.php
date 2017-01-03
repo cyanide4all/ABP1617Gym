@@ -48,5 +48,6 @@
       <input type="text" name="carga" placeholder="carga"/>
     </form>
     <button form="addEjercicioTabla" name="idTabla" value = <?php echo("".$_GET['id']."");?>>Añadir</button>
+    <button onclick="location.href='GestionTablas.php'">Hecho</button>
     </body>
 </html>
