@@ -19,10 +19,10 @@
         <span class ="col-md-2">Nombre de Tabla</span> <span class ="col-md-2">Opciones</span>
       </div>
       <?php foreach($tabla as $it){ ?>
-        <div class = 'row'>
+        <div class = 'row'><br>
           <span  class="col-md-2"><?php echo ($it['nomTabla']); ?> </span>
       <button class='btn btn-success' onclick="location.href='SeguirTabla.php?id=<?php echo($it['idTabla']);?>'">Seguir Tabla</button>
-      </div>
+    </div>
       <?php } ?>
       </div>
   </body>

@@ -20,12 +20,12 @@
               <span class ="col-md-2">Email</span> <span class="col-md-2" >Nombre</span> <span class="col-md-2" >Catergoria</span> <span class="col-md-2" >Opciones</span>
             </div>
             <?php foreach($usuarios as $it){ ?>
-            <div class = 'row'>
+            <div class = 'row'><br>
               <span class="col-md-2"><?php echo ($it['email']); ?></span>
               <span class="col-md-2"><?php echo ($it['nomUsuario']); ?></span>
               <span class="col-md-2"><?php echo($it['tipoUsuario']);?></span>
-              <button class="btn btn-danger" type="submit" form="borrar" name="idUsuario" value = <?php echo("".$it['idUsuario']."");?>>Borrar</button>
-              <button class="btn btn-warning" onclick="location.href='ModificarUsuario.php?id=<?php echo($it['idUsuario']);?>'">Modificar</button>
+              <button class="col-md-1 btn btn-danger" type="submit" form="borrar" name="idUsuario" value = <?php echo("".$it['idUsuario']."");?>>Borrar</button>
+              <button class="col-md-1 btn btn-warning" onclick="location.href='ModificarUsuario.php?id=<?php echo($it['idUsuario']);?>'">Modificar</button>
             </div>
               <form method= "post" action = "../Controllers/c_Usuario.php?op=0" class ='derecha' id="borrar">
               </form>

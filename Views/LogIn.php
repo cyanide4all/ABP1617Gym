@@ -9,18 +9,12 @@ require_once('../DB/connectDB.php');
 <div class="container">
 
 	<form method="post" action="../Controllers/c_Usuario.php?op=3" class="form-signin">
-	<h1 class="form-signin-heading">Login</h1><br>
-<div class="row">
-    <span class="col-md-2">email:</span><input type="text" name="email" placeholder="ejemplo@gmail.com"/>
-  </div>
-<div class="row">
-    <span class="col-md-2">pass:</span><input type="password" name="pass" placeholder="************"/>
-</div>
+	<h2 class="form-signin-heading">Porfavor logeate</h2>
+	email:  <input type="text" name="email" placeholder="ejemplo@gmail.com"/></br>
+	pass:   <input type="password" name="pass" placeholder="************"/></br>
 	<input type="hidden" name="idUsuario" value="placeholder"/><!--necesario para reutilizar el controller de usuario-->
-<br>
-<div class="row">
+	<br>
 	<input type="submit" value="login" class="btn btn-lg btn-primary btn-block"/>
-</div>
 
 	</form>
 </div>

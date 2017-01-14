@@ -21,7 +21,7 @@
         <span class ="col-md-2">Actividades Disponibles</span><span class ="col-md-2">Sesion  </span><span class ="col-md-2">Opciones</span>
       </div>
       <?php foreach($actividades as $it){ ?>
-        <div class = 'row'>
+        <div class = 'row'><br>
           <span  class="col-md-2"><?php echo ($it['nomActividad']); ?> </span>
           <?php
           $sesiones = $actividadesController->getSesiones($it['idActividad']);
