@@ -1,4 +1,25 @@
 <!--Elías 06/11/2016-->
+<?php
+//Ser al menos entrenador
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+  //La sesion esta seteada. Si eres deportista no entras
+  require_once('../Controllers/c_Usuario.php');
+  require_once("../DB/connectDB.php");
+
+  $usuariosController = new UsuarioController();
+  $user = $usuariosController->getUserByEmail($_SESSION['userID']);
+
+  if($user['tipoUsuario']=='deportista'){
+    header('Location: paginaPrincipal.php');
+  }
+  else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,8 +38,10 @@
       <form method="post" action="../Controllers/c_Usuario.php?op=2" onsubmit="return validarNuevoUsuario()">
         <div class="row"><span class="col-md-2">Tipo de Usuario:</span> <select id='tipoU' name="tipoDeUsuario">
                         <option value="">--Selecionar--</option>
+                        <?php if($user['tipoUsuario']=='admin'){ ?>
                         <option value="admin">Administrador</option>
                         <option value="entrenador">Entrenador</option>
+                        <?php } ?>
                         <option value="deportista">Deportista</option>
                       </select></div>
         <div class="row"><span class="col-md-2">Nombre:</span> <input id='nombre' type="text" name="nomUsuario" placeholder="Nombre"  /></div>
@@ -40,3 +63,7 @@
     </div>
   </body>
 </html>
+<?php
+}
+}
+?>

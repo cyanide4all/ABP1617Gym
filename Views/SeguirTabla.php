@@ -1,4 +1,14 @@
 <!--Martín 16/11/16-->
+<?php
+//ESTAR LOGEADO AL MENOS
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -39,7 +49,7 @@
         <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="1"> Realizado
         <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="0"> Pendiente
         <input type="text" name="comentario[<?php echo($i); ?>]" placeholder="Escribe aqui tus comentarios"/>
-        
+
         <input type="hidden" name="arrayID[<?php echo($i++); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
         <input type="hidden" name ="idTabla" value="<?php echo($_GET['id']); ?>"/>
 
@@ -52,3 +62,6 @@
     </div>
   </body>
 </html>
+<?php
+}
+?>
