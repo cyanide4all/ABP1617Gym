@@ -16,25 +16,25 @@
   </head>
 
   <body>
-    <div id = 'tabla2elementos' >
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Actividades Disponibles</a> <a clas = 'derecha'>Opciones</a>
+    <div class = 'tabla panel-default' >
+      <div class = 'row panel-heading'>
+        <span class ="col-md-2">Actividades Disponibles</span><span class ="col-md-2">Sesion  </span><span class ="col-md-2">Opciones</span>
       </div>
       <?php foreach($actividades as $it){ ?>
-      <div class = 'tupla'>
-        <a clas = 'izquierda'><?php echo ($it['nomActividad']); ?> </a>
+        <div class = 'row'><br>
+          <span  class="col-md-2"><?php echo ($it['nomActividad']); ?> </span>
           <?php
           $sesiones = $actividadesController->getSesiones($it['idActividad']);
           foreach($sesiones as $it2){
           ?>
           <form method= "post" action = "../Controllers/c_Reservas.php?op=1" class ='derecha' id="reservar<?php echo($it2['idSesion']);?>">
-            <a>Sesion: <?php echo($it2['fecha']) ?></a>
+            <span  class="col-md-2">Sesion: <?php echo($it2['fecha']) ?></span>
             <input type="hidden" name="idSesion" value="<?php echo($it2['idSesion']);?>"/>
           </form>
           <?php
           if(!$reservasController->yaReservado($it2['idSesion'])&&$actividadesController->quedanPlazas($it2['idSesion'])){ //si ya se reservo plaza o no quedan no se muestra la opcion de reservar
           ?>
-            <button type="submit" form="reservar<?php echo($it2['idSesion']);?>" name="idActividad" value="<?php echo($it['idActividad']);?>">Reservar</button>
+            <span  class="col-md-2"><button class="btn btn-success" type="submit" form="reservar<?php echo($it2['idSesion']);?>" name="idActividad" value="<?php echo($it['idActividad']);?>">Reservar</button></span>
           <?php
           }
           if((!$actividadesController->quedanPlazas($it2['idSesion']))&&$actividadesController->esGrupal($it['idActividad'])){
@@ -44,8 +44,8 @@
           }
         }
         ?>
-      </br></br>
       </div>
+      </br>
       <?php } ?>
     </div>
   </body>

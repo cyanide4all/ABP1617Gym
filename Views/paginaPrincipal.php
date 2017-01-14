@@ -4,7 +4,20 @@
 require_once('NavBar.php');
 ?>
 
-<div><a href="GestionEjercicios.php">Gestión de Ejercicios</a></div>
-<div><a href="GestionActividades.php">Gestión de Actividades</a></div>
-<div><a href="GestionTablas.php">Gestión de Tablas</a></div>
-<div><a href="GestionUsuarios.php">Gestión de Usuarios</a></div>
+
+<div class = 'tabla panel-default' >
+<div class = 'row panel-heading'>
+<h1 class:"text-center">
+  <span  class="col-md-4"></span><strong><span  class="col-md-4">GYM MASTER</span></stron>
+</h1>
+</div>
+
+<span  class="col-md-4">Somos un gimnasio de alta gama localizado en las Lagunas</span><br>
+<span  class="col-md-4">Ven a ponerte sexy por un precio inapreciable</span><br>
+<span  class="col-md-4">RaulV - EliasB - MartinV </span><br>
+
+<div class = 'tabla panel-default' ><br>
+<span  class="col-md-3"></span><iframe width="560" height="315"
+src="https://www.youtube.com/embed/shYqdMw5jeY?autohide=0" allowfullscreen>
+</iframe>
+</div>

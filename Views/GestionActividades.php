@@ -19,7 +19,7 @@
         <span class= "col-md-2" >Nombre de Actividad</span> <span class= "col-md-2">Opciones</span>
       </div>
       <?php foreach($Actividades as $it){ ?>
-      <div class = 'row'>
+      <div class = 'row'><br>
         <span class= "col-md-2"><?php echo ($it['nomActividad']); ?> </span>
         <form method= "post" action = "../Controllers/c_Actividad.php?op=0" class ='derecha' id="borrar">
         </form>
@@ -30,7 +30,7 @@
       <?php } ?>
     </div>
     <?php } ?>
-      <button onclick="location.href='CrearActividad.php'">Crear Nueva Actividad</button>
+      <button class="btn btn-success" onclick="location.href='CrearActividad.php'">Crear Nueva Actividad</button>
     </div>
   </body>
 </html>
