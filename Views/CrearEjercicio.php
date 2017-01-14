@@ -17,7 +17,7 @@
 
   <body>
     <div class="tabla">
-      <form method="post" action="../Controllers/c_Ejercicio.php?op=2" onsubmit="return validarNombreCategoria()">
+      <form method="post" action="../Controllers/c_Ejercicio.php?op=2" onsubmit="return validarEjercicio()">
         <div class="row"><span class="col-md-2">Nombre:</span><input id='nombre' type="text" name="nomEjercicio" placeholder="Nombre" /></div>
         <div class="row"><span class="col-md-2">Descripción:</span><input type="text" name="desEjercicio" placeholder="Descripcion" /></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->

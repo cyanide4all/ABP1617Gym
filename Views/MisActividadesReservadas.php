@@ -15,20 +15,22 @@
   </head>
 
   <body>
-    <div id = 'tabla3elementos' >
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Actividad</a> <a>Sesion</a> <a clas = 'derecha'>Opciones</a>
+    <div class="tabla panel-default" >
+      <div class = 'row panel-heading'>
+        <span class= "col-md-2" >Actividad</span> <span class= "col-md-2">Sesion</span> <span class= "col-md-2">Opciones</span>
       </div>
       <?php
       foreach($misReservas as $it){
         $sesion = $actividadesController->getSesion($it['Sesion_idSesion']);
         $actividad = $actividadesController->getActividad($sesion['Actividad_idActividad']);
       ?>
-        <a><?php echo($actividad['nomActividad']); ?></a>   <a><?php echo($sesion['fecha']);?> </a>
+      <div class="row">
+        <span class= "col-md-2"><?php echo($actividad['nomActividad']); ?></span>   <span class= "col-md-2"><?php echo($sesion['fecha']);?> </span>
         <form method="post" action="../Controllers/c_Reservas.php?op=0" id = "borrar<?php echo($sesion['idSesion']); ?>">
         </form>
-        <button type="submit" form="borrar<?php echo($sesion['idSesion']);?>" name="idSesion" value="<?php echo($sesion['idSesion']);?>">Borrar Reserva</button>
+        <span class= "col-md-2"><button class="btn btn-success" type="submit" form="borrar<?php echo($sesion['idSesion']);?>" name="idSesion" value="<?php echo($sesion['idSesion']);?>">Borrar Reserva</button></span>
       </br>
+    </div>
     <?php } ?>
   </body>
 </html>

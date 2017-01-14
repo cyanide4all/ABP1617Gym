@@ -30,7 +30,7 @@
       <?php } ?>
     </div>
     <?php } ?>
-      <button onclick="location.href='CrearActividad.php'">Crear Nueva Actividad</button>
+      <button class="btn btn-success" onclick="location.href='CrearActividad.php'">Crear Nueva Actividad</button>
     </div>
   </body>
 </html>
