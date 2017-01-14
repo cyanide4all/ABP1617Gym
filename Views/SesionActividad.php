@@ -13,9 +13,9 @@
   </head>
 
     <body>
-      <div class="tabla" >
-        <div class = 'row'>
-          <span class = 'col-md-2'>Fecha de la sesion</span><span class = 'col-md-2'>Opciones</span>
+      <div class="tabla panel-default">
+        <div class = 'row panel-heading'>
+      <span  class ="col-md-2">Fecha de la sesion</span><span class = 'col-md-2'>Opciones</span>
         </div>
           <?php foreach($Sesiones as $it){ ?>
         <div class="row">
