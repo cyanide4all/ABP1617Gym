@@ -28,9 +28,9 @@
 
         <?php } ?>
       </br>
-        <form method="post" action="../Controllers/c_Actividad.php?op=3" onsubmit="return validarFechaHora()">
+        <form method="post" action="../Controllers/c_Actividad.php?op=3">
           <input type="hidden" name="idActividad" value="<?php echo($_GET['id']);?>"/>
-          Fecha y hora de la nueva sesion: <input id='fechaHora' type="datetime" placeholder="AAAA-MM-DD HH:MM" name="fecha"/>
+          Fecha y hora de la nueva sesion: <input type="datetime" placeholder="AAAA-MM-DD HH:MM" name="fecha"/>
           <input class="btn btn-success" type="submit" value="Crear"/>
         </form>
         <button class="btn btn-info" onclick="location.href='GestionActividades.php'">Hecho</button>

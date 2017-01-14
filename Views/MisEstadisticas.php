@@ -23,78 +23,72 @@
   </head>
 
   <body>
-    <div id = 'tabla2elementos' >
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Ejercicios realizados</a> <a clas = 'derecha'>fecha</a>
+    <div class="tabla panel-default" >
+      <div class = 'row panel-heading'>
+        <span class= "col-md-2" >Ejercicios realizados</span> <span clas = 'derecha'>fecha</span>
       </div>
 
       <br>
 
       <?php foreach($estadisticas as $it){ ?>
-      <div class = 'tupla'>
+      <div class = 'row'>
         <?php $ejercicio = $ejerciciosController->getEjercicio($it['TablaEjercicio_Ejercicio_idEjercicio']);?>
-        <a class = 'izquierda'><?php echo ($ejercicio['nomEjercicio']);?></a>
-        <a class = 'derecha'><?php echo ($it['fecha']);?></a>
+        <span  class="col-md-2"><?php echo ($ejercicio['nomEjercicio']);?></span>
+        <span  class="col-md-2"><?php echo ($it['fecha']);?></span>
       </div>
       <?php } ?>
 
       <hr>
 
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Ejercicios realizados ultimas 10 horas</a>
+        <div class = 'row panel-heading'>
+          <span class= "col-md-2" >Ejercicios realizados ultimas 10 horas</span>
       </div>
       <br>
       <?php foreach($estadisticas as $it){ ?>
-      <div class = 'tupla'>
+      <div class = 'row'>
         <?php if($estadisticasController->checkFecha10horas($it['fecha'])){
           $ejercicio = $ejerciciosController->getEjercicio($it['TablaEjercicio_Ejercicio_idEjercicio']);
           ?>
-          <a class = 'izquierda'><?php echo ($ejercicio['nomEjercicio']);?></a>
-          <a class = 'derecha'><?php echo ($it['fecha']);?></a>
+          <span  class="col-md-2"><?php echo ($ejercicio['nomEjercicio']);?></span>
+          <span  class="col-md-2"><?php echo ($it['fecha']);?></span>
         <?php }?>
       </div>
 
       <?php } ?>
 
       <hr>
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Ejercicios realizados ultimos 7 dias</a>
+      <div class = 'row panel-heading'>
+        <span class= "col-md-4" >Ejercicios realizados ultimos 7 dias</span>
       </div>
       <br>
 
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>
+      <div class = 'row panel-heading'>
           <?php $total = $estadisticasController->getSemana();?>
-          Esta semana has realizado un total de: <?php echo($total['cont']); ?> ejercicios
-        </a>
+            <span class= "col-md-4" >Esta semana has realizado un total de:<br><br> <?php echo($total['cont']); ?> ejercicios </span>
       </div>
 
       <hr>
 
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>Participacion en sesiones</a>
+      <div class = 'row panel-heading'>
+        <span class= "col-md-2" >Participacion en sesiones</span>
       </div>
 
       <br>
 
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>
-          Te has anotado a un total de: <?php echo ($reservasController->contarReservas());?> sesiones de grupo
-        </a>
+      <div class = 'row panel-heading'>
+        <span class= "col-md-4" >Te has anotado a un total de:<br><br> <?php echo ($reservasController->contarReservas());?> sesiones de grupo</span>
       </div>
 
       <hr>
 
-      <div class = 'tupla'>
-      <a clas = 'izquierda'>Participacion en sesiones</a>
+      <div class = 'row panel-heading'>
+        <span class= "col-md-2" >Resumen</span>
       </div>
 
       <br>
 
-      <div class = 'tupla'>
-        <a clas = 'izquierda'>
-          Desde que empezaste con nosotros llevas realizados un total de: <?php echo ($estadisticasController->contarEjercicios()); ?> Ejercicios realizados
-        </a>
+      <div class = 'row panel-heading'>
+        <span class= "col-md-4" >Desde que empezaste con nosotros llevas un total de:<br><br> <?php echo ($estadisticasController->contarEjercicios()); ?> Ejercicios realizados</span>
       </div>
 
       </br>

@@ -1,24 +1,26 @@
 <!-- Martin 14/11/16
 TODO: Hacerlo responsivo al tipo de usuario
 -->
-<!--ESTO DA UN ERROR MUY RANDOM SI NO ESTA AQUI EN LUGAR DE ABAJO-->
-<?php session_start();?>
+
 
 <!--Este script contiene las funciones referentes a la comprobación de formularios-->
 <script>
 <?php include("../js/FormCheck.js");?>
 </script>
 <!--HASTA AQUI-->
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
 <?php
+session_start();
 require_once("../Controllers/c_Notificaciones.php");
 require_once("../Controllers/c_Usuario.php");
 $logged = false;
 if(isset($_SESSION['userID'])){
   $logged = true;
 }
+
 ?>
 
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
