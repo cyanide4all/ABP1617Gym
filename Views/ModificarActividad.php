@@ -16,18 +16,16 @@
 
   <body>
     <div class="tabla">
-      <form method="post" action="../Controllers/c_Actividad.php?op=1" id="modificar">
-        <div class="row"><span class="col-md-2">Nombre: </span><input class="col-md-2" type="text" name="nomActividad" value="<?php echo($actividad['nomActividad']);?>" /></div>
+      <form method="post" action="../Controllers/c_Actividad.php?op=1" id="modificar" onsubmit="return validarActividad()">
+        <div class="row"><span class="col-md-2">Nombre: </span><input id='nombre' class="col-md-2" type="text" name="nomActividad" value="<?php echo($actividad['nomActividad']);?>" /></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->
-        <div class="row"><span class="col-md-2">Tipo: </span><select name="tipoActividad">
+        <div class="row"><span class="col-md-2">Tipo: </span><select id='categoria' name="tipoActividad">
                       <option value="">--Selecionar--</option>
                       <option value="Individual">Individual</option>
                       <option value="Grupal">Grupo</option>
                     </select></div>
-		    <div class="row"><span class="col-md-2">Plazas: </span><input type="text" name="plazasActividad" value= "<?php echo($actividad['numPlazas']);?>"/></div>
+		    <div class="row"><span class="col-md-2">Plazas: </span><input id='nPlazas' type="text" name="plazasActividad" value= "<?php echo($actividad['numPlazas']);?>"/></div>
       </form>
-
-
       <button class="btn btn-success" type="submit" form="modificar" name="idActividad" value = <?php echo("".$id."");?>>Modificar</button>
     </div>
   </body>

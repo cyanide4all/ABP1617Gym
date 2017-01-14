@@ -16,7 +16,7 @@
 
   <body>
     <div class="tabla">
-      <form method="post" action="../Controllers/c_Ejercicio.php?op=1" id="modificar" onsubmit="return validarEjercicio()">
+      <form method="post" action="../Controllers/c_Ejercicio.php?op=1" id="modificar" onsubmit="return validarNombreCategoria()">
         <div class="row"><span class="col-md-2">Nombre:</span> <input id='nombre' type="text" name="nomEjercicio" value="<?php echo($ejercicio['nomEjercicio']);?>" /></div>
         <div class="row"><span class="col-md-2">Descripción:</span>  <input type="text" name="desEjercicio" value= "<?php echo($ejercicio['descripcion']);?>"/></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->

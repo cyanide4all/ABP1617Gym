@@ -6,14 +6,14 @@ require_once("../DB/connectDB.php");
 require_once("c_Notificaciones.php");
 
 //Metodos por defecto para los formularios
-if(isset($_POST['idActividad'])){
+if(isset($_POST['idActividad']) || (isset($_GET['op']) && $_GET['op']==2)){
 
   if($_GET['op']==0){ //Eliminar
     ActividadController::delActividad($_POST['idActividad']);
-  }if($_GET['op']==1){              //Modificar
+  }if($_GET['op']==1){    //Modificar
     ActividadController::modActividad();
   }if($_GET['op']==2){		//Crear
-	ActividadController::addActividad();
+  ActividadController::addActividad();
   }if($_GET['op']==3){		//Crear
   ActividadController::addSesion();
   }if($_GET['op']==4){		//Crear
@@ -43,20 +43,20 @@ class ActividadController{
   }
 
   public static function addActividad(){
-	  $a = new Actividad();
-	  if($_POST['tipoActividad'] == 'Individual'){
+    if($_POST['tipoActividad'] == 'Individual'){
 		  $num = 0;
 	  }
 		else{
 		  $num = $_POST['numPlazas'];
 		}
 
-	  $a->createActividad($_POST['nomActividad'],$_POST['tipoActividad'],$num);
+    $a = new Actividad();
+    $a->createActividad($_POST['nomActividad'],$_POST['tipoActividad'],$num);
 
     $notificacionController = new NotificacionesController();
     $notificacionController->crearNotificacionActividadNueva();
 
-  	header('Location: ../Views/GestionActividades.php'); //redirect pagina anterior
+  	header('Location: ../Views/GestionActividades.php');
   }
 
   public static function getActividad($id){

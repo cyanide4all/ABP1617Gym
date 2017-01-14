@@ -16,8 +16,8 @@
 
   <body>
     <div class="tabla">
-      <form method="post" action="../Controllers/c_Tabla.php?op=1" id="modificar">
-        <div class="row"><span class="col-md-2">Nombre:</span> <input type="text" name="nomTabla" value="<?php echo($tabla['nomTabla']);?>" /></div>
+      <form method="post" action="../Controllers/c_Tabla.php?op=1" id="modificar" onsubmit="return validarTabla">
+        <div class="row"><span class="col-md-2">Nombre:</span> <input id='nombre' type="text" name="nomTabla" value="<?php echo($tabla['nomTabla']);?>" /></div>
         <div class="row"><span class="col-md-2">Descripción:</span><input type="text" name="desTabla" value= "<?php echo($tabla['descripcion']);?>"/></div>
       </form>
 

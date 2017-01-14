@@ -1,5 +1,5 @@
 //  Funcion para validar nuevos ejercicios y modificaciones de los mismos
-function validarEjercicio () {
+function validarNombreCategoria () {
   var toRet = true
   var nombre = document.getElementById('nombre').value
   var alerta = ''
@@ -17,6 +17,112 @@ function validarEjercicio () {
   }
   return toRet
 }
+
+//  Funcion para validar Actividades
+function validarActividad () {
+  var toRet = true
+  var nombre = document.getElementById('nombre').value
+  var alerta = ''
+  if (nombre.length < 3 || nombre.length > 20) {
+    toRet = false
+    alerta += '[ERROR] La longitud del nombre debe ser de entre 3 y 20 caracteres\n'
+  }
+  var indice = document.getElementById('categoria').selectedIndex
+  if (indice == null || indice == 0) {
+    alerta += '[ERROR] Se debe seleccionar un tipo de Actividad\n'
+    toRet = false
+  }
+  var nPlazas = document.getElementById('nPlazas').value
+  var indiceValor = document.getElementById('categoria').value
+  if (indiceValor == 'Grupal' && nPlazas < 1) {
+    alerta += '[ERROR] Las actividades grupales deben tener al menos una plaza\n'
+    toRet = false
+  }
+  if (toRet == false) {
+    alert(alerta)
+  }
+  return toRet
+}
+
+//  Funcion para validar nueva session
+function validarFechaHora () {
+  var fechaHora = document.getElementById('fechaHora').value
+  if(!(/^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(fechaHora))) {
+    alert('[ERROR] El fomato a seguir es AAAA-MM-DD hh:mm')
+    return false
+  }
+  else {
+    //CHECK AÑOS MESES Y ETC //TODO hora y minutos
+    var anyo = fechaHora.substring(0, 4) // because months in JS start from 0
+    var mes = fechaHora.substring(5, 7)
+    var dia = fechaHora.substring(8, 10)
+    if (!((anyo > 2016) && (mes > 0) && (mes < 13) && (dia > 0) && (dia < 32))) {
+      alert('[ERROR] La fecha introducida no existe o es inválida')
+      return false
+    }
+    return true
+  }
+}
+
+//  Funcion para validar nuevas tablas y modificarlas
+function validarTabla () {
+  var toRet = true
+  var nombre = document.getElementById('nombre').value
+  var alerta = ''
+  if (nombre.length < 3 || nombre.length > 10) {
+    toRet = false
+    alerta += '[ERROR] La longitud del nombre debe ser de entre 3 y 10 caracteres\n'
+  }
+  if (toRet == false) {
+    alert(alerta)
+  }
+  return toRet
+}
+
+//  Funcion para validar nuevos usuarios
+
+function validarNuevoUsuario () {
+  var toRet = true
+  var alerta = ''
+
+  var indiceTipoU = document.getElementById('tipoU').selectedIndex
+  if (indiceTipoU == null || indice == 0) {
+    alerta += '[ERROR] Se debe seleccionar un tipo de usuario\n'
+    toRet = false
+  }
+
+  var nombre = document.getElementById('nombre').value
+  if (nombre.length < 3 || nombre.length > 20) {
+    toRet = false
+    alerta += '[ERROR] La longitud del nombre debe ser de entre 3 y 20 caracteres\n'
+  }
+
+  var direccion = document.getElementById('direccion').value
+  if (direccion.length > 30) {
+    toRet = false
+    alerta += '[ERROR] La longitud de la dirección no debe sobrepasar los 30 caracteres\n'
+  }
+
+  var telefono = document.getElementById('telefono').value
+  if (!(/^[+\d{2}]?\d{9}/)) { //Si esto falla poner que sea >9 al menos
+    toRet = false
+    alerta += '[ERROR] El telefono debe componerse de al menos 9 dígitos (con o sin extensión)\n'
+  }
+
+  var indiceTipoT = document.getElementById('tipoT').selectedIndex
+  if (indiceTipoT == null || indice == 0) {
+    alerta += '[ERROR] Se debe seleccionar un tipo de Tarjeta\n'
+    toRet = false
+  }
+
+  //SEGUIR AQUI MARTIN
+
+  if (toRet == false) {
+    alert(alerta)
+  }
+  return toRet
+}
+
 
 /*TUTORIAL DE COMO USAR LOS COMPONENTES DE ESTE ARCHIVO BY MARTIN A LAS 2am
   1- Estas funciones se llaman desde un form en su atributo onsubmit
@@ -38,20 +144,12 @@ function validarEjercicio () {
     POST, si retornan false no se redirecciona. Por ello, cuando vayamos a devolver
     false lo explicamos en un aler como aprendimos en SSI practica de XSS
 
-  4- Preguntas? releer, no es puto difícil. 
+  4- Preguntas? releer, no es puto difícil.
 */
 
-
-//  TODO Funcion para validar nuevas tablas y modificarlas
-
-//  TODO Funcion para validar nuevas actividades y modificarlas
-
-//  TODO Funcion para validar nuevos usuarios
 
 //  TODO Funcion para validar modificacion de usuarios
 
 //  TODO Funcion para validar modificación de perfil
-
-//  TODO Funcion para validar nueva session
 
 //  TODO Funcion para validar la adición de ejercicios a una tabla
