@@ -5,9 +5,16 @@ require_once("../Controllers/c_Usuario.php");
 require_once("../Controllers/c_Actividad.php");
 require_once("../Model/Reserva.php");
 require_once("../DB/connectDB.php");
+/*
 if(!isset($_SESSION['userID'])){
   session_start();
 }
+*/
+if(!isset($_SESSION))
+{
+    session_start();
+}
+
 
 //Metodos por defecto para los formularios
 if(isset($_SESSION['userID'])&&isset($_POST['idSesion'])){

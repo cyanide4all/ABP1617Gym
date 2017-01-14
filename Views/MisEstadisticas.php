@@ -1,4 +1,14 @@
 <!-- Raul 17/11/2016 -->
+<?php
+//ESTAR LOGEADO AL MENOS
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,6 +19,10 @@
     require_once('../Controllers/c_Ejercicio.php');
     require_once("../DB/connectDB.php");
     require_once('../Controllers/c_Reservas.php');
+
+
+    $userController = new UsuarioController();
+    $user = $userController->getUserByEmail($_SESSION['userID']);
 
     $estadisticasController = new EstadisticasController();
     $estadisticas = $estadisticasController->getEstadisticas();
@@ -95,3 +109,6 @@
     </div>
   </body>
 </html>
+<?php
+}
+?>

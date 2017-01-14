@@ -20,7 +20,7 @@
               <span class ="col-md-2">Email</span> <span class="col-md-2" >Nombre</span> <span class="col-md-2" >Catergoria</span> <span class="col-md-2" >Opciones</span>
             </div>
             <?php foreach($usuarios as $it){ ?>
-            <div class = 'row'><br>
+            <div class = 'row'>
               <span class="col-md-2"><?php echo ($it['email']); ?></span>
               <span class="col-md-2"><?php echo ($it['nomUsuario']); ?></span>
               <span class="col-md-2"><?php echo($it['tipoUsuario']);?></span>
