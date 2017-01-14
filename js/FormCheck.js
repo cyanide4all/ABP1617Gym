@@ -155,6 +155,68 @@ function validarNuevoUsuario () {
 }
 
 
+
+
+function validarModUsuario () {
+  var toRet = true
+  var alerta = ''
+
+  var nombre = document.getElementById('nombre').value
+  if (nombre.length < 3 || nombre.length > 20) {
+    toRet = false
+    alerta += '[ERROR] La longitud del nombre debe ser de entre 3 y 20 caracteres\n'
+  }
+
+  var direccion = document.getElementById('direccion').value
+  if (direccion.length > 30) {
+    toRet = false
+    alerta += '[ERROR] La longitud de la dirección no debe sobrepasar los 30 caracteres\n'
+  }
+
+    var telefono = document.getElementById('telefono').value
+    if (!(/^[+\d{2}]?\d{9}/.test(telefono))) { //Si esto falla poner que sea >9 al menos
+      toRet = false
+      alerta += '[ERROR] El telefono debe componerse de al menos 9 dígitos (con o sin extensión)\n'
+    }
+
+ //Finanal modUsuario
+    if (toRet == false) {
+      alert(alerta)
+    }
+    return toRet
+
+}
+
+
+function validarModPerfil () {
+  var toRet = false
+  var alerta = ''
+
+  var direccion = document.getElementById('direccion').value
+  if (direccion.length > 30) {
+    toRet = false
+    alerta += '[ERROR] La longitud de la dirección no debe sobrepasar los 30 caracteres\n'
+  }
+
+    var telefono = document.getElementById('telefono').value
+    if (!(/^[+\d{2}]?\d{9}/.test(telefono))) { //Si esto falla poner que sea >9 al menos
+      toRet = false
+      alerta += '[ERROR] El telefono debe componerse de al menos 9 dígitos (con o sin extensión)\n'
+    }
+
+ //Finanal modPerfilUsuario
+ if (toRet == false) {
+   alert(alerta)
+ }
+ return toRet
+
+}
+
+
+
+
+
+
 /*TUTORIAL DE COMO USAR LOS COMPONENTES DE ESTE ARCHIVO BY MARTIN A LAS 2am
   1- Estas funciones se llaman desde un form en su atributo onsubmit
       ej:
@@ -179,7 +241,7 @@ function validarNuevoUsuario () {
 */
 
 
-//  TODO Funcion para validar modificacion de usuarios
+//  TODO Funcion para validar modificacion de usuarios -- DONE
 
 //  TODO Funcion para validar modificación de perfil
 
