@@ -14,8 +14,8 @@
   </head>
 
   <body>
-    <div class="tabla" >
-      <div class = 'row'>
+    <div class="tabla panel-default" >
+      <div class = 'row panel-heading'>
         <span class= "col-md-2" >Nombre de Actividad</span> <span class= "col-md-2">Opciones</span>
       </div>
       <?php foreach($Actividades as $it){ ?>

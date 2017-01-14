@@ -1,9 +1,9 @@
 ///
 /// Kosas khe asher
 ///
--CSS por dios, las tablas se ven horrible
--NavBar no muestra usuario actual
+-Acabar CSS
 -Hay que hacer chekeamientos de tipo de usuario en cada pagina que lo necesite
+-Hay que hacer que la página de lista de actividades funcione sin estar logeado
 ///
 ///
 ///

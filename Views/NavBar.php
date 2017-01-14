@@ -1,8 +1,14 @@
 <!-- Martin 14/11/16
-NAVBAR provisional con muchisimo work que  hacer
 TODO: Hacerlo responsivo al tipo de usuario
-TODO: Hacerlo bien y bonito
 -->
+
+
+<!--Este script contiene las funciones referentes a la comprobación de formularios-->
+<script>
+<?php include("../js/FormCheck.js");?>
+</script>
+<!--HASTA AQUI-->
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
@@ -14,6 +20,7 @@ $logged = false;
 if(isset($_SESSION['userID'])){
   $logged = true;
 }
+
 ?>
 
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">

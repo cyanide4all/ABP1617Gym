@@ -15,9 +15,9 @@
 
   <body>
 
-    <div class="tabla">
+    <div class="tabla panel-default">
 
-      <div class = 'row'>
+      <div class = 'row panel-heading'>
         <span class ="col-md-2">Nombre de ejercicio</span> <span class="col-md-2" >Opciones</span>
       </div>
       <?php foreach($ejercicios as $it){ ?>
@@ -28,7 +28,6 @@
       </div>
         <form method= "post" action = "../Controllers/c_Ejercicio.php?op=0" class ='derecha' id="borrar">
         </form>
-      <br>
 
       <?php } ?>
 

@@ -16,11 +16,11 @@
 
   <body>
     <div class="tabla">
-      <form method="post" action="../Controllers/c_Ejercicio.php?op=1" id="modificar">
-        <div class="row"><span class="col-md-2">Nombre:</span> <input type="text" name="nomEjercicio" value="<?php echo($ejercicio['nomEjercicio']);?>" /></div>
+      <form method="post" action="../Controllers/c_Ejercicio.php?op=1" id="modificar" onsubmit="return validarEjercicio()">
+        <div class="row"><span class="col-md-2">Nombre:</span> <input id='nombre' type="text" name="nomEjercicio" value="<?php echo($ejercicio['nomEjercicio']);?>" /></div>
         <div class="row"><span class="col-md-2">Descripción:</span>  <input type="text" name="desEjercicio" value= "<?php echo($ejercicio['descripcion']);?>"/></div>
         <!-- TODO: Almacenar las opciones del combobox en un archivo a parte-->
-        <div class="row"><span class="col-md-2">Categoria:</span>  <select name="catEjercicio">
+        <div class="row"><span class="col-md-2">Categoria:</span>  <select id='categoria' name="catEjercicio">
                       <option value="">--Selecionar--</option>
                       <option value="Brazo">Brazo</option>
                       <option value="Pierna">Pierna</option>

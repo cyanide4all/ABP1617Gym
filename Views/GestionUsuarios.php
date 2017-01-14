@@ -15,9 +15,9 @@
   </head>
 
     <body>
-        <div class="tabla">
-            <div class = 'row'>
-              <span class ="col-md-2">Nombre de usuario</span> <span class="col-md-2" >Opciones</span>
+        <div class="tabla panel-default">
+            <div class = 'row panel-heading'>
+              <span class ="col-md-2">Email</span> <span class="col-md-2" >Nombre</span> <span class="col-md-2" >Catergoria</span> <span class="col-md-2" >Opciones</span>
             </div>
             <?php foreach($usuarios as $it){ ?>
             <div class = 'row'>
