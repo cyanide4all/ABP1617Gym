@@ -158,7 +158,7 @@ function validarModUsuario () {
 
 
 function validarModPerfil () {
-  var toRet = false
+  var toRet = true
   var alerta = ''
 
   var direccion = document.getElementById('direccion').value
@@ -179,6 +179,35 @@ function validarModPerfil () {
  }
  return toRet
 
+}
+
+function adEjTabla(){
+  var toRet = true
+  var alerta = ''
+
+  var carga = document.getElementById('carga').value
+  if (carga == 0) {
+    toRet = false
+    alerta += '[ERROR] La carga no puede ser 0 \n'
+  }
+
+  var rep = document.getElementById('repeticiones').value
+  if (rep == 0) {
+    toRet = false
+    alerta += '[ERROR] Las repeticiones no pueden ser 0 \n'
+  }
+
+  var indice = document.getElementById('eje').selectedIndex
+  if (indice == null || indice == 0) {
+    alerta += '[ERROR] Se debe seleccionar un tipo de ejercicio\n'
+    toRet = false
+  }
+
+  //Finanal addEjeTabla
+  if (toRet == false) {
+    alert(alerta)
+  }
+  return toRet
 }
 
 
@@ -212,6 +241,6 @@ function validarModPerfil () {
 
 //  TODO Funcion para validar modificacion de usuarios -- DONE
 
-//  TODO Funcion para validar modificación de perfil
+//  TODO Funcion para validar modificación de perfil -- Done
 
 //  TODO Funcion para validar la adición de ejercicios a una tabla
