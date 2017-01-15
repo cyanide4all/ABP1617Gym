@@ -28,9 +28,9 @@
               <hr>
               <div class="row"><span class="col-md-2">Cambiar datos:</span></div>
               <br>
-            <form method="post" action="../Controllers/c_Usuario.php?op=5" id="modificar">
-                <div class="row"><span class="col-md-2">Direccion:</span>  <input type="text" name="direccion" value="<?php echo($usuario['direccion']);?>" /></div>
-                <div class="row"><span class="col-md-2">Telefono:</span> <input type="text" name="telefono" value="<?php echo($usuario['telefono']);?>" /></div>
+            <form method="post" action="../Controllers/c_Usuario.php?op=5" id="modificar" onsubmit="return validarModPerfil()">
+                <div class="row"><span class="col-md-2">Direccion:</span>  <input type="text" name="direccion" id="direccion" value="<?php echo($usuario['direccion']);?>" /></div>
+                <div class="row"><span class="col-md-2">Telefono:</span> <input type="text" name="telefono" id="telefono" value="<?php echo($usuario['telefono']);?>" /></div>
                 </br>
             </form>
               <button class="btn btn-success" type="submit" form="modificar" name="idUsuario" value = <?php echo("".$id."");?>>Guardar</button>

@@ -29,7 +29,7 @@
         <form method="post" action="../Controllers/c_Tabla.php?op=5">
           <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
           <input  type="hidden" name="idEjercicio" value="<?php echo($it['Ejercicio_idEjercicio']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
-          <span class ="col-md-2"><?php echo($toShow['nomEjercicio']);?></span>
+          <span class ="col-md-2" name=<?php echo($toShow['nomEjercicio']); ?> ><?php echo($toShow['nomEjercicio']);?></span>
           <input class="col-md-2" type="text" name="nRepeticiones" value="<?php echo($it['nRepeticiones']);?>"/>
           <input class="col-md-2" type="text" name="carga" value="<?php echo($it['carga']);?>"/>
           <input class="btn btn-warning col-md-1" type="submit" value="Modificar" />
@@ -38,15 +38,15 @@
       <?php }?>
     <span class="col-md-2">Añadir un nuevo ejercicio</span>
 
-    <form method="post" action="../Controllers/c_Tabla.php?op=3" id="addEjercicioTabla">
-      <select class="col-md-2" name='idEjercicio'>
+    <form method="post" action="../Controllers/c_Tabla.php?op=3" id="addEjercicioTabla" onsubmit="return adEjTabla()">
+      <select id ="eje" class="col-md-2" name='idEjercicio'>
           <option  value="">--Selecionar--</option>
         <?php foreach($ejercicios as $it){ ?>
           <option value="<?php echo($it['idEjercicio']);?>"><?php echo($it['nomEjercicio']);?></option>
         <?php }?>
       </select>
-      <input class="col-md-2" type="text" name="numRepeticiones" placeholder="Numero de repeticiones"/>
-      <input class="col-md-1" type="text" name="carga" placeholder="carga"/>
+      <input class="col-md-2" type="text" name="numRepeticiones" placeholder="Numero de repeticiones" id="repeticiones"/>
+      <input class="col-md-1" type="text" name="carga" placeholder="carga" id="carga"/>
     </form>
     <button class="btn btn-success" form="addEjercicioTabla" name="idTabla" value = <?php echo("".$_GET['id']."");?>>Añadir</button>
     <br><button onclick="location.href='GestionTablas.php'" class="btn btn-info">Hecho</button>
