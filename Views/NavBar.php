@@ -2,7 +2,10 @@
 TODO: Hacerlo responsivo al tipo de usuario
 -->
 <!--ESTO DA UN ERROR MUY RANDOM SI NO ESTA AQUI EN LUGAR DE ABAJO-->
-<?php session_start();?>
+<?php if(!isset($_SESSION))
+{
+    session_start();
+}?>
 
 <!--Este script contiene las funciones referentes a la comprobación de formularios-->
 <script>

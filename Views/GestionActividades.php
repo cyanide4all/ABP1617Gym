@@ -1,4 +1,25 @@
 <!--Raul 14/11/2016-->
+<?php
+//Ser admin
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+  //La sesion esta seteada. Si eres deportista no entras
+  require_once('../Controllers/c_Usuario.php');
+  require_once("../DB/connectDB.php");
+
+  $usuariosController = new UsuarioController();
+  $user = $usuariosController->getUserByEmail($_SESSION['userID']);
+
+  if(!$user['tipoUsuario']=='admin'){
+    header('Location: paginaPrincipal.php');
+  }
+  else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,7 +40,7 @@
         <span class= "col-md-2" >Nombre de Actividad</span> <span class= "col-md-2">Opciones</span>
       </div>
       <?php foreach($Actividades as $it){ ?>
-      <div class = 'row'><br>
+      <div class = 'row'>
         <span class= "col-md-2"><?php echo ($it['nomActividad']); ?> </span>
         <form method= "post" action = "../Controllers/c_Actividad.php?op=0" class ='derecha' id="borrar">
         </form>
@@ -34,3 +55,7 @@
     </div>
   </body>
 </html>
+<?php
+}
+}
+?>

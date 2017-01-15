@@ -1,4 +1,25 @@
 <!--Elías 06/11/2016-->
+<?php
+//Ser al menos entrenador
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+  //La sesion esta seteada. Si eres deportista no entras
+  require_once('../Controllers/c_Usuario.php');
+  require_once("../DB/connectDB.php");
+
+  $usuariosController = new UsuarioController();
+  $user = $usuariosController->getUserByEmail($_SESSION['userID']);
+
+  if($user['tipoUsuario']=='deportista'){
+    header('Location: paginaPrincipal.php');
+  }
+  else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,7 +41,7 @@
               <span class ="col-md-2">Email</span> <span class="col-md-2" >Nombre</span> <span class="col-md-2" >Catergoria</span> <span class="col-md-2" >Opciones</span>
             </div>
             <?php foreach($usuarios as $it){ ?>
-            <div class = 'row'><br>
+            <div class = 'row'>
               <span class="col-md-2"><?php echo ($it['email']); ?></span>
               <span class="col-md-2"><?php echo ($it['nomUsuario']); ?></span>
               <span class="col-md-2"><?php echo($it['tipoUsuario']);?></span>
@@ -36,3 +57,7 @@
             </div>
     </body>
 </html>
+<?php
+}
+}
+?>

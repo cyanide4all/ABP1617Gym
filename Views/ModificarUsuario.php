@@ -1,4 +1,30 @@
 <!--Elías 06/11/20016-->
+<?php
+//Ser al menos entrenador
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+  //La sesion esta seteada. Si eres deportista no entras
+  require_once('../Controllers/c_Usuario.php');
+  require_once("../DB/connectDB.php");
+
+  $usuariosController = new UsuarioController();
+  $user = $usuariosController->getUserByEmail($_SESSION['userID']);
+
+  if($user['tipoUsuario']=='deportista'){
+    header('Location: paginaPrincipal.php');
+  }
+  else{
+    $usuario = $usuariosController->getUsuario($_GET['id']);
+    if($user['tipoUsuario']=='entrenador' && !($usuario['tipoUsuario']=='deportista')){
+      header('Location: paginaPrincipal.php');
+    }
+    else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,7 +35,6 @@
         require_once("../DB/connectDB.php");
 
         $usuariosController = new UsuarioController();
-        $usuario = $usuariosController->getUsuario($_GET['id']);
         $id = $_GET['id'];
       ?>
    </head>
@@ -19,8 +44,10 @@
          <div class="tabla">
             <form method="post" action="../Controllers/c_Usuario.php?op=1" id="modificar" onsubmit="return validarModUsuario()">
               <div class="row"><span class="col-md-2">Tipo de Usuario:</span> <select name="tipoDeUsuario">
+                              <?php if($user['tipoUsuario']=='admin'){ ?>
                               <option value="admin" <?php if($usuario['tipoUsuario']=="admin"){ echo ("selected='selected'");} ?>>Administrador</option>
                               <option value="entrenador" <?php if($usuario['tipoUsuario']=="entrenador"){ echo ("selected='selected'");} ?>>Entrenador</option>
+                              <?php } ?>
                               <option value="deportista" <?php if($usuario['tipoUsuario']=="deportista"){ echo ("selected='selected'");} ?>>Deportista</option>
                             </select></div>
                 <div class="row"><span class="col-md-2">Nombre:</span> <input type="text" name="nomUsuario" id="nombre" value="<?php echo($usuario['nomUsuario']);?>" /></div>
@@ -35,3 +62,8 @@
          </div>
     </body>
 </html>
+<?php
+}
+}
+}
+?>

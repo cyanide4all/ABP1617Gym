@@ -86,7 +86,7 @@ function validarNuevoUsuario () {
   var alerta = ''
 
   var indiceTipoU = document.getElementById('tipoU').selectedIndex
-  if (indiceTipoU == null || indice == 0) {
+  if (indiceTipoU == null || indiceTipoU == 0) {
     alerta += '[ERROR] Se debe seleccionar un tipo de usuario\n'
     toRet = false
   }
@@ -110,12 +110,43 @@ function validarNuevoUsuario () {
   }
 
   var indiceTipoT = document.getElementById('tipoT').selectedIndex
-  if (indiceTipoT == null || indice == 0) {
+  if (indiceTipoT == null || indiceTipoT == 0) {
     alerta += '[ERROR] Se debe seleccionar un tipo de Tarjeta\n'
     toRet = false
   }
 
-  //SEGUIR AQUI MARTIN
+  var dni = document.getElementById('dni').value
+  if (!(/[A-z]?\d{8}[A-z]/.test(dni))) {
+    alerta += '[ERROR] El dni no tiene un formato correcto\n'
+    toRet = false
+  }
+
+  var fechaNac = document.getElementById('fechaNac').value
+  if(!(/^\d{4}-\d{2}-\d{2}$/.test(fechaNac))) {
+    alerta += '[ERROR] El fomato a seguir es AAAA-MM-DD\n'
+    toRet = false
+  } else {
+    //CHECK AÑOS MESES Y ETC //TODO hora y minutos
+    var anyo = fechaNac.substring(0, 4) // because months in JS start from 0
+    var mes = fechaNac.substring(5, 7)
+    var dia = fechaNac.substring(8, 10)
+    if (!((anyo < 2017) && (mes > 0) && (mes < 13) && (dia > 0) && (dia < 32))) {
+      alerta += '[ERROR] La fecha de nacimiento introducida no existe o es inválida\n'
+      toRet = false
+    }
+  }
+
+  var email = document.getElementById('email').value
+  if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))) {
+    alerta += '[ERROR] Email inválido\n'
+    toRet = false
+  }
+
+  var pass1 = document.getElementById('ps1').value
+  var pass2 = document.getElementById('ps2').value
+  if (!(pass1.length>0 && pass1 == pass2)) {
+    alerta += '[ERROR] Contraseñas distintas o inválidas'
+  }
 
   if (toRet == false) {
     alert(alerta)

@@ -1,4 +1,14 @@
 <!--Martin 15/11/16-->
+<?php
+//ESTAR LOGEADO AL MENOS
+if(!isset($_SESSION))
+{
+    session_start();
+}
+if(!isset($_SESSION['userID'])){
+  header('Location: paginaPrincipal.php');
+}else{
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,3 +44,6 @@
     <?php } ?>
   </body>
 </html>
+<?php
+}
+?>
