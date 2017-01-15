@@ -27,7 +27,7 @@ if(!isset($_SESSION['userID'])){
   <body>
     <div class = 'tabla panel-default' >
         <div class = 'row panel-heading'>
-          <span class ="col-md-2">Seguimiento de ejercicios</span>
+          <span class ="col-md-1">Ejercicio</span><span class ="col-md-1">Descripción</span><span class ="col-md-1">Repeticiones</span><span class ="col-md-1">Carga</span><span class ="col-md-2">Estado</span><span class ="col-md-2">Comentario opcional</span>
       </div>
 
       <form method= "post" action = "../Controllers/c_Estadisticas.php" class ='derecha' id="seguir">
@@ -44,9 +44,11 @@ if(!isset($_SESSION['userID'])){
         <span class="col-md-1"><?php echo ($it['nRepeticiones']); ?> </span>
         <span class="col-md-1"><?php echo ($it['carga']); ?> </span>
 
-        <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="1"> Realizado
-        <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="0"> Pendiente
-        <input type="text" name="comentario[<?php echo($i); ?>]" placeholder="Escribe aqui tus comentarios"/>
+        <div class="col-md-2">
+          <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="1">Realizado
+          <input type="radio" name="arrayStats[<?php echo($i); ?>]" value="0">Pendiente
+        </div>
+        <input class="col-md-3" type="text" name="comentario[<?php echo($i); ?>]" placeholder="Escribe aqui tus comentarios"/>
 
         <input type="hidden" name="arrayID[<?php echo($i++); ?>]" value="<?php echo($it['Ejercicio_idEjercicio']); ?>"/>
         <input type="hidden" name ="idTabla" value="<?php echo($_GET['id']); ?>"/>
@@ -55,7 +57,7 @@ if(!isset($_SESSION['userID'])){
       </div>
 
         <?php } ?>
-      <input type="submit"  value ="Enviar"/>
+      <input class="btn btn-success" type="submit"  value ="¡He terminado!"/>
     </form>
     </div>
   </body>

@@ -18,9 +18,22 @@ TODO: Hacerlo responsivo al tipo de usuario
 <?php
 require_once("../Controllers/c_Notificaciones.php");
 require_once("../Controllers/c_Usuario.php");
+//VAMOS A HACER UN SET DE CREDENCIALES
+//EL MAXIMO ES 1 y minimo 4
+//1 - Admin
+//2 - Entrenador
+//3 - Deportista
+//4 - Unregistered
+
 $logged = false;
+$permit = 4; //unregistered
 if(isset($_SESSION['userID'])){
   $logged = true;
+  $userController = new UsuarioController();
+  $tipoUser = $userController->getUserByEmail($_SESSION['userID'])['tipoUsuario'];
+  if($tipoUser == "deportista"){ $permit = 3;}
+  if($tipoUser == "entrenador"){ $permit = 2;}
+  if($tipoUser == "admin")     { $permit = 1;}
 }
 ?>
 
@@ -31,21 +44,26 @@ if(isset($_SESSION['userID'])){
     <ul class="nav navbar-nav">
       <li><a href="paginaPrincipal.php">Inicio</a></li>
       <!--Este dropdown solo se ve si tienes permisos de admin o entrenador-->
+      <?php if($permit < 3){ ?>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestión <span class="caret"></span></a>
         <ul class="dropdown-menu">
+          <?php if($permit == 1){ ?>
           <li><a href="GestionEjercicios.php">Gestión de Ejercicios</a></li>
           <li><a href="GestionActividades.php">Gestión de Actividades</a></li>
-          <li><a href="GestionTablas.php">Gestión de Tablas</a></li>
+          <?php } ?>
           <li><a href="GestionUsuarios.php">Gestión de Usuarios</a></li>
+          <li><a href="GestionTablas.php">Gestión de Tablas</a></li>
         </ul>
       </li>
       <!--HASTA AQUI -->
+      <?php } ?>
       <li><a href="ListaActividades.php">Lista de Actividades</a></li>
+      <?php if($permit < 4){ ?>
       <li><a href="MisActividadesReservadas.php">Mis reservas</a></li>
       <li><a href="ListaTablas.php">Entrenamiento</a></li>
       <li><a href="MisEstadisticas.php">Mis estadisticas</a></li>
-
+      <?php } ?>
 
       <?php
       if($logged){
@@ -56,7 +74,7 @@ if(isset($_SESSION['userID'])){
         $dibujadas = array();
       ?>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notificaciones (<?php echo(count($notificaciones)); ?>) <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notificaciones (<?php if(count($notificaciones)>1){ echo(count($notificaciones)-1); }else{echo(count($notificaciones));} ?>) <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <?php
             foreach($notificaciones as $n){
@@ -64,7 +82,7 @@ if(isset($_SESSION['userID'])){
                 array_push($dibujadas, $n["contenido"]); //Consideramos añadir TRUE como tercer parametro si esto falla
           ?>
             <li>
-              <?php echo $n["contenido"];?>
+              <div class="tabla text-center"><?php echo $n["contenido"];?></div>
             </li>
 
           <?php
@@ -74,7 +92,7 @@ if(isset($_SESSION['userID'])){
           ?>
 
             <form method="post" action="../Controllers/c_Notificaciones.php?id=1">
-              <input type="submit" value="Borrar Notificaciones"/>
+              <input class="btn btn-info" type="submit" value="Borrar Notificaciones"/>
             </form>
           <?php
             } //Cierre de if
