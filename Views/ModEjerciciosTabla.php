@@ -6,6 +6,7 @@ if(!isset($_SESSION))
     session_start();
 }
 if(!isset($_SESSION['userID'])){
+  //Aun no sé por qué pero tras borrar un ejercicio entra por aquí
   header('Location: paginaPrincipal.php');
 }else{
   //La sesion esta seteada. Si eres deportista no entras
@@ -40,7 +41,7 @@ if(!isset($_SESSION['userID'])){
     <body>
       <div class="tabla panel-default" >
         <div class = 'row panel-heading'>
-      <span  class ="col-md-2">Nombre del ejercicio</span>  <span  class ="col-md-2">Repeticiones</span>  <span  class ="col-md-2">Carga</span>
+      <span  class ="col-md-3">Nombre del ejercicio</span>  <span  class ="col-md-2">Repeticiones</span>  <span  class ="col-md-2">Carga</span>
     </div>
       <?php foreach($ejerciciosTabla as $it){ ?>
       <form method="post" action="../Controllers/c_Tabla.php?op=4" id="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>">
@@ -50,7 +51,7 @@ if(!isset($_SESSION['userID'])){
         <form method="post" action="../Controllers/c_Tabla.php?op=5">
           <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
           <input  type="hidden" name="idEjercicio" value="<?php echo($it['Ejercicio_idEjercicio']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
-          <span class ="col-md-2" name=<?php echo($toShow['nomEjercicio']); ?> ><?php echo($toShow['nomEjercicio']);?></span>
+          <span class ="col-md-3" name='nomEjercicio'><?php echo($toShow['nomEjercicio']);?></span>
           <input class="col-md-2" type="text" name="nRepeticiones" value="<?php echo($it['nRepeticiones']);?>"/>
           <input class="col-md-2" type="text" name="carga" value="<?php echo($it['carga']);?>"/>
           <input class="btn btn-warning col-md-1" type="submit" value="Modificar" />

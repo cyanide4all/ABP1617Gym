@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION))
+{
+    session_start();
+}
 require_once("../DB/connectDB.php");
 
 class Tabla{
@@ -76,11 +80,13 @@ class Tabla{
     }
     return $res;
   }
+
   function deleteEjercicio($idE, $idT){
     $db = DB::getDB();
     $consulta = "DELETE FROM TablaEjercicio WHERE Ejercicio_idEjercicio =".$idE." AND Tabla_idTabla=".$idT;
     $db->query($consulta);
   }
+
   function modEjerciciosTabla($idTabla,$idEjercicio,$nRep,$carga){
     $db = DB::getDB();
     $consulta = "UPDATE TablaEjercicio SET nRepeticiones='".$nRep."',

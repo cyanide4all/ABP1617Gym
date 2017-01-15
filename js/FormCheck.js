@@ -34,7 +34,7 @@ function validarActividad () {
   }
   var nPlazas = document.getElementById('nPlazas').value
   var indiceValor = document.getElementById('categoria').value
-  if (indiceValor == 'Grupal' && nPlazas < 1) {
+  if (isNaN(nPLazas) || (indiceValor == 'Grupal' && nPlazas < 1))  {
     alerta += '[ERROR] Las actividades grupales deben tener al menos una plaza\n'
     toRet = false
   }
@@ -217,15 +217,15 @@ function adEjTabla(){
   var alerta = ''
 
   var carga = document.getElementById('carga').value
-  if (carga == 0) {
+  if (isNaN(carga) || carga < 1) {
     toRet = false
-    alerta += '[ERROR] La carga no puede ser 0 \n'
+    alerta += '[ERROR] Introduce un carga válida para el ejercicio\n'
   }
 
   var rep = document.getElementById('repeticiones').value
-  if (rep == 0) {
+  if (isNaN(rep) || rep < 1) {
     toRet = false
-    alerta += '[ERROR] Las repeticiones no pueden ser 0 \n'
+    alerta += '[ERROR] Introduce un número de repeticiones válido para el ejercicio\n'
   }
 
   var indice = document.getElementById('eje').selectedIndex
@@ -240,38 +240,3 @@ function adEjTabla(){
   }
   return toRet
 }
-
-
-
-
-
-
-/*TUTORIAL DE COMO USAR LOS COMPONENTES DE ESTE ARCHIVO BY MARTIN A LAS 2am
-  1- Estas funciones se llaman desde un form en su atributo onsubmit
-      ej:
-        <form id="miputavida" method="post" onsubmit="return nombreDeFuncion()">
-          ...cosas de forms...
-        </form>
-
-  2- Cualquier cosa que se recoja con document.getElementById(String id) tiene que
-    tener como id dicha id
-      ej:
-        <form id="miputavida" method="post" onsubmit="return nombreDeFuncion()">
-          <input id='idEjemplo' type="text" name="miPutaMadre" />
-        </form>
-        -----------later in the javascripting side of this shit-----------------
-        var holaSoyUnaVariable = document.getElementById('miPutaMadre').value
-
-  3- Las funciones tienen que retornar true si dejan avanzar el formulario hacia
-    POST, si retornan false no se redirecciona. Por ello, cuando vayamos a devolver
-    false lo explicamos en un aler como aprendimos en SSI practica de XSS
-
-  4- Preguntas? releer, no es puto difícil.
-*/
-
-
-//  TODO Funcion para validar modificacion de usuarios -- DONE
-
-//  TODO Funcion para validar modificación de perfil -- Done
-
-//  TODO Funcion para validar la adición de ejercicios a una tabla

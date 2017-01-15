@@ -73,15 +73,18 @@ class TablaController{
       $t->addEjerciciosTabla($_POST['idEjercicio'],$_POST['idTabla'],$_POST['numRepeticiones'],$_POST['carga']);
       header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
     }
+
     public function getEjerciciosTabla($id){
         $t = new Tabla();
         $toRet = $t->getEjercicios($id);
         return $toRet;
     }
+
     public static function delEjerciciosTabla(){
       $t = new Tabla();
       $t->deleteEjercicio($_POST['idEjercicio'], $_POST['idTabla']);
       header('Location: ' . $_SERVER['HTTP_REFERER']); //redirect pagina anterior
+
     }
 
     public static function modEjerciciosTabla(){
