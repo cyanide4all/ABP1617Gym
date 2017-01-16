@@ -34,7 +34,7 @@ function validarActividad () {
   }
   var nPlazas = document.getElementById('nPlazas').value
   var indiceValor = document.getElementById('categoria').value
-  if (isNaN(nPLazas) || (indiceValor == 'Grupal' && nPlazas < 1))  {
+  if ((indiceValor == 'Grupal' && nPlazas < 1))  {
     alerta += '[ERROR] Las actividades grupales deben tener al menos una plaza\n'
     toRet = false
   }

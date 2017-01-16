@@ -1,15 +1,14 @@
 <!-- Elias 17/11/2016 -->
 <?php
+if(!isset($_SESSION)){
+  session_start();
+}
 require_once("c_Usuario.php");
 require_once("../Model/Notificacion.php");
 require_once("c_Actividad.php");
 
-//Por aqui entra el formulario de borrar notificaciones
-if(!isset($_SESSION)){
-  session_start();
-}
 
-if(isset($_GET['id']) && $_GET['id']==1){
+if(isset($_GET['op']) && $_GET['op']==1){
   $userController = new UsuarioController();
   $user = $userController->getUserByEmail($_SESSION['userID']);
   NotificacionesController::borrarNotificaciones($user["idUsuario"]);

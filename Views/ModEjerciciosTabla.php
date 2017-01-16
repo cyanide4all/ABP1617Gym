@@ -48,15 +48,17 @@ if(!isset($_SESSION['userID'])){
         <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
       </form>
         <?php  $toShow = $ejerciciosController->getEjercicio($it['Ejercicio_idEjercicio']);      ?>
-        <form method="post" action="../Controllers/c_Tabla.php?op=5">
-          <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
-          <input  type="hidden" name="idEjercicio" value="<?php echo($it['Ejercicio_idEjercicio']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
-          <span class ="col-md-3" name='nomEjercicio'><?php echo($toShow['nomEjercicio']);?></span>
-          <input class="col-md-2" type="text" name="nRepeticiones" value="<?php echo($it['nRepeticiones']);?>"/>
-          <input class="col-md-2" type="text" name="carga" value="<?php echo($it['carga']);?>"/>
-          <input class="btn btn-warning col-md-1" type="submit" value="Modificar" />
-          <button class="btn btn-danger col-md-1" form="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>" name="idEjercicio" value = <?php echo("".$it['Ejercicio_idEjercicio']."");?>>Borrar</button>
-        </form><br><br><br>
+        <div class="row">
+          <form method="post" action="../Controllers/c_Tabla.php?op=5">
+            <input type="hidden" name="idTabla" value="<?php echo($_GET['id']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
+            <input  type="hidden" name="idEjercicio" value="<?php echo($it['Ejercicio_idEjercicio']);?>"><!--ESTO ES PARA POSTEAR IDTABLA PARA QUE FUNCIONE EL CONTROLLER-->
+            <span class ="col-md-3" name='nomEjercicio'><?php echo($toShow['nomEjercicio']);?></span>
+            <input class="col-md-2" type="text" name="nRepeticiones" value="<?php echo($it['nRepeticiones']);?>"/>
+            <input class="col-md-2" type="text" name="carga" value="<?php echo($it['carga']);?>"/>
+            <input class="btn btn-warning col-md-1" type="submit" value="Modificar" />
+            <button class="btn btn-danger col-md-1" form="deleleFromTabla<?php echo($it['Ejercicio_idEjercicio']);?>" name="idEjercicio" value = <?php echo("".$it['Ejercicio_idEjercicio']."");?>>Borrar</button>
+          </form>
+        </div>
       <?php }?>
     <span class="col-md-2">Añadir un nuevo ejercicio</span>
 

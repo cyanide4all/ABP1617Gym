@@ -50,9 +50,9 @@ if(!isset($_SESSION['userID'])){
                       <option value="Pierna">Pierna</option>
                       <option value="Espalda">Espalda</option>
                     </select></br>
-                  </div>
-
-        <input type="submit" name="idEjercicio" class="btn btn-success">
+                    <input type="hidden" name="idEjercicio"/>
+        </div>
+        <input type="submit" value="Crear" class="btn btn-success">
       </form>
     </div>
   </div>

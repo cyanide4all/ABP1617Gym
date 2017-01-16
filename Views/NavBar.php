@@ -91,7 +91,7 @@ if(isset($_SESSION['userID'])){
             if(count($notificaciones)>0){
           ?>
 
-            <form method="post" action="../Controllers/c_Notificaciones.php?id=1">
+            <form method="post" action="../Controllers/c_Notificaciones.php?op=1">
               <input class="btn btn-info" type="submit" value="Borrar Notificaciones"/>
             </form>
           <?php

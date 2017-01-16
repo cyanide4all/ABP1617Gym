@@ -11,7 +11,7 @@ class Notificacion{
   }
   function deleteAll($idUsuario){
     $db = DB::getDB();
-    $consulta = "DELETE FROM Notificacion WHERE Usuario_idUsuario=".$idUsuario; 
+    $consulta = "DELETE FROM Notificacion WHERE Usuario_idUsuario=".$idUsuario;
     $db->query($consulta);
   }
 

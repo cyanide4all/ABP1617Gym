@@ -42,7 +42,7 @@
             }
             if((!$actividadesController->quedanPlazas($it2['idSesion']))&&$actividadesController->esGrupal($it['idActividad'])){
             ?>
-              <a>NO QUEDAN PLAZAS</a>
+              <span>NO QUEDAN PLAZAS</span>
             <?php
             }
           }

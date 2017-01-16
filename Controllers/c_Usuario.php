@@ -81,7 +81,7 @@ class UsuarioController{
     }
 
 
-    $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT,$_POST['tipoUsuario']);
+    $u->modificarUsuario($_POST['idUsuario'],$_POST['nomUsuario'],$direc,$telf,$tipoT,$_POST['tipoDeUsuario']);
     header('Location: ../Views/GestionUsuarios.php');
     }
 
